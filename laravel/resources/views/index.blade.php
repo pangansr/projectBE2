@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
     <title>Document</title>
     <style>
         body {
@@ -98,7 +99,13 @@
         opacity: 1;
     }
 }
-
+.containerr {
+    opacity: 0.8;
+    display: flex;
+}
+.column {
+    flex: 1;
+}
     </style>
 </head>
 <body>
@@ -125,21 +132,30 @@
         <main class="main-content">
         </main>
     </div>
-    <h1>Danh sách danh mục</h1>
-    @foreach($category as $category)
-    <buttonb class="btn" style="display: block">{{ $category->name }}</button>
-@endforeach
-<div class="slideshow-container">
-    <div class="slide fade">
-        <img src="images/1714406890.jpg" style="width:700px; height:200px;">
+   
+    <div class="containerr">
+        <div class="column">
+            <h4>Danh sách danh mục</h4>
+            @foreach($category as $category)
+            <buttonb class="btn" style="">{{ $category->name }}</button>
+        @endforeach   
+        </div>
+        <div class="column">
+            <div class="slideshow-container ms-5">
+                
+                <div class="slide fade">
+                    <img src="images/s2.jpg" style="width:700px; height:150px; border: 3px solid black;">
+                </div>
+                <div class="slide fade">
+                    <img src="images/s3.jpg" style="width:700px; height:150px; border: 3px solid black;">
+                </div>
+                <div class="slide fade">
+                    <img src="images/s4.jpg" style="width:700px; height:150px; border: 3px solid black;">
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="slide fade">
-        <img src="images/1714407946.jpg" style="width:700px; height:200px;">
-    </div>
-    <div class="slide fade">
-        <img src="images/317144087163.jpg" style="width:700px; height:200px;>
-    </div>
-</div>
+
 
 <ul>
     @foreach($products as $product)
@@ -160,7 +176,7 @@ function showSlides() {
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}
     slides[slideIndex-1].style.display = "block";
-    setTimeout(showSlides, 2000); // Đổi ảnh sau mỗi 2 giây
+    setTimeout(showSlides, 4000); // Đổi ảnh sau mỗi 2 giây
 }
 </script>
 </html>
