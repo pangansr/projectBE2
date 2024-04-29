@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 use App\Models\User;
+use App\Models\Product;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -21,26 +23,7 @@ class CrudUserController extends Controller
         return view('crud_user.login');
     }
 
-    /**
-     * User submit form login
-     */
-    // public function authUser(Request $request)
-    // {
-        
-    //     $request->validate([
-    //         'email' => 'required',
-    //         'password' => 'required',
-    //     ]);
-
-    //    $credentials = $request->only('email', 'password');
-
-    //     if (Auth::attempt($credentials)) {
-    //         return redirect()->intended('index')
-    //             ->withSuccess('Signed in');
-    //     }
-
-    //     return redirect("login")->withSuccess('Login details are not valid');
-    // }
+  
 
     public function authUser(Request $request)
     {
@@ -64,6 +47,7 @@ class CrudUserController extends Controller
      */
     public function createUser()
     {
+        
         return view('crud_user.create');
     }
 
@@ -187,29 +171,14 @@ class CrudUserController extends Controller
         return redirect("list")->withSuccess('You have signed-in');
     }
 
-    /**
-     * List of users
-     */
-    // public function index(Request $request)
-    // {
-    //     if(Auth::check()){
-
-    //         return view('index', ['users' => $users]);//->with('i',(request()->input('page',1)-1)*2);
-    //     }
-
-    //     return redirect("login")->withSuccess('You are not allowed to access');
-    // }
+  
     public function index()
 {
-    // Kiểm tra xem người dùng đã đăng nhập chưa
     if (Auth::check()) {
-        // Người dùng đã đăng nhập, lấy thông tin người dùng
-            //         // $users = User::all();//Lay tat ca du lieu trong ban user
-    //         $users = User::paginate(2);
+        $products = Product::all();
+        $category = Category::all();
         $user = Auth::user();
-        // Ví dụ: lấy tên người dùng
-        $avatar = $user->avatar;
-        return view('index', compact('user'));
+        return view('index', compact('user','products','category'));
     } else {
       
     }

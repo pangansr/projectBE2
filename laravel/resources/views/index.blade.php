@@ -27,6 +27,16 @@
             align-items: center;
             gap: 20px;
         }
+        .nav-right{
+            display: flex;
+            justify-content: right;
+            align-items: center;
+        }
+        .nav-link{
+            font-family: cursive;
+            margin-left: 50px;
+            margin-right: 10px;
+        }
         .nav-item {
             text-decoration: none;
             font-family: cursive;
@@ -65,10 +75,37 @@
             border: 2px solid black;
             border-radius: 50%; 
         }
+        .slideshow-container {
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+}
+
+.slide {
+    display: none;
+}
+
+.fade {
+    animation-name: fade;
+    animation-duration: 1.5s;
+}
+
+@keyframes fade {
+    from {
+        opacity: 0.4;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
     </style>
 </head>
 <body>
     <div class="container">
+        @if(Auth::user()->name === 's')
+            <p>Đây là tài khoảng admin</p>
+        @endif
         <header class="header">
             <nav class="header-nav">
                 <img src="images/logo.png" alt="Logo" class="logo" />
@@ -76,16 +113,54 @@
                 <a href="#" class="nav-item">Giỏ hàng</a>
                 <a href="#" class="nav-item">Yêu thích</a>
             </nav>
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
-                <button type="submit" class="search-button">Tìm kiếm</button>
-            </form>
-            
-            <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
-
+            <div class="nav-right">
+                <form class="search-form">
+                    <input type="text" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
+                    <button type="submit" class="search-button">Tìm kiếm</button>
+                </form>
+                 <a class="nav-link" href="{{ route('signout') }}">Đăng xuất</a>
+                <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
+            </div>
         </header>
         <main class="main-content">
         </main>
     </div>
+    <h1>Danh sách danh mục</h1>
+    @foreach($category as $category)
+    <buttonb class="btn" style="display: block">{{ $category->name }}</button>
+@endforeach
+<div class="slideshow-container">
+    <div class="slide fade">
+        <img src="images/1714406890.jpg" style="width:700px; height:200px;">
+    </div>
+    <div class="slide fade">
+        <img src="images/1714407946.jpg" style="width:700px; height:200px;">
+    </div>
+    <div class="slide fade">
+        <img src="images/317144087163.jpg" style="width:700px; height:200px;>
+    </div>
+</div>
+
+<ul>
+    @foreach($products as $product)
+        <li>{{ $product->name }}</li>
+    @endforeach
+</ul>
 </body>
+<script>
+    var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+    var i;
+    var slides = document.getElementsByClassName("slide");
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slideIndex++;
+    if (slideIndex > slides.length) {slideIndex = 1}
+    slides[slideIndex-1].style.display = "block";
+    setTimeout(showSlides, 2000); // Đổi ảnh sau mỗi 2 giây
+}
+</script>
 </html>

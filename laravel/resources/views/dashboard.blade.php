@@ -7,7 +7,7 @@
     <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
 </head>
 <body>
-<nav class="navbar navbar-light navbar-expand-lg mb-5" style="border: solid 1px black; margin: 40px 20px;">
+{{-- <nav class="navbar navbar-light navbar-expand-lg mb-5" style="border: solid 1px black; margin: 40px 20px;">
     <div class="container">
         <a class="navbar-brand mr-auto" style="margin-left: 440px;" href="#">Home</a>
         <p style="margin-bottom: 5px;">|</p>
@@ -33,8 +33,7 @@
             </ul>
         </div>
     </div>
-</nav>
+</nav> --}}
 @yield('content')
-<p style="padding: 5px;text-align: center; border: solid 1px black; margin: 40px 20px;">Lập trình web @01/2024</p>
 </body>
 </html>

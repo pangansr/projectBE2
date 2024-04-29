@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CrudProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
 
@@ -36,3 +37,14 @@ Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+
+
+
+
+
+//product
+Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
+
+Route::post('addProduct', [CrudProductController::class, 'postProduct'])->name('products.add');
