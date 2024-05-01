@@ -305,10 +305,11 @@
         <div class="column">
             <div class="slideshow-container">
 
-                <div class="slide fade ">
+                <div class="slide fade " style="display: flex;">
                     <h1>Welcome to the website </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. </p>
+                        <img src="images/qc.jpg" alt="" srcset="">
                     <button type="button" class="btn btn-default get">Get it now</button>
                 </div>
                 <div class="slide fade">

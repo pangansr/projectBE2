@@ -102,7 +102,7 @@
 <body>
         <div class="nav"> <img src="images/logo.png" alt="Logo" class="logo" /> <h1 class="title">Chi tiết sản phẩm</h1>
         <span> <a href="{{ route('user.list') }}"><button class="btn btn-secondary">Trang chủ</button></a>
-            <a href=""><button class="btn btn-secondary">Giỏ hàng</button></a></span>
+            <a href="{{ route('cart.ViewCart') }}"><button class="btn btn-secondary">Giỏ hàng</button></a></span>
         </div>
       
         <div class="row">
@@ -130,10 +130,11 @@
                     <span class="mota">Mô tả: {{ $product->description }}</span><br><br><br>
                     <label for="product-quantity" class="product-quantity-label">Số lượng</label>
                     <div class="form-group">
-                        <input type="number"  name="quantity" required class="form-control" min="0">
+                        <input type="number"  name="quantity" required class="form-control" min="0" style="width: 100px;">
                     </div>
                       
-                <button class="btn btn-warning px-3 py-3">Thêm vào giỏ hàng</button><br><br>
+                <button class="btn btn-warning px-3 py-3" style="color: white">Add to cart
+                </button>
             <button class="btn btn-primary px-3 py-3">Mua</button>
                 </div>
                
