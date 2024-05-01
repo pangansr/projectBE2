@@ -46,14 +46,6 @@
                                 @endif
                             </div>
 
-                            <!-- MSSV -->
-                            <div class="mb-3">
-                                <label for="mssv" class="form-label">MSSV</label>
-                                <input type="text" class="form-control" id="mssv" name="mssv" required>
-                                @if ($errors->has('mssv'))
-                                <span class="text-danger">{{ $errors->first('mssv') }}</span>
-                                @endif
-                            </div>
 
                             <!-- Avatar -->
                             <div class="mb-3">

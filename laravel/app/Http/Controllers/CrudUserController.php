@@ -62,7 +62,6 @@ class CrudUserController extends Controller
             'email' => 'required|email|unique:users',
             'password' => 'required|min:6',
             'phone' => 'required|min:10',
-            'mssv' => 'required',
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
 
         ]);
@@ -71,10 +70,10 @@ class CrudUserController extends Controller
             $file = $request->file('avatar');
             $extension = $file->getClientOriginalExtension();//Lay ten mo rong .jpg, .png...
             $filename = time().'.'.$extension;//
-            $file->move('avatar/',$filename) ;  //upload len thu muc avatar trong piblic
+            $file->move('avatar/',$filename) ;  
         }
 
-        //Lay tat ca co so du lieu gan vao mang data
+     
         $data = $request->all();
 
         $check = User::create([
@@ -82,7 +81,6 @@ class CrudUserController extends Controller
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
             'phone' => $data['phone'],
-            'mssv' => $data['mssv'],
             'avatar' => $filename ?? NULL,
             // 'avatar' => $avatarName ?? NULL,
 
@@ -136,9 +134,6 @@ class CrudUserController extends Controller
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
             'phone' => 'required|min:10',
-            //'mssv' => 'required',
-            'mssv' =>'required|unique:users',
-
             'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
         ]);
 
@@ -149,7 +144,6 @@ class CrudUserController extends Controller
        $user->email = $input['email'];
        $user->password = $input['password'];
        $user->phone = $input['phone'];
-       $user->mssv = $input['mssv'];
           //Kiem tra tep tin co truong du lieu avatar hay kh
           if($request->hasFile('avatar')){
 
@@ -175,10 +169,11 @@ class CrudUserController extends Controller
     public function index()
 {
     if (Auth::check()) {
-        $products = Product::all();
+        $productss = Product::all();
+        $products = Product::paginate(5); 
         $category = Category::all();
         $user = Auth::user();
-        return view('index', compact('user','products','category'));
+        return view('index', compact('user','products','category','productss'));
     } else {
       
     }

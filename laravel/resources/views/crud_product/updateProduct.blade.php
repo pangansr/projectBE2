@@ -42,37 +42,39 @@
 <body>
     <div class="container">
         <div class="form-container">
-            <h2 class="text-center mb-4">Thêm Sản Phẩm Mới</h2>
-            <form action="{{ route('products.add') }}" method="POST" enctype="multipart/form-data">
+            <h2 class="text-center mb-4">Cập nhật sản phẩm</h2>
+            <form action="{{ route('product.postupdateProduct') }}" method="POST" enctype="multipart/form-data">
                 @csrf
+                <input type="hidden" name="id" value="{{ $product->id }}">
                 <div class="form-group">
                     <label for="name">Tên Sản Phẩm</label>
-                    <input type="text" id="name" name="name" required class="form-control">
+                    <input type="text" id="name" name="name" required class="form-control" value="{{ $product->name }}">
                 </div>
 
                 <div class="form-group">
                     <label for="description">Mô Tả</label>
-                    <textarea id="description" name="description" class="form-control"></textarea>
+                    <textarea id="description" name="description" class="form-control">{{ $product->description }}</textarea>
                 </div>
 
                 <div class="form-group">
                     <label for="price">Giá</label>
-                    <input type="number" id="price" name="price" required class="form-control">
+                    <input type="number" id="price" name="price"  value="{{ $product->price }}"required class="form-control">
                 </div>
 
                 <div class="form-group">
                     <label for="stock_quantity">Số Lượng Kho</label>
-                    <input type="number" id="stock_quantity" name="stock_quantity" required class="form-control">
+                    <input type="number" id="stock_quantity" name="stock_quantity" value="{{ $product->stock_quantity }}" required class="form-control">
                 </div>
-
                 <div class="form-group">
-                    <label for="category_id">Danh Mục</label>
+                    <label for="category_id">Danh Mục sản phẩm</label>
                     <select id="category_id" name="category_id" required class="form-control">
                         <?php foreach ($categories as $category): ?>
-                            <option value="<?php echo $category['id']; ?>"><?php echo $category['name']; ?></option>
+                            <option value="<?php echo $category['id']; ?>" <?php if ($product->category_id == $category['id']) echo 'selected'; ?>>
+                                <?php echo $category['name']; ?>
+                            </option>
                         <?php endforeach; ?>
                     </select>
-                </div>
+                </div>                
 
                 <div class="form-group">
                     <label for="image1">Hình Ảnh 1</label>

@@ -3,6 +3,8 @@
 use App\Http\Controllers\CrudProductController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
+use App\Http\Controllers\CrudCartController;
+use App\Http\Controllers\CrudCategoriesController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,11 +42,25 @@ Route::get('/', function () {
 
 
 
-
+//categories
+Route::post('addCategories', [CrudCategoriesController::class, 'postCategories'])->name('categories.add');
+Route::get('deleteCategories', [CrudCategoriesController::class, 'deleteCategories'])->name('categories.delete');
 
 
 
 //product
 Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
 
-Route::post('addProduct', [CrudProductController::class, 'postProduct'])->name('products.add');
+Route::post('/addProduct', [CrudProductController::class, 'postProduct'])->name('products.add');
+
+Route::get('/readProduct', [CrudProductController::class, 'readProduct'])->name('product.read');
+
+Route::get('updateProduct', [CrudProductController::class, 'updateProduct'])->name('product.updateProduct');
+Route::post('updateProduct', [CrudProductController::class, 'postUpdateProduct'])->name('product.postupdateProduct');
+
+Route::get('deleteProduct', [CrudProductController::class, 'deleteProduct'])->name('product.deleteProduct');
+
+//cart
+Route::post('/add-to-cart', [CrudCartController::class, 'addToCart'])->name('cart.add');
+Route::get('ViewCart', [CrudCartController::class, 'ViewCart'])->name('cart.ViewCart');
+

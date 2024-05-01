@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('password',100);
             $table->string('phone',100);
             $table->string('avatar',100);
-            $table->string('mssv',100)->unique();
             $table->rememberToken();
             $table->timestamps();
         });
