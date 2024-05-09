@@ -91,7 +91,7 @@
                     <input type="file" id="image3" name="image3" accept="image/*" class="form-control-file">
                 </div>
 
-                <button type="submit" class="btn btn-primary btn-block">Thêm</button>
+                <button type="submit" class="btn btn-primary btn-block">Xác nhận</button>
             </form>
         </div>
     </div>

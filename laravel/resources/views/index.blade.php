@@ -1,81 +1,10 @@
 @extends('dashboard')
+
     <style>
         body {
             margin: 0%;
         }
 
-
-        .header {
-            background: linear-gradient(to left, #F1F2B9, #59DAB8, #12FFF7);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            margin-bottom: 20px;
-            
-        }
-
-        .header-nav {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .nav-right {
-            display: flex;
-            justify-content: right;
-            align-items: center;
-        }
-
-        .nav-link {
-            font-family: cursive;
-            margin-left: 50px;
-            margin-right: 10px;
-        }
-
-        .nav-item {
-            text-decoration: none;
-            font-family: cursive;
-            color: white;
-            padding: 10px;
-            border-radius: 10px;
-            transition: background-color 0.3s ease;
-        }
-
-        .nav-item:hover {
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .search-form {
-            display: flex;
-            align-items: right;
-        }
-
-        .search-input {
-            font-family: cursive;
-            border-radius: 15px;
-            border: 1px solid rgb(0, 0, 0);
-            background-color: #69D5F3;
-            color: black;
-            padding: 10px;
-        }
-
-        .search-button {
-            font-family: cursive;
-            border-radius: 0px 15px 15px 0px;
-            margin-left: -25px;
-            border: 1px solid rgb(0, 0, 0);
-            background-color: #69D5F3;
-            color: rgb(255, 255, 255);
-            padding: 10px 15px;
-        }
-
-        .avatar {
-            width: 50px;
-            height: 50px;
-            border: 2px solid black;
-            border-radius: 50%;
-        }
 
         .slideshow-container {
             margin-left: 40px;
@@ -235,12 +164,12 @@
 
                           {{-- quyền admin --}}
                           @if (Auth::user()->email == 'admin@gmail.com')
-                          <a href=""><i class="material-icons"
-                            style="font-size:25px; color: rgb(0, 68, 255); margin-right:15px; ">create</i></a>
+                          <a href="">
+                            <i class="fa fa-edit"
+                            style="font-size:25px; color: rgb(0, 68, 255); margin-right:15px; "></i></a>
                             <a href="#" onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
                                 <i class="fa fa-trash" style="font-size:25px;color:red;"></i>
                             </a>
-                            
                             <script>
                                 function confirmDelete(url) {
                                     if (confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
@@ -248,6 +177,7 @@
                                     }
                                 }
                             </script>
+
                       @endif
                         
                                 
@@ -256,7 +186,7 @@
             </div>
             <div class="category-list">
                 <div class="category-list-header">
-                    <div class="category-list-title">Sản phẩm nổi bậc</div>
+                    <div class="category-list-title">Sản phẩm mới nhất</div>
                 </div>
                 @foreach ($productss as $product)
                     <li>{{ $product->name }}</li>

@@ -60,9 +60,9 @@ class CrudUserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required|email|unique:users',
-            'password' => 'required|min:6',
-            'phone' => 'required|min:10',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'password' => 'required',
+            'phone' => 'required',
+            'avatar' => 'required',
 
         ]);
          //Kiem tra tep tin co truong du lieu avatar hay kh
@@ -134,7 +134,7 @@ class CrudUserController extends Controller
             'email' => 'required|email|unique:users,id,'.$input['id'],
             'password' => 'required|min:6',
             'phone' => 'required|min:10',
-            'avatar' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'avatar' => 'required',
         ]);
 
 
@@ -144,11 +144,8 @@ class CrudUserController extends Controller
        $user->email = $input['email'];
        $user->password = $input['password'];
        $user->phone = $input['phone'];
-          //Kiem tra tep tin co truong du lieu avatar hay kh
+        
           if($request->hasFile('avatar')){
-
-            //co file dinh kem trong form update thi tim file cu va xoa di
-            //Neu $anhcu ton tai thi xoa no di , neu kh co thi kh xoa
             $anhcu = 'avatar/' . $user->avatar;
             if(File::exists($anhcu)){
                 File::delete($anhcu);

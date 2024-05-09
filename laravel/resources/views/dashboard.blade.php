@@ -2,15 +2,15 @@
 <html>
 
 <head>
-    <title>Laravel 10.48.0 - CRUD User Example</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-    <script type="text/javascript" src="{{ asset('js/scripts.js') }}"></script>
+    <title>Shop bán hàng</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    
 </head>
 <style>
     .header {
 
-        background: linear-gradient(to right, #12FFF7, #59DAB8, #F1F2B6);
+        /* background: linear-gradient(to left, #12FFA0, #59DAB8, #F1F2B6); */
+        background-color: #08ed11;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -33,8 +33,6 @@
 
     .nav-link {
         font-family: cursive;
-        margin-left: 50px;
-        margin-right: 10px;
     }
 
     .nav-item {
@@ -76,26 +74,11 @@
     }
 
     .avatar {
-        width: 50px;
-        height: 50px;
-        border: 2px solid black;
+        width: 70px;
+        height: 70px;
+        margin-inline: 5px;
+        border: 3px solid black;
         border-radius: 50%;
-    }
-
-    .slideshow-container {
-        margin-left: 40px;
-
-    }
-
-    .slide {
-        display: flex;
-        height: 250px;
-        float: left;
-    }
-
-    .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
     }
 
     @keyframes fade {
@@ -127,11 +110,21 @@
                 <input type="text" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
                 <button type="submit" class="search-button">Tìm kiếm</button>
             </form>
-            <a class="nav-link" href="{{ route('signout') }}"><button style="border: none; background-color: #ff0505; border-radius:5px; padding: 10px;">Đăng
-                    xuất</button></a>
-            <span style="margin-inline:10px;border-radius: 40px; padding-inline: 10px; background-color: white; font-family: cursive;">{{$user->name}}</span>
-            <a href="{{ route('user.readUser', ['id' => $user->id]) }}"><img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" /></a>
 
+            <div style=" border-radius: 10px; background-color: #026466; padding:7px; text-align: center; margin-left: 15px; display: flex; align-items: center;">
+                
+               
+                <!-- <span style="margin-inline:10px;border-radius: 40px; padding-inline: 10px; font-family: cursive;">{{$user->name}}</span> -->
+                    <a href="{{ route('user.readUser', ['id' => $user->id]) }}">
+                        <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
+                    </a>
+                    <a  href="{{ route('signout') }}">
+                        <button style=" border: none; background-color: red;color: white; border-radius:5px; font-size: 10px; padding: 10px;">
+                            Đăng xuất
+                        </button>
+                    </a>
+     
+            </div>
         </div>
     </header>
     @yield('content')

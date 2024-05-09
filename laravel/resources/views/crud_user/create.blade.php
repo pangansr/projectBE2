@@ -1,12 +1,113 @@
-@extends('dashboard')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng kí</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f9fa;
+        }
 
-@section('content')
-<main class="signup-form mt-5">
+        .signup-form {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            
+        }
+
+        .card {
+            width: 100%;
+            max-width: 400px;
+            background-color: #fff;
+            border-radius: 10px;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+            margin-bottom: 20px;
+        }
+
+        .card-body {
+            padding: 20px;
+        }
+
+        .form-label {
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #007bff;
+        }
+
+        .btn-success {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        .btn-success:hover {
+            background-color: #218838;
+        }
+
+        .text-end {
+            text-align: right;
+            margin-top: 10px;
+        }
+
+        .text-decoration-none {
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        .d-flex {
+            display: flex;
+        }
+
+        .justify-content-between {
+            justify-content: space-between;
+        }
+
+        .align-items-center {
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+<main class="signup-form">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-6">
                 <div class="card">
-                    <h4 class="card-header text-center bg-primary text-white">Đăng kí</h4>
+                    <h2 class="card-header">Đăng kí</h2>
                     <div class="card-body">
                         <form action="{{ route('user.postUser') }}" method="POST" enctype="multipart/form-data">
                             @csrf
@@ -46,7 +147,6 @@
                                 @endif
                             </div>
 
-
                             <!-- Avatar -->
                             <div class="mb-3">
                                 <label for="avatar" class="form-label">Avatar</label>
@@ -59,7 +159,7 @@
                             <!-- Button -->
                             <div class="mb-3">
                                 <div class="d-flex justify-content-between align-items-center">
-                                    <a href="{{ route('login') }}" class="">Đăng nhập</a>
+                                    <a href="{{ route('login') }}" class="text-decoration-none">Đăng nhập</a>
                                     <button type="submit" class="btn btn-success">Đăng kí</button>
                                 </div>
                             </div>
@@ -70,4 +170,5 @@
         </div>
     </div>
 </main>
-@endsection
+</body>
+</html>
