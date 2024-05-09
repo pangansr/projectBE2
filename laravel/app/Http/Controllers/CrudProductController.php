@@ -37,9 +37,7 @@ class CrudProductController extends Controller
             'price' => 'required|numeric',
             'stock_quantity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
-            'image1' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+           
         ]);
     
         // Lưu dữ liệu sản phẩm vào cơ sở dữ liệu
@@ -124,9 +122,8 @@ class CrudProductController extends Controller
         $product->name = $input['name'];
         $product->description = $input['description'];
         $product->price = $input['price'];
-        $product->stock_quantity = $input['stock_quantity']; // Sửa lỗi thiếu dấu bằng
-        $product->category_id = $input['category_id']; // Sửa lỗi thiếu dấu bằng
-    
+        $product->stock_quantity = $input['stock_quantity']; 
+        $product->category_id = $input['category_id']; 
         // Xử lý và lưu các hình ảnh
         if ($request->hasFile('image1')) {
             $file = $request->file('image1');

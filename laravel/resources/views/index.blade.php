@@ -1,31 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <title>Document</title>
+@extends('dashboard')
     <style>
         body {
-            background: #BFF1FF;
             margin: 0%;
         }
 
-        .container {
-
-            padding: 14px;
-        }
 
         .header {
-            border-radius: 30px;
-            background: linear-gradient(to right, hsl(120, 98%, 26%), hsl(120, 83%, 50%), hsl(120, 76%, 77%));
+            background: linear-gradient(to left, #F1F2B9, #59DAB8, #12FFF7);
             display: flex;
             align-items: center;
             justify-content: space-between;
             padding: 10px;
+            margin-bottom: 20px;
+            
         }
 
         .header-nav {
@@ -128,8 +115,8 @@
 
         .category-list {
             margin-left: 10px;
-            width: 300px;
-            background-color: #a6f5c7;
+            width: 250px;
+            background-color: while;
             display: flex;
             flex-direction: column;
             font-size: 14px;
@@ -213,32 +200,9 @@
             justify-content: center;
         }
     </style>
-</head>
-
-<body>
+@section('content')
     <div class="container">
-        @if (Auth::user()->name === 's')
-            <p>Đây là tài khoảng admin</p>
-        @endif
-        <header class="header">
-            <nav class="header-nav">
-                <img src="images/logo.png" alt="Logo" class="logo" />
-                <a href="{{ route('user.list') }}" class="nav-item"
-                    style="background-color: #044afb; padding: 10px 30px;">Trang chủ</a>
-                <a href="{{ route('cart.ViewCart') }}" class="nav-item">Giỏ hàng</a>
-                <a href="#" class="nav-item">Yêu thích</a>
-            </nav>
-            <div class="nav-right">
-                <form class="search-form">
-                    <input type="text" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
-                    <button type="submit" class="search-button">Tìm kiếm</button>
-                </form>
-                <a class="nav-link" href="{{ route('signout') }}"><button
-                        style="border: none; background-color: #ff0505; border-radius:5px; padding: 10px;">Đăng
-                        xuất</button></a>
-                <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
-            </div>
-        </header>
+        
         <main class="main-content">
         </main>
     </div>
@@ -263,9 +227,6 @@
                 </form>
             @endif
                 
-
-
-
                 <button class="category-item" style="">Tất cả</button>
                 @foreach ($category as $category)
                     <div
@@ -309,17 +270,16 @@
                     <h1>Welcome to the website </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. </p>
-                        <img src="images/qc.jpg" alt="" srcset="">
                     <button type="button" class="btn btn-default get">Get it now</button>
                 </div>
-                <div class="slide fade">
-                    <div class="col-sm-3">
+                <div class="slide fade" style="display: flex;">
+                   
                         <h1>Trải nghiệm với đa dạng loại sản phẩm</h1>
                         <h2>Free Ecommerce Template</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. </p>
                         <button type="button" class="btn btn-default get">Get it now</button>
-                    </div>
+                   
                 </div>
             </div>
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
@@ -390,9 +350,6 @@
         </div>
     </div>
 
-
-
-</body>
 <script>
     var slideIndex = 0;
     showSlides();
@@ -412,4 +369,5 @@
     }
 </script>
 
-</html>
+
+@endsection
