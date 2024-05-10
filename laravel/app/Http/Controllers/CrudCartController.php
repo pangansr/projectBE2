@@ -6,6 +6,7 @@ use App\Models\Product;
 use App\Models\ShoppingCart;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Order;
 
 class CrudCartController extends Controller
 {
@@ -37,27 +38,48 @@ class CrudCartController extends Controller
     }
     public function ViewCart()
     {
-      //  $products = Product::all();
-      //$categories = Category::all();
-      $selectedProducts = session()->get('selectedProducts', []); // Lấy danh sách các sản phẩm đã được chọn từ session
-      $shopingCart = ShoppingCart::with('product')->get(); // Lấy thông tin sản phẩm trong giỏ hàng cùng với thông tin sản phẩm
-      $user = Auth::user();
-      return view('crud_cart.view', compact('user', 'shopingCart', 'selectedProducts'));
+        $selectedProducts = session()->get('selectedProducts', []); // Lấy danh sách các sản phẩm đã được chọn từ session
+        $shopingCart = ShoppingCart::with('product')->get(); // Lấy thông tin sản phẩm trong giỏ hàng cùng với thông tin sản phẩm
+        $user = Auth::user();
+        return view('crud_cart.view', compact('user', 'shopingCart', 'selectedProducts'));
     }
-    public function confirmPayment(Request $request)
-     {
-    //     $selectedProductIds = $request->input('selected_products');
-    //     $selectedProducts = Product::whereIn('id', $selectedProductIds)->get();
-    //     return view('pay.pay', compact('selectedProducts'));
-    $selectedProductIds = $request->input('selected_products');
+    
+    public function removeFromCart(Request $request)
+{
+    $category_id = $request->get('product_id');
+    ShoppingCart::destroy($category_id);
+        return redirect()->route('cart.ViewCart');
+}
+public function removeAllFromCart(Request $request)
+{
+    ShoppingCart::where('user_id', auth()->id())->delete();
+    return redirect()->route('cart.ViewCart');
+}
+public function checkout(Request $request)
+{
+    $userId = auth()->id();
+    $shopingCart = $request->input('shopingCart');
 
-    // Kiểm tra xem $selectedProductIds có phải là một mảng không
-    if (is_array($selectedProductIds)) {
-        $selectedProducts = Product::whereIn('id', $selectedProductIds)->get();
-        return view('pay.pay', compact('selectedProducts'));
-    } else {
-        // Xử lý trường hợp khi $selectedProductIds không phải là một mảng
-        // Ví dụ: Hiển thị thông báo lỗi hoặc xử lý tùy thuộc vào yêu cầu của bạn
+    // Tạo một đơn hàng mới
+    $order = new Order();
+    $order->user_id = $userId;
+    $order->save();
+    if (!empty($shopingCart)) {
+    // Lặp qua từng sản phẩm trong giỏ hàng và lưu thông tin của chúng vào đơn hàng
+    foreach ($shopingCart as $item) {
+        $order->products()->attach($item->product_id, [
+            'quantity' => $item->quantity,
+            'price' => $item->product->price
+        ]);
     }
-    }
+} else {
+    // Xóa giỏ hàng sau khi thanh toán
+    ShoppingCart::where('user_id', $userId)->delete();
+}
+    // Sau khi lưu đơn hàng và các sản phẩm tương ứng, bạn có thể chuyển hướng người dùng đến trang xác nhận đơn hàng
+    return redirect()->route('purchase.confirmation');
+}
+
+
+
 }

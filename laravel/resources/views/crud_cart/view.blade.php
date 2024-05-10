@@ -75,7 +75,7 @@
 </style>
 @section('content')
 <body>
-<div class="title">
+    <div class="title">
         <h1 class="material-icons sl">Giỏ hàng của bạn</h1>
     </div>
     <h2 class="sl">{{ $shopingCart->count() }} sản phẩm</h2>
@@ -99,25 +99,25 @@
                 <tr>
                     <td><img src="{{ asset('images/' . $item->product->image1) }}" alt="{{ $item->product->name }}" class="avatar"></td>
                     <td>{{ $item->product->name }}</td>
-                    <td>{{ $item->product->price }}</td>
+                    <td class="pricedefau">{{ $item->product->price }}</td>
                     <td>
-                        <select name="size" class="form-control">
-                            <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
-                            <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
-                            <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
-                            <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
-                        </select>
+                    <select name="size" class="form-control size-select">
+    <option value="S" data-price="{{ $item->product->price_S }}">S</option>
+    <option value="M" data-price="{{ $item->product->price_M }}">M</option>
+    <option value="L" data-price="{{ $item->product->price_L }}">L</option>
+    <option value="XL" data-price="{{ $item->product->price_XL }}">XL</option>
+</select>
                     </td>
                     <td>
-                        <input type="number" name="quantity" value="{{ $item->quantity }}" class="form-control quantity-input" style="width: 100px;">
-                    </td>
+    <input type="number" name="quantity"  class="form-control quantity-input" style="width: 100px;" data-price="{{ $item->product->price }}">
+</td>
+
                     <td>
                         <div class="price" id="total-price-{{ $loop->index }}">{{ $item->product->price * $item->quantity }}</div>
                     </td>
                     <td>
                         <button class="btn btn-danger">Xóa</button>
                     </td>
-                    <td><input type="checkbox" name="selected_products[]" class="item-checkbox" value="{{ $item->product->id }}"></td>
                 </tr>
             @endforeach
             </tbody>
@@ -126,117 +126,124 @@
             <div class="total-price">
                 Tổng tiền: <span id="total-price-all">0</span>
             </div>
-            <button class="checkout-button" id="checkout-button">Xác nhận</button>
+            <form id="checkout-form" action="{{ route('cart.checkout') }}" method="post">
+    @csrf
+    <button type="submit" class="checkout-button">Thanh toán</button>
+</form>
+
+
         </div>
     </div>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-        // Lắng nghe sự kiện khi người dùng nhấp vào nút "Xác nhận"
-        document.getElementById('checkout-button').addEventListener('click', function() {
-            // Mảng để lưu trữ ID của các sản phẩm đã được chọn
-            var selectedProductIds = [];
-            // Lặp qua tất cả các checkbox và kiểm tra xem nó có được chọn không
-            document.querySelectorAll('.item-checkbox').forEach(function(checkbox) {
-                if (checkbox.checked) {
-                    // Nếu được chọn, thêm ID của sản phẩm vào mảng
-                    selectedProductIds.push(checkbox.value);
-                }
-            });
-            // Chuyển hướng người dùng đến trang xác nhận thanh toán với các sản phẩm đã chọn
-            window.location.href = "{{ route('confirm.payment') }}?selected_products=" + selectedProductIds.join(',');
-        });
+function confirmDelete() {
+    return confirm("Bạn có chắc muốn thanh toán toàn bộ sản phẩm ?");
+}
+document.querySelectorAll('.btn-danger').forEach(function(button) {
+    button.addEventListener('click', function() {
+        // Trích xuất chỉ mục của sản phẩm được nhấp xóa
+        var index = button.closest('tr').rowIndex - 1;
+
+        // Loại bỏ hàng sản phẩm từ bảng
+        button.closest('tr').remove();
+
+        // Gọi lại hàm tính toán tổng tiền
+        calculateTotalPrice();
     });
+});
 
 
-       
-       function toggleCheckoutButton() {
-    var anyCheckboxChecked = false;
-    document.querySelectorAll('.item-checkbox').forEach(function(checkbox) {
-        if (checkbox.checked) {
-            anyCheckboxChecked = true;
+
+        document.querySelectorAll('.quantity-input').forEach(function(input) {
+    input.addEventListener('input', function() {
+        // Lấy giá trị nhập vào
+        var quantity = parseInt(input.value);
+
+        // Kiểm tra nếu giá trị nhập vào nhỏ hơn 0
+        if (quantity < 0 || isNaN(quantity)) {
+            // Nếu nhỏ hơn 0 hoặc không phải số, đặt lại giá trị nhập thành 0
+            input.value = 1;
+            quantity = 1; // Đặt giá trị quantity thành 0 để tính toán tổng tiền
         }
+
+        // Sau khi kiểm tra và đặt giá trị nhập, tính toán tổng tiền
+        calculateTotalPrice();
     });
-    var checkoutButton = document.querySelector('.checkout-button');
-    if (checkoutButton) {
-        if (anyCheckboxChecked) {
-            checkoutButton.style.display = 'block';
-        } else {
-            checkoutButton.style.display = 'none';
+});
+
+
+
+
+
+
+    // Hàm tính tổng tiền của mỗi sản phẩm và tổng tiền của tất cả sản phẩm
+// Hàm tính tổng tiền của mỗi sản phẩm và tổng tiền của tất cả sản phẩm
+function calculateTotalPrice() {
+    var totalPriceAll = 0;
+    // Lặp qua mỗi sản phẩm trong giỏ hàng
+    document.querySelectorAll('.quantity-input').forEach(function(input, index) {
+        // Lấy số lượng
+        var quantity = parseInt(input.value);
+        // Kiểm tra nếu số lượng ban đầu là 0 thì đặt nó thành 1
+        if (quantity === 0) {
+            input.value = 1;
+            quantity = 1;
         }
+        // Lấy giá của sản phẩm từ attribute data-price
+        var price = parseFloat(input.getAttribute('data-price'));
+        // Tính tổng tiền của sản phẩm (giá * số lượng)
+        var totalPrice = price * quantity;
+        // Cập nhật tổng tiền của sản phẩm vào phần tử hiển thị
+        var totalPriceElement = document.getElementById('total-price-' + index);
+        if (totalPriceElement) {
+            totalPriceElement.textContent = totalPrice.toFixed(2);
+        }
+        // Cộng tổng tiền của sản phẩm vào tổng tiền của tất cả sản phẩm
+        totalPriceAll += totalPrice;
+    });
+    // Hiển thị tổng tiền của tất cả sản phẩm
+    var totalPriceAllElement = document.getElementById('total-price-all');
+    if (totalPriceAllElement) {
+        totalPriceAllElement.textContent = totalPriceAll.toFixed(2);
     }
 }
-// Lắng nghe sự kiện thay đổi của checkbox
-document.querySelectorAll('.item-checkbox').forEach(function(checkbox) {
-    checkbox.addEventListener('change', function() {
-        toggleCheckoutButton();
-    });
-});
 
-// Ẩn ban đầu nút thanh toán
-toggleCheckoutButton();
-
-document.querySelectorAll('.quantity-input').forEach(function(input) {
-    input.addEventListener('change', function() {
-        var row = input.closest('tr');
-        if (row) {
-            var priceElement = row.querySelector('.price');
-            var quantity = parseInt(input.value);
-            if (priceElement && !isNaN(quantity)) {
-                var price = parseFloat(priceElement.textContent);
-                var totalPrice = price * quantity;
-
-               
-                var rowIndex = row.sectionRowIndex;
-                var totalPriceElement = document.getElementById('total-price-' + rowIndex);
-                if (totalPriceElement) {
-                    totalPriceElement.textContent = totalPrice; 
-                } else {
-                    console.error("Phần tử 'total-price' không tồn tại trong DOM.");
-                }
-
-               
-                calculateTotalPriceAll();
-            }
-        }
-    });
-});
-        // Lắng nghe sự kiện thay đổi của checkbox
-        document.querySelectorAll('.item-checkbox').forEach(function(checkbox) {
-    checkbox.addEventListener('change', function() {
-        // Tính tổng tiền của tất cả sản phẩm
-        var totalPriceAll = 0;
-
-        // Tính tổng tiền của mỗi sản phẩm và cập nhật tổng tiền của tất cả sản phẩm
-        document.querySelectorAll('.item-checkbox').forEach(function(checkbox) {
-            if (checkbox.checked) {
-                var row = checkbox.closest('tr');
-                if (row) {
-                    var priceElement = row.querySelector('.price');
-                   
-                    if (priceElement) {
-                        var price = parseFloat(priceElement.textContent); // Sử dụng textContent thay vì innerText
-                   
-                        totalPriceAll += price ;
     
-                    }
-                }
-            }
+    // Lắng nghe sự kiện khi số lượng thay đổi
+    document.querySelectorAll('.quantity-input').forEach(function(input) {
+        input.addEventListener('change', function() {
+            calculateTotalPrice(); // Gọi lại hàm tính toán tổng tiền khi số lượng thay đổi
         });
-
-        // Hiển thị tổng tiền của tất cả sản phẩm
-        var totalPriceAllElement = document.getElementById('total-price-all');
-        if (totalPriceAllElement) {
-            totalPriceAllElement.textContent = totalPriceAll; // Sử dụng textContent thay vì innerText
-        } else {
-            console.error("Phần tử 'total-price-all' không tồn tại trong DOM.");
-        }
-        console.log(totalPriceAllElement.textContent);
-       // Lắng nghe sự kiện khi số lượng thay đổi
-
-
     });
-});
+
+    // Gọi hàm tính toán tổng tiền lần đầu khi trang được tải
+    calculateTotalPrice();
+//     document.querySelectorAll('.size-select').forEach(function(select) {
+//     select.addEventListener('change', function() {
+//         // Lấy giá của kích thước được chọn từ value của option
+//         var price = parseFloat(select.value);
+        
+//         // Kiểm tra kích thước được chọn và cập nhật giá dựa trên điều kiện
+//         var selectedSize = select.value;
+//         if (selectedSize === 'M') {
+//             price += 50;
+//         } else if (selectedSize === 'L') {
+//             price += 100;
+//         } else if (selectedSize === 'XL') {
+//             price += 150;
+//         }
+
+//         // Cập nhật giá sản phẩm trong cột "Giá"
+//         var priceElement = select.closest('tr').querySelector('.pricedefau');
+//         if (priceElement) {
+//             priceElement.textContent = price.toFixed(2);
+//         }
+
+//         // Gọi lại hàm tính toán tổng tiền
+//         calculateTotalPrice();
+//     });
+// });
+
 
     </script>
 </body>
