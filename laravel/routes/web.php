@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\CrudCartController;
 use App\Http\Controllers\CrudCategoriesController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,7 @@ Route::get('index', [CrudUserController::class, 'index'])->name('user.list');
 
 Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
 
+
 Route::get('/', function () {
     return view('welcome');
 });
@@ -54,6 +56,8 @@ Route::get('/products', [CrudProductController::class, 'index'])->name('products
 Route::post('/addProduct', [CrudProductController::class, 'postProduct'])->name('products.add');
 
 Route::get('/readProduct', [CrudProductController::class, 'readProduct'])->name('product.read');
+Route::get('/readProduct', [CrudProductController::class, 'readPost'])->name('product.read');
+//Route::get('/readProduct', [CrudProductController::class, 'readCaretory'])->name('product.read');
 
 Route::get('updateProduct', [CrudProductController::class, 'updateProduct'])->name('product.updateProduct');
 Route::post('updateProduct', [CrudProductController::class, 'postUpdateProduct'])->name('product.postupdateProduct');
@@ -63,4 +67,7 @@ Route::get('deleteProduct', [CrudProductController::class, 'deleteProduct'])->na
 //cart
 Route::post('/add-to-cart', [CrudCartController::class, 'addToCart'])->name('cart.add');
 Route::get('ViewCart', [CrudCartController::class, 'ViewCart'])->name('cart.ViewCart');
+//Nam Trân Đánh Giá Sp
+Route::get('/danhgia',[CrudProductController::class,'getIdOfReview'])->name('products.review');
+Route::post('/addDanhgia', [CrudProductController::class, 'postReview'])->name('add.review');
 

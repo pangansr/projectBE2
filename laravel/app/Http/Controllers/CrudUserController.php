@@ -98,6 +98,13 @@ class CrudUserController extends Controller
 
         return view('crud_user.read', ['user' => $user]);
     }
+    public function readProduct_id_user(Request $request)
+    {
+        $user_id_post = $request->get('id');
+        $user_id = Product::find($user_id_post);
+        return view('crud_product.readProduct', ['user_id' => $user_id]);
+       
+    }
 
     /**
      * Delete user by id

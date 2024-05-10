@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 namespace App\Http\Controllers;
 use App\Models\Category;
+use App\Models\Posts;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -26,6 +27,36 @@ class CrudProductController extends Controller
         $product_id = $request->get('id');
         $product = Product::find($product_id);
         return view('crud_product.readProduct', ['product' => $product]);
+       
+    }
+    public function readPost(Request $request)
+    {
+        $product_id = $request->get('id');
+        $product = Product::find($product_id);
+       $posts = Posts::where('product_id', $product_id)->get();
+      // $posts = Posts::all();
+        return view('crud_product.readProduct', ['product' => $product, 'posts' => $posts]);
+    }
+    public function readCaretory(Request $request)
+    {
+        $product_id = $request->get('category_id');
+        $product = Product::find($product_id);
+       $category = Category::where('name', $product_id)->get();
+      // $posts = Posts::all();
+        return view('crud_product.readProduct', ['product' => $product, 'category' => $category]);
+    }
+    public function readProduct_id_user(Request $request)
+    {
+        $user_id_post = $request->get('id');
+        $user_id = Product::find($user_id_post);
+        return view('crud_product.readProduct', ['user' => $user_id]);
+       
+    }
+    public function getIdOfReview(Request $request)
+    {
+        $product_id = $request->get('id');
+        $product = Product::find($product_id);
+        return view('NamTran.danhgiasp', ['product_rv' => $product]);
     }
   
     public function postProduct(Request $request)
@@ -37,9 +68,7 @@ class CrudProductController extends Controller
             'price' => 'required|numeric',
             'stock_quantity' => 'required|integer',
             'category_id' => 'required|exists:categories,id',
-            'image1' => 'required|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image2' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
-            'image3' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            
         ]);
     
         // Lưu dữ liệu sản phẩm vào cơ sở dữ liệu
@@ -91,6 +120,35 @@ class CrudProductController extends Controller
     
         // Chuyển hướng về trang danh sách sản phẩm hoặc trang chi tiết sản phẩm
         return redirect()->route('user.list')->with('success', 'Sản phẩm đã được thêm thành công!');
+    }
+    public function postReview(Request $request)
+    {
+        //Kiểm tra dữ liệu đầu vào từ form
+        $request->validate([
+            'id_products' => 'required',
+            'star' => 'nullable',
+            'chat_Lieu' => 'nullable',
+            'mota' => 'nullable',
+            'chia_se' => 'nullable',
+            
+        ]);
+    
+        // Lưu dữ liệu sản phẩm vào cơ sở dữ liệu
+        $post = new Posts();
+        $post->product_id = $request->input('id_products');
+        $post->star = $request->input('star');
+        $post->Chat_lieu = $request->input('chat_Lieu');
+        $post->MoTa = $request->input('mota');
+        $post->chia_se = $request->input('chia_se');
+        // $post->product_id = 7;
+        // $post->star = 3;
+        // $post->Chat_lieu = 'HHH';
+        // $post->MoTa = 'HHHHHGFGHF';
+        // $post->chia_se = 'T';
+        $post->save();
+       // return redirect()->route('products.review')->with('success', 'Bài post của đã được thêm thành công!');
+       return redirect()->route('user.list');
+
     }
     
     
