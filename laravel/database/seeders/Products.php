@@ -26,6 +26,7 @@ class Products extends Seeder
                 'price' => 999,
                 'stock_quantity' => 111,
                 'category_id' => 1,
+        
                 'image1' => '1.jpg',
                 'image2' => '2.jpg',
                 'image3' => '3.jpg',
@@ -43,6 +44,7 @@ class Products extends Seeder
                 'price' => 999,
                 'category_id' => 1,
                 'stock_quantity' => 111,
+        
                 'image1' => '4.jpg',
                 'image2' => '5.jpg',
                 'image3' => '6.jpg',
@@ -60,6 +62,7 @@ class Products extends Seeder
                 'price' => 999,
                 'stock_quantity' => 111,
                 'category_id' => 1,
+         
                 'image1' => '7.jpg',
                 'image2' => '8.jpg',
                 'image3' => '9.jpg',
@@ -77,6 +80,7 @@ class Products extends Seeder
                 'price' => 999,
                 'category_id' => 1,
                 'stock_quantity' => 111,
+                
                 'image1' => '10.jpg',
                 'image2' => '11.jpg',
                 'image3' => '2.jpg',
@@ -94,6 +98,7 @@ class Products extends Seeder
                 'price' => 999,
                 'category_id' => 2,
                 'stock_quantity' => 111,
+              
                 'image1' => '12.jpg',
                 'image2' => '13.jpg',
                 'image3' => '14.jpg',
@@ -111,6 +116,7 @@ class Products extends Seeder
                 'price' => 999,
                 'category_id' => 2,
                 'stock_quantity' => 111,
+            
                 'image1' => '15.jpg',
                 'image2' => '16.jpg',
                 'image3' => '17.jpg',
@@ -128,6 +134,7 @@ class Products extends Seeder
                 'price' => 999,
                 'stock_quantity' => 111,
                 'category_id' => 2,
+              
                 'image1' => '18.jpg',
                 'image2' => '19.jpg',
                 'image3' => '20.jpg',

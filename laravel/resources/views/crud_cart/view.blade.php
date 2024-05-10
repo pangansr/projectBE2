@@ -46,23 +46,44 @@
             <h2 class="sl">{{ $shopingCart->count(); }} sản phẩm</h2>
             <hr>
         <table>
-            <thead>
-                <tr>
-                    <th>Sản phẩm</th>
-                    <th>Số lượng</th>
-                    <th>Giá</th>
-                    <th>Tổng</th>
-                </tr>
-            </thead>
+        <table class="table table-condensed">
+                <thead>
+                    <tr class="cart_menu">
+                        <td class="image">Hình ảnh</td>
+                        <td class="description">tên</td>
+                        <td class="price">Giá</td>
+                        <td class="price">size</td>
+                        <td class="quantity">Số lượng</td>
+                        <td class="total">Tổng tiền</td>
+                        <td class="total">Chức năng</td>
+                        <td></td>
+                    </tr>
+                </thead>
             <tbody>
-                @foreach($shopingCart as $shopingCart)
+            @foreach($shopingCart as $item)
                 <tr>
-                    <td>{{ $shopingCart->quantity }}</td>
-                    <td>{{ $shopingCart->price }}</td>
-                   
+                    <td><img src="{{ asset('images/' . $item->image) }}" alt="{{ $item->name }}" class="avatar"></td>
+                    <td>{{ $item->name }}</td>
+                    <td>{{ $item->price }}</td>
+                    <td>
+                        <select name="size" class="form-control">
+                            <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
+                            <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
+                            <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
+                            <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
+                        </select>
+                    </td>
+                    <td>
+                        <input type="number" name="quantity" value="{{ $item->quantity }}" class="form-control">
+                    </td>
+                    <td>{{ $item->price * $item->quantity }}</td>
+                    <td>
+                        <button class="btn btn-danger">Xóa</button>
+                    </td>
                 </tr>
                 @endforeach
             </tbody>
+            </table>
         </table>
         
         <main class="main-content">
