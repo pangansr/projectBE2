@@ -13,10 +13,13 @@ class CrudCartController extends Controller
     {
          // Lấy thông tin sản phẩm từ request
     $productId = $request->input('product_id');
-    $quantity = $request->{9};
+    $quantity = $request->input('quantity');
     $size = $request->input('size'); 
     // Kiểm tra sản phẩm có tồn tại không
     $product = Product::find($productId);
+    if (!$quantity || $quantity <= 0) {
+        return redirect()->back()->with('error', 'Số lượng không hợp lệ.');
+    }
     if (!$product) {
         return redirect()->back()->with('error', 'Sản phẩm không tồn tại.');
     }
@@ -24,8 +27,7 @@ class CrudCartController extends Controller
     // Tạo hoặc cập nhật giỏ hàng
     $cartItem = ShoppingCart::updateOrCreate(
         ['product_id' => $productId, 'user_id' => auth()->id()],
-        ['quantity' => $quantity, 'price' => $product->price],
-        ['quantity' => $quantity, 'price' => $product->price, 'size' => $size],
+        ['quantity' => $quantity, 'price' => $product->price, 'size' => $size]
     );
 
     return redirect()->back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
@@ -37,8 +39,8 @@ class CrudCartController extends Controller
     {
       //  $products = Product::all();
       //$categories = Category::all();
-      $shopingCart = ShoppingCart::all();
-            $user = Auth::user();
-        return view('crud_cart.view',compact('user','shopingCart'));
+      $shopingCart = ShoppingCart::with('product')->get(); // Lấy thông tin sản phẩm trong giỏ hàng cùng với thông tin sản phẩm
+      $user = Auth::user();
+      return view('crud_cart.view', compact('user', 'shopingCart'));
     }
 }

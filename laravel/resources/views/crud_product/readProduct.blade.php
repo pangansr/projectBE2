@@ -131,31 +131,25 @@
                 </div>
                 <div class="mb-3">
                     <span class="mota">Mô tả: {{ $product->description }}</span><br><br><br>
-                    <label for="product-quantity" class="product-quantity-label">Số lượng</label>
-                    <div class="form-group">
-                    <input type="number" name="quantity" required class="form-control" min="0" style="width: 100px;">
-                    </div>
+                   
+                   
                     <div class="mb-3">
-        <span class="mota">Kích thước: </span>
-       
-    </div>
+    <span class="mota">Kích thước:</span>
     <form action="{{ route('cart.add') }}" method="POST">
-        
-                    @csrf
-                    <select name="size" id="size" class="form-control" style="width: auto;">
+        @csrf
+        <select name="size" id="size" class="form-control" style="width: auto;">
             <option value="S">S</option>
             <option value="M">M</option>
             <option value="L">L</option>
             <option value="XL">XL</option>
         </select>
-                    <input type="hidden" name="product_id" value="{{ $product->id }}">
-                    <button type="submit" class="btn btn-warning px-3 py-3" style="color: white">Add to cart</button>
-                </form>
-                <button class="btn btn-primary px-3 py-3">Mua</button>
-                </div>
-               
-               </div>
-            </div>
+        <input type="hidden" name="product_id" value="{{ $product->id }}">
+        <label for="product-quantity" class="product-quantity-label">Số lượng:</label>
+        <input type="number" name="quantity" required class="form-control" min="0" style="width: 100px;">
+        <button type="submit" class="btn btn-warning px-3 py-3" style="color: white">Add to cart</button>
+    </form>
+</div>
+
          
             
         </div>
