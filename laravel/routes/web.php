@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\CrudCartController;
 use App\Http\Controllers\CrudCategoriesController;
+use App\Http\Controllers\PayController;
+use Illuminate\Support\Facades\Session;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -63,4 +66,18 @@ Route::get('deleteProduct', [CrudProductController::class, 'deleteProduct'])->na
 //cart
 Route::post('/add-to-cart', [CrudCartController::class, 'addToCart'])->name('cart.add');
 Route::get('ViewCart', [CrudCartController::class, 'ViewCart'])->name('cart.ViewCart');
+
+//Pay
+
+Route::get('/pay', [PayController::class, 'pay'])->name('pay');
+
+Route::get('/confirm-payment', [CrudCartController::class, 'confirmPayment'])->name('confirm.payment.cart');
+
+Route::post('/confirm-payment', function (Request $request) {
+    // Lưu thông tin sản phẩm vào session
+    Session::put('selectedProducts', $request->input('selected_products', []));
+
+    // Chuyển hướng người dùng đến trang thanh toán
+    return redirect()->route('pay.pay');
+})->name('confirm.payment');
 

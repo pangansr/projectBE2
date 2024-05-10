@@ -39,8 +39,25 @@ class CrudCartController extends Controller
     {
       //  $products = Product::all();
       //$categories = Category::all();
+      $selectedProducts = session()->get('selectedProducts', []); // Lấy danh sách các sản phẩm đã được chọn từ session
       $shopingCart = ShoppingCart::with('product')->get(); // Lấy thông tin sản phẩm trong giỏ hàng cùng với thông tin sản phẩm
       $user = Auth::user();
-      return view('crud_cart.view', compact('user', 'shopingCart'));
+      return view('crud_cart.view', compact('user', 'shopingCart', 'selectedProducts'));
+    }
+    public function confirmPayment(Request $request)
+     {
+    //     $selectedProductIds = $request->input('selected_products');
+    //     $selectedProducts = Product::whereIn('id', $selectedProductIds)->get();
+    //     return view('pay.pay', compact('selectedProducts'));
+    $selectedProductIds = $request->input('selected_products');
+
+    // Kiểm tra xem $selectedProductIds có phải là một mảng không
+    if (is_array($selectedProductIds)) {
+        $selectedProducts = Product::whereIn('id', $selectedProductIds)->get();
+        return view('pay.pay', compact('selectedProducts'));
+    } else {
+        // Xử lý trường hợp khi $selectedProductIds không phải là một mảng
+        // Ví dụ: Hiển thị thông báo lỗi hoặc xử lý tùy thuộc vào yêu cầu của bạn
+    }
     }
 }
