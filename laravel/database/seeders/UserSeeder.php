@@ -19,7 +19,6 @@ class UserSeeder extends Seeder
             'password' => Hash::make('123456'),
             'phone' => '213456789',
             'avatar' => 'test',
-            'mssv' => 'test'
         ]);
     }
 }
