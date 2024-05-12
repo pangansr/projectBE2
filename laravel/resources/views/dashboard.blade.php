@@ -139,10 +139,11 @@
                     <div class="cart-row">
                         <div class="cart-item cart-column">
                             <img class="cart-item-image"
-                                src="https://bizweb.dktcdn.net/thumb/large/100/228/168/products/sualai.jpg?v=1573720306000"
+                                src="{{ asset('images/' . $item->product->image1) }}"
                                 width="100" height="100">
-                            <div class="cart-item-details">
-                                <div class="cart-item-title">Tên sản phẩm {{ $item->product->name }} </div>
+                                
+                                <div class="cart-item-title">Tên sản phẩm {{ $item->product->name }} </div><br>
+
                                 <div class="cart-color cart-column">Màu: đỏ</div>
                                 <div class="cart-size cart-column">Size: freesize</div>
                                 <div class="cart-price cart-column">25000đ</div>
@@ -152,13 +153,8 @@
                             </div>
                             <span class="close-pr">&times;</span>
                         </div>
-                    </div>
-
-                   
-                    @endforeach
-                </div>
-            </div>
-            <div class="modal-footer">
+                        @endforeach
+                        <div class="modal-footer">
                 <div class="cart-total">
                     <strong class="cart-total-title">Tổng Cộng:</strong>
                     <span class="cart-total-price">3223000VNĐ</span>
@@ -168,6 +164,14 @@
                     <button type="button" class="btn btn-primary order" >Thanh Toán</button>
                 </div>
             </div>
+                    </div>
+
+                   
+                 
+                </div>
+                
+            </div>
+           
         </div>
     </div>
     <script src="cart.js"></script>
