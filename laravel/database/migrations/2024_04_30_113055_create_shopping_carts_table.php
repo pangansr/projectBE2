@@ -17,8 +17,8 @@ return new class extends Migration
         $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');
         $table->unsignedBigInteger('user_id');
         $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade'); 
-        $table->string('size')->default('M'); // Thêm trường size
-        $table->integer('quantity'); // Loại bỏ auto_increment và primary key
+        $table->string('size'); 
+        $table->integer('quantity');
         $table->double('price');
         $table->timestamps();
     });
