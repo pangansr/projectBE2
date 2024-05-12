@@ -6,7 +6,10 @@ use Illuminate\Http\Request;
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\PostsProduct;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -25,7 +28,10 @@ class CrudProductController extends Controller
     {
         $product_id = $request->get('id');
         $product = Product::find($product_id);
-        return view('crud_product.readProduct', ['product' => $product]);
+        $posts = PostsProduct::where('id_product', $product_id)->get();
+        $user = Auth::user();
+        $users = User::all();
+        return view('crud_product.readProduct', ['product' => $product, 'post' => $posts], compact('user', 'users'));
     }
   
     public function postProduct(Request $request)

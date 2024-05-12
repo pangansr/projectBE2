@@ -18,6 +18,14 @@ class CrudUserController extends Controller
     /**
      * Login page
      */
+
+     public function ViewRevenueStatistics(Request $request)
+     { 
+        $user_id = $request->get('id');
+        $user = User::find($user_id);$user = User::all();
+         return view('ViewRevenueStatistics',['user' => $user]);
+     }
+
     public function login()
     {
         return view('crud_user.login');

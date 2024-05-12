@@ -10,7 +10,8 @@
     .header {
 
         /* background: linear-gradient(to left, #12FFA0, #59DAB8, #F1F2B6); */
-        background-color: #08ed11;
+        /* background-color: #08ed11; */
+        background-color: #800000;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -31,13 +32,10 @@
         align-items: center;
     }
 
-    .nav-link {
-        font-family: cursive;
-    }
+
 
     .nav-item {
         text-decoration: none;
-        font-family: cursive;
         color: white;
         padding: 10px;
         border-radius: 10px;
@@ -52,10 +50,10 @@
     .search-form {
         display: flex;
         align-items: right;
+        margin-inline: 70px;
     }
 
     .search-input {
-        font-family: cursive;
         border-radius: 15px;
         border: 1px solid rgb(0, 0, 0);
         background-color: #69D5F3;
@@ -64,7 +62,6 @@
     }
 
     .search-button {
-        font-family: cursive;
         border-radius: 0px 15px 15px 0px;
         margin-left: -25px;
         border: 1px solid rgb(0, 0, 0);
@@ -92,8 +89,12 @@
     }
 
     .nav-item:hover {
-        background-color: red;
-        color: #fff;
+        color: black;
+        border: 1px solid #000;
+    }
+    .logo{
+        width: 100px;
+        height: 100px;
     }
 </style>
 
@@ -101,9 +102,9 @@
     <header class="header">
         <nav class="header-nav">
             <img src="images/logo.png" alt="Logo" class="logo" />
-            <a href="{{ route('user.list') }}" class="nav-item">Trang chủ</a>
-            <a href="{{ route('cart.ViewCart') }}" class="nav-item">Giỏ hàng</a>
-            <a href="#" class="nav-item">Yêu thích</a>
+            <a href="{{ route('user.list') }}" class="nav-item"><h3>Trang chủ </h3></a>
+            <a href="{{ route('cart.ViewCart') }}" class="nav-item"><h3>Giỏ hàng</h3></a>
+            <a href="{{ route('ViewRevenueStatistics') }}" class="nav-item"><h3>Thống kê doanh thu</h3></a>
         </nav>
         <div class="nav-right">
             <form class="search-form">
@@ -111,20 +112,16 @@
                 <button type="submit" class="search-button">Tìm kiếm</button>
             </form>
 
-            <div style=" border-radius: 10px; background-color: #026466; padding:7px; text-align: center; margin-left: 15px; display: flex; align-items: center;">
-                
-               
-                <!-- <span style="margin-inline:10px;border-radius: 40px; padding-inline: 10px; font-family: cursive;">{{$user->name}}</span> -->
-                    <a href="{{ route('user.readUser', ['id' => $user->id]) }}">
-                        <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
-                    </a>
-                    <a  href="{{ route('signout') }}">
+            <a  href="{{ route('signout') }}">
                         <button style=" border: none; background-color: red;color: white; border-radius:5px; font-size: 10px; padding: 10px;">
                             Đăng xuất
                         </button>
                     </a>
+                    <a href="{{ route('user.readUser', ['id' => $user->id]) }}">
+                        <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
+                    </a>
+                 
      
-            </div>
         </div>
     </header>
     @yield('content')

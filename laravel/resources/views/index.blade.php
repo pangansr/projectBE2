@@ -45,7 +45,7 @@
         .category-list {
             margin-left: 10px;
             width: 250px;
-            background-color: while;
+            background-color: #FFDEAD;
             display: flex;
             flex-direction: column;
             font-size: 14px;
@@ -54,14 +54,13 @@
         }
 
         .category-list-header {
-            background-color: #08ed11;
+            background-color: #993333;
             display: flex;
             padding: 8px 20px;
             border-radius: 5px;
         }
 
         .category-list-title {
-            font-family: cursive;
             display: flex;
             align-items: center;
             flex-grow: 1;
@@ -76,7 +75,6 @@
         }
 
         .category-item {
-            font-family: cursive;
             border-radius: 10px;
             background-color: #f0cbcb;
             margin-top: 5px;
@@ -159,7 +157,7 @@
                 <button class="category-item" style="">Tất cả</button>
                 @foreach ($category as $category)
                     <div
-                        style="display: flex; align-items: center; padding: 5px; margin: 10px;border-radius:10px; background-color: #80f83f">
+                        style="display: flex; align-items: center; padding: 5px; margin: 10px;border-radius:10px; background-color: #ff6633">
                         <button class="category-item" style="">{{ $category->name }}</button>
 
                           {{-- quyền admin --}}

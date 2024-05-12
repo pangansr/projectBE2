@@ -8,6 +8,8 @@ use App\Http\Controllers\CrudCategoriesController;
 use App\Http\Controllers\PayController;
 use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PurchaseController;
+use App\Http\Controllers\RevenueStatisticsController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -79,3 +81,13 @@ Route::get('/purchase/confirmation', [PurchaseController::class, 'confirmation']
 
 
 
+
+
+
+
+Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
+
+
+
+
+Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');

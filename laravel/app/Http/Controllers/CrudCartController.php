@@ -16,6 +16,7 @@ class CrudCartController extends Controller
     $productId = $request->input('product_id');
     $quantity = $request->input('quantity');
     $size = $request->input('size'); 
+
     // Kiểm tra sản phẩm có tồn tại không
     $product = Product::find($productId);
     if (!$quantity || $quantity <= 0) {
