@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-
+use App\Models\ShoppingCart;
 class CrudProductController extends Controller
 {
     public function index()
@@ -26,6 +26,8 @@ class CrudProductController extends Controller
     }
     public function readProduct(Request $request)
     {
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
         $product_id = $request->get('id');
         $product = Product::find($product_id);
         $totalStars = PostsProduct::where('id_product', $product_id)->sum('star');
@@ -44,7 +46,7 @@ class CrudProductController extends Controller
        //$posts = PostsProduct::all();
         $user = Auth::user();
         $users = User::all();
-        return view('crud_product.readProduct', ['product' => $product, 'post' => $posts], compact('user', 'users','averageRating'));
+        return view('crud_product.readProduct', ['product' => $product, 'post' => $posts], compact('user', 'users','averageRating','shopingCart'));
     }
   
     public function postProduct(Request $request)

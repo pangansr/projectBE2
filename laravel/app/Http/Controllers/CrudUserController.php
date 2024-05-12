@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -22,8 +23,10 @@ class CrudUserController extends Controller
      public function ViewRevenueStatistics(Request $request)
      { 
         $user_id = $request->get('id');
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
         $user = User::find($user_id);$user = User::all();
-         return view('ViewRevenueStatistics',['user' => $user]);
+         return view('ViewRevenueStatistics',['user' => $user],compact('shopingCart'));
      }
 
     public function login()
@@ -171,14 +174,15 @@ class CrudUserController extends Controller
     }
 
   
-    public function index()
-{
+    public function index(){ 
+    $user = Auth::user();
+    $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
     if (Auth::check()) {
         $productss = Product::all();
         $products = Product::paginate(5); 
         $category = Category::all();
         $user = Auth::user();
-        return view('index', compact('user','products','category','productss'));
+        return view('index', compact('user','products','category','productss','shopingCart'));
     } else {
       
     }
