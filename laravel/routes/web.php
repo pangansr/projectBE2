@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Session;
 use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RevenueStatisticsController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\DetailOrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -75,11 +76,10 @@ Route::post('/checkout', [CrudCartController::class, 'checkout'])->name('cart.ch
 
 
 
-
+Route::post('addDetailOrder', [DetailOrdersController::class, 'AddOrders'])->name('addDetailOrder');
 
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
-
 
 
 

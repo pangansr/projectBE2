@@ -10,17 +10,17 @@
     width: 30%; /* Chiều rộng 1/4 màn hình */
     height: 90%;
     overflow:scroll;
-    padding: 5px;
+    padding: 20px;
     background-color: #a6e7a2; /* Màu xanh nhạt */
   }
   
   .modal-content {
     background-color: #a6e7a2;
-    border: 1px solid #888;
     width: 100%;
   
   }
-/* CSS for close button */
+
+
 .close {
     color: #aaa;
     float: right;
@@ -76,17 +76,18 @@
 }
 
 .cart-quantity-input {
-    width: 50px;
+    width: 150px;
     margin-right: 10px;
 }
 
 .btn {
     cursor: pointer;
-    padding: 5px 10px;
+    padding: 10px 20px;
     border: none;
-    background-color: #0bbf17;
+    background-color: #00ff11;
     color: white;
     border-radius: 4px;
+    margin-bottom: 20px;
 }
 .modal-header{
     display: flex;
@@ -155,6 +156,7 @@
     background-color: #f3f3f3; /* Màu nền */
     border-top: 1px solid #ccc; /* Viền phía trên */
     height: 10%;
+    padding: 20px;
 }
 .cart-button {
     display: flex;

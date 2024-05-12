@@ -43,8 +43,7 @@ class CrudProductController extends Controller
     }
        
         $posts = PostsProduct::where('id_product', $product_id)->get();
-       //$posts = PostsProduct::all();
-        $user = Auth::user();
+    
         $users = User::all();
         return view('crud_product.readProduct', ['product' => $product, 'post' => $posts], compact('user', 'users','averageRating','shopingCart'));
     }

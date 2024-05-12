@@ -34,39 +34,21 @@ class CrudCartController extends Controller
     
     public function removeFromCart(Request $request)
 {
-    $category_id = $request->get('product_id');
-    ShoppingCart::destroy($category_id);
-        return redirect()->route('cart.ViewCart');
+    $cart = $request->input('id');
+    ShoppingCart::where('id', $cart)->delete();
+    return redirect()->back();
 }
 public function removeAllFromCart(Request $request)
 {
     ShoppingCart::where('user_id', auth()->id())->delete();
-    return redirect()->route('cart.ViewCart');
+    return redirect()->back();
 }
 public function checkout(Request $request)
 {
     $userId = auth()->id();
-//     $shopingCart = $request->input('shopingCart');
 
-//     // Tạo một đơn hàng mới
-//     $order = new Order();
-//     $order->user_id = $userId;
-//     $order->save();
-//     if (!empty($shopingCart)) {
-//     // Lặp qua từng sản phẩm trong giỏ hàng và lưu thông tin của chúng vào đơn hàng
-//     foreach ($shopingCart as $item) {
-//         $order->products()->attach($item->product_id, [
-//             'quantity' => $item->quantity,
-//             'price' => $item->product->price
-//         ]);
-//     }
-// } else {
-//     // Xóa giỏ hàng sau khi thanh toán
     ShoppingCart::where('user_id', $userId)->delete();
-// }
-  
-   // return redirect()->route('purchase.confirmation');
-   return redirect()->route('cart.checkout');
+    return redirect()->back();
 }
 
 

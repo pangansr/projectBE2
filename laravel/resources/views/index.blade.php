@@ -4,19 +4,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="cart.css" />
-
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
     <style>
+        
         body {
             margin: 0%;
         }
-
-
         .slideshow-container {
             margin-left: 40px;
 
         }
-
         .slide {
             display: flex;
             height: 250px;
@@ -284,7 +282,6 @@
         </div>
     </div>
 <!-- The Modal -->
-
 <script>
     var slideIndex = 0;
     showSlides();

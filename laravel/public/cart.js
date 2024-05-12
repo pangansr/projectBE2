@@ -9,9 +9,21 @@ var span = document.getElementsByClassName("close")[0];
 var close_footer = document.getElementsByClassName("close-footer")[0];
 
 // Khi người dùng bấm vào nút, mở modal
+// Khai báo biến flag để theo dõi trạng thái của modal
+var modalOpen = false;
+
+// Thiết lập sự kiện click cho nút
 btn.onclick = function() {
-    modal.style.display = "block";
+    // Nếu modal đang mở
+    if (modalOpen) {
+        modal.style.display = "none"; // Đóng modal
+        modalOpen = false; // Cập nhật trạng thái modal
+    } else {
+        modal.style.display = "block"; // Mở modal
+        modalOpen = true; // Cập nhật trạng thái modal
+    }
 }
+
 
 // Khi người dùng bấm vào nút đóng (x), đóng modal
 span.onclick = function() {

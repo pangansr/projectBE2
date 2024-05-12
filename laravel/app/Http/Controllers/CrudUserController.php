@@ -104,10 +104,13 @@ class CrudUserController extends Controller
      * View user detail page
      */
     public function readUser(Request $request) {
+
         $user_id = $request->get('id');
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
         $user = User::find($user_id);
 
-        return view('crud_user.read', ['user' => $user]);
+        return view('crud_user.read', ['user' => $user],compact('shopingCart'));
     }
 
     /**
