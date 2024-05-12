@@ -296,6 +296,4 @@
         setTimeout(showSlides, 2500);
     }
 </script>
-
-
 @endsection

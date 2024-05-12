@@ -1,0 +1,159 @@
+/* CSS for modal container */
+/* modal */
+.modal {
+    display: none; /* Ẩn modal ban đầu */
+    position: fixed;
+    z-index: 1;
+    left: auto;
+    right: 0;
+    top: 0;
+    width: 30%; /* Chiều rộng 1/4 màn hình */
+    height: 90%;
+    overflow:scroll;
+    padding: 5px;
+    background-color: #a6e7a2; /* Màu xanh nhạt */
+  }
+  
+  .modal-content {
+    background-color: #a6e7a2;
+    border: 1px solid #888;
+    width: 100%;
+  
+  }
+/* CSS for close button */
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.cart-item {
+    display: flex;
+    align-items: center;
+}
+
+.cart-item-image {
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    flex: 1; /* Điều này sẽ khiến phần còn lại của cart-item chiếm hết không gian còn lại */
+}
+
+.cart-price {
+    min-width: 50px; /* Đảm bảo giá có đủ không gian */
+}
+.cart-row {
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #ccc; /* tạo đường kẻ ngăn cách giữa các sản phẩm */
+    padding: 10px 0;
+}
+
+.cart-item-image {
+    margin-right: 10px;
+}
+
+.cart-item-details {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+.cart-item-title{
+    flex-basis: 100%; /* Đặt chiều rộng tối đa của cart-item-title là 100% */
+    word-wrap: break-word; /* Xuống hàng khi cần thiết */
+}
+.cart-quantity {
+    display: flex;
+    align-items: center;
+}
+
+.cart-quantity-input {
+    width: 50px;
+    margin-right: 10px;
+}
+
+.btn {
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    background-color: #0bbf17;
+    color: white;
+    border-radius: 4px;
+}
+
+.btn:hover {
+    background-color: #5cf5c2;
+}
+.cart-item-details {
+    display: flex;
+    flex-direction: column;
+  }
+  .cart-item-title,
+  .cart-price,
+  .cart-quantity {
+      margin-bottom: 5px;
+  }
+  .cart-item {
+    position: relative;
+}
+
+.close-pr {
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 5px;
+}
+.cart-item-details {
+    padding-right: 20px;
+}
+.modal-footer {
+    display: flex;
+    flex-direction: column; 
+}
+
+.cart-total-title {
+    justify-content: flex-start; /* Đẩy các phần tử về phía trái */
+}
+
+.cart-total-price {
+    justify-content: flex-end; /* Đẩy các phần tử về phía trái */
+    margin-left: 240px;
+}
+.btn-primary {
+    background-color: rgb(37, 205, 37);
+    color:  rgb(27, 27, 27); /* Đặt màu nền cho nút thanh toán thành màu xanh lá */
+    margin-left: 240px;
+}
+
+.btn-secondary {
+    background-color: white; /* Đặt màu nền cho nút mua thêm thành màu trắng */
+    color:  rgb(27, 27, 27);
+    justify-content: flex-end; /* Đẩy các phần tử về phía trái */
+
+}
+.modal-footer {
+    display: flex;
+    justify-content: space-between; /* Đặt các phần tử ở hai đầu của dòng */
+    align-items: center; /* Căn giữa theo chiều dọc */
+    position: fixed; /* Đặt vị trí cố định */
+    bottom: 0; /* Đặt phần tử ở dưới cùng */
+    right: 0; /* Đặt phần tử ở góc phải */
+    width: 30%; /* Chiều rộng 100% */
+    padding: 0px; /* Padding cho phần tử */
+    background-color: #f3f3f3; /* Màu nền */
+    border-top: 1px solid #ccc; /* Viền phía trên */
+    height: 10%;
+}
+.cart-button {
+    display: flex;
+    justify-content: space-between; /* Căn các phần tử con ở hai đầu */
+}
+

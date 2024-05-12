@@ -143,11 +143,7 @@
 @section('content')
 
 <body>
-    <div class="nav" style=" padding: 15px;">
-        <u>
-            <h2 class="title">Chi tiết sản phẩm</h2>
-        </u>
-    </div>
+
 
     <div class="row">
         <div class="col-lg-5">
@@ -164,6 +160,12 @@
             <div class="info-container">
                 <div class="mb-3">
                     <h1 class="name">{{ $product->name }}</h1>
+                    <h1 class="">{{ number_format($averageRating, 2) }}/5</h1>
+                    @for ($i = 1; $i <= 5; $i++) @if ($i <=round($averageRating)) <i class="bi bi-star-fill" style="font-size: 40px; color: yellow;"></i> <!-- Biểu tượng sao đầy -->
+                        @else
+                        <i class="bi bi-star" style="font-size: 40px; color: yellow;"></i> <!-- Biểu tượng sao trống -->
+                        @endif
+                        @endfor
                 </div>
                 <div class="mb-3 price">
                     <span>Giá: {{ $product->price }}đ</span>
@@ -171,22 +173,53 @@
                 <div class="mb-3">
                     <span class="mota">Mô tả:<br> {{ $product->description }}</span><br><br><br>
                     <div class="mb-3">
-                        <button type="submit" class="btn btn-warning px-3 py-2">Add to cart</button>
+                        <form action="{{ route('cart.add') }}" method="POST">
+                            @csrf
+                            <input name="id_user" type="hidden" value="{{$user->id}}">
+                            <input name="product_id" type="hidden" value="{{request('id')}}">
+                            <label for="quantity"  style=" font-size: 20px; ">Số lượng:</label>
+                            <input type="number" id="quantity" name="quantity" min="1" value="1" style="width: 50px; font-size: 20px; ">
+                            <br><br>
+                            <label for="size"  style=" font-size: 20px; ">Chọn kích thước:</label>
+                            <select id="size" name="size"  style="width: 50px; font-size: 20px; ">
+                                <option value="S">S</option>
+                                <option value="M">M</option>
+                                <option value="L">L</option>
+                                <option value="XL">XL</option>
+                            </select>
+                            <br><br>
+                            <input type="submit" class="btn btn-warning px-3 py-2" value="Thêm vào giỏ hàng">
+                        </form>
+                        <form action="{{ route('user.postUser') }}" method="POST">
+                            @csrf
+                            <input name="id_user" type="hidden" value="{{$user->id}}">
+                            <input name="id_product" type="hidden" value="{{request('id')}}">
+                            <input type="submit" class="btn btn-success px-3 py-2" value="Mua">
+                        </form>
                     </div>
                 </div>
+                <hr>
             </div>
 
 
 
 
-      
+
             @foreach($post as $post_productt)
             <div class="comments-container">
                 <div class="comment">
                     <img src="{{ asset('avatar/' . $post_productt->user->avatar) }}" alt="User Avatar" class="avatar">
-                   
+
                     <div class="comment-content">
-                    <div class="username">{{ $post_productt->user ->name }}</div>
+                        <div class="username">{{ $post_productt->user ->name }}</div>
+                        <div class="star-rating">
+                            @for ($i = 1; $i <= 5; $i++) @if ($i <=$post_productt->star)
+                                <i class="bi bi-star-fill" style="font-size: 20px;"></i> <!-- Biểu tượng sao đầy -->
+                                @else
+                                <i class="bi bi-star" style="font-size: 20px;"></i> <!-- Biểu tượng sao trống -->
+                                @endif
+                                @endfor
+                        </div>
                         <p class="comment-text">{{$post_productt->comment}}</p>
                         <span class="comment-date">{{$post_productt->created_at}}</span>
                     </div>
@@ -194,23 +227,24 @@
 
             </div>
             @endforeach
-    
+
 
 
 
             <form action="{{ route('ViewPostReview') }}" method="POST" enctype="multipart/form-data">
                 @csrf
-                <input name="star" type="hidden" value="2">
+
+                <input name="star" type="hidden" value="5">
                 <!-- {{-- <input name="id_user" type="text" value="{{$user->id}}"> --}} -->
-                <input name="id_product" type="hidden" value="{{$user->id}}">
+                <input name="id_product" type="hidden" value="{{request('id')}}">
                 <input name="id_user" type="hidden" value="{{$user->id}}">
                 <h5>Chất lượng sản phẩm:</h5>
                 <div class="danhgiaStart ">
-                    <i name='star' data-value='1' class="bi bi-star star-icon bistar" onclick="showRating(1)"></i>
-                    <i name='star' data-value='2' class="bi bi-star star-icon bistar" onclick="showRating(2)"></i>
-                    <i name='star' data-value='3' class="bi bi-star star-icon bistar" onclick="showRating(3)"></i>
-                    <i name='star' data-value='4' class="bi bi-star star-icon bistar" onclick="showRating(4)"></i>
-                    <i name='star' data-value='5' class="bi bi-star star-icon bistar" onclick="showRating(5)"></i>
+                    <i name='star' style="font-size: 20px;" data-value='1' class="bi bi-star star-icon bistar" onclick="showRating(1)"></i>
+                    <i name='star' style="font-size: 20px;" data-value='2' class="bi bi-star star-icon bistar" onclick="showRating(2)"></i>
+                    <i name='star' style="font-size: 20px;" data-value='3' class="bi bi-star star-icon bistar" onclick="showRating(3)"></i>
+                    <i name='star' style="font-size: 20px;" data-value='4' class="bi bi-star star-icon bistar" onclick="showRating(4)"></i>
+                    <i name='star' style="font-size: 20px;" data-value='5' class="bi bi-star star-icon bistar" onclick="showRating(5)"></i>
 
 
                     <div class="textdanhgia">
@@ -222,12 +256,12 @@
             font-size: 15px;">Bình Thường</p>
                         <p style="color: #1d608d;font-weight: bold;
             font-size: 15px;">Hài Lòng</p>
-                        <p style="color: #f9faf7fd;font-weight: bold;
+                        <p style="color: green;font-weight: bold;
             font-size: 15px;">Tuyệt Vời</p>
                     </div>
                 </div>
-                <textarea style="width:50%;" style="height: 60px;" id="" placeholder="Nhập mô tả" name="comment"></textarea>
-                <input type="submit" style="height: 55px; margin-bottom: 40px;" value="Xác Nhận" class="btn btn-success">
+                <textarea style="width:50%;" style="height: 50px;" id="" placeholder="Nhập mô tả" name="comment"></textarea>
+                <input type="submit" style="height: 55px; margin-bottom: 47px;" value="Xác Nhận" class="btn btn-primary">
             </form>
         </div>
     </div>
@@ -290,6 +324,11 @@
                     text.style.display = "none";
                 }
             });
+
+        }
+
+        function updateStar(value) {
+            document.getElementById('star').value = value;
         }
     </script>
 </body>

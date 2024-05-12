@@ -12,4 +12,8 @@ class PostsProduct extends Model
     {
         return $this->belongsTo(User::class, 'id_user');
     }
+    // public function user()
+    // {
+    //     return $this->belongsTo(User::class);
+    // }
 }

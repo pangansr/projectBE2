@@ -11,11 +11,6 @@ class ReviewController extends Controller
     public function postReview(Request $request)
     {
         $user = Auth::user();
-        $userID = $user->id;
-        $product_id = $request->get('id');
-        $product = Product::find($product_id);
-        $post =PostsProduct::find($product_id);
-        // Kiểm tra dữ liệu đầu vào từ form
         $request->validate([
             'id_product' => 'required',
             'id_user' => 'required',

@@ -4,43 +4,30 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 use App\Models\ShoppingCart;
-use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use App\Models\Order;
 
 class CrudCartController extends Controller
 {
     public function addToCart(Request $request)
-    {
-         // Lấy thông tin sản phẩm từ request
-    $productId = $request->input('product_id');
-    $quantity = $request->input('quantity');
-    $size = $request->input('size'); 
+    { 
+    $user = Auth::user();
+    $shoppingCart = new ShoppingCart();
+    $product = Product::find($request->input('product_id'));
+    $shoppingCart->user_id = $user->id;  
+    $shoppingCart->product_id  = $request->input('product_id');
+    //$shoppingCart->price  = ($request->input('quantity')*($product->price));
+    $shoppingCart->price  = ($request->input('quantity')*$product->price);
+    $shoppingCart->quantity = $request->input('quantity');
+    $shoppingCart->size = $request->input('size'); 
+    $shoppingCart->save();
+    return back();
 
-    // Kiểm tra sản phẩm có tồn tại không
-    $product = Product::find($productId);
-    if (!$quantity || $quantity <= 0) {
-        return redirect()->back()->with('error', 'Số lượng không hợp lệ.');
-    }
-    if (!$product) {
-        return redirect()->back()->with('error', 'Sản phẩm không tồn tại.');
-    }
-
-    // Tạo hoặc cập nhật giỏ hàng
-    $cartItem = ShoppingCart::updateOrCreate(
-        ['product_id' => $productId, 'user_id' => auth()->id()],
-        ['quantity' => $quantity, 'price' => $product->price, 'size' => $size]
-    );
-
-    return redirect()->back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
-
-      //  return redirect()->back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
-      //return redirect()->route('cart.ViewCart')->with('success', 'Sản phẩm đã được thêm vào giỏ hàng.');
+    return redirect()->back()->with('success', 'Sản phẩm đã được thêm vào giỏ hàng');
     }
     public function ViewCart()
     {
-        $selectedProducts = session()->get('selectedProducts', []); // Lấy danh sách các sản phẩm đã được chọn từ session
-        $shopingCart = ShoppingCart::with('product')->get(); // Lấy thông tin sản phẩm trong giỏ hàng cùng với thông tin sản phẩm
+        $selectedProducts = session()->get('selectedProducts', []); 
+        $shopingCart = ShoppingCart::with('product')->get(); 
         $user = Auth::user();
         return view('crud_cart.view', compact('user', 'shopingCart', 'selectedProducts'));
     }

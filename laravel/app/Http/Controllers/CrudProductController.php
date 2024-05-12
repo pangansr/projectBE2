@@ -28,10 +28,23 @@ class CrudProductController extends Controller
     {
         $product_id = $request->get('id');
         $product = Product::find($product_id);
+        $totalStars = PostsProduct::where('id_product', $product_id)->sum('star');
+    
+    // Đếm số lượng đánh giá
+    $totalReviews = PostsProduct::where('id_product', $product_id)->count();
+    
+    // Tính lượng sao trung bình
+    if ($totalReviews > 0) {
+        $averageRating = $totalStars / $totalReviews;
+    } else {
+        $averageRating = 0; // Tránh trường hợp chia cho 0
+    }
+       
         $posts = PostsProduct::where('id_product', $product_id)->get();
+       //$posts = PostsProduct::all();
         $user = Auth::user();
         $users = User::all();
-        return view('crud_product.readProduct', ['product' => $product, 'post' => $posts], compact('user', 'users'));
+        return view('crud_product.readProduct', ['product' => $product, 'post' => $posts], compact('user', 'users','averageRating'));
     }
   
     public function postProduct(Request $request)

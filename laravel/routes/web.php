@@ -78,13 +78,6 @@ Route::post('/checkout', [CrudCartController::class, 'checkout'])->name('cart.ch
 
 
 
-
-
-
-
-
-
-
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
 
 
