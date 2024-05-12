@@ -128,10 +128,8 @@
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
-                <h4 class="modal-title">Giỏ Hàng</h4>
+                <h1 class="modal-title">Giỏ Hàng</h1>
                 <span class="close">&times;</span>
-                <p class="modal-quantity">2 sản phẩm</p>
-
             </div>
             <div class="modal-body">
                 <div class="cart-items">
@@ -152,7 +150,6 @@
                                 </div>
                                 </div>
                             </div>
-                            <span class="close-pr">&times;</span>
                         </div>
                         @endforeach
                         <div class="modal-footer">

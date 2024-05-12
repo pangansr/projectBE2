@@ -24,7 +24,7 @@
 .close {
     color: #aaa;
     float: right;
-    font-size: 28px;
+    font-size: 60px;
     font-weight: bold;
 }
 
@@ -88,7 +88,11 @@
     color: white;
     border-radius: 4px;
 }
+.modal-header{
+    display: flex;
+    justify-content: space-between;
 
+}
 .btn:hover {
     background-color: #5cf5c2;
 }
