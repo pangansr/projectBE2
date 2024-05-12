@@ -141,14 +141,15 @@
                             <img class="cart-item-image"
                                 src="{{ asset('images/' . $item->product->image1) }}"
                                 width="100" height="100">
-                                
+                                <div>
                                 <div class="cart-item-title">Tên sản phẩm {{ $item->product->name }} </div><br>
 
-                                <div class="cart-color cart-column">Màu: đỏ</div>
-                                <div class="cart-size cart-column">Size: freesize</div>
-                                <div class="cart-price cart-column">25000đ</div>
+                                
+                                <div class="cart-size cart-column">Size: {{ $item->size }} </div>
+<label for="">Thành tiền</label><br>
                                 <div class="cart-quantity cart-column">
-                                    <input class="cart-quantity-input" type="number" value="1">
+                                    <input class="cart-quantity-input" type="number" value="{{ $item->price }}">
+                                </div>
                                 </div>
                             </div>
                             <span class="close-pr">&times;</span>
