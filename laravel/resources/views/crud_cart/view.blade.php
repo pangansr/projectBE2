@@ -126,7 +126,7 @@
             <div class="total-price">
                 Tổng tiền: <span id="total-price-all">0</span>
             </div>
-            <form id="checkout-form" action="{{ route('cart.checkout') }}" method="post">
+            <form id="checkout-form" action="{{ route('cart.checkout') }}" >
     @csrf
     <button type="submit" class="checkout-button">Thanh toán</button>
 </form>

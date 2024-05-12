@@ -59,26 +59,27 @@ public function removeAllFromCart(Request $request)
 public function checkout(Request $request)
 {
     $userId = auth()->id();
-    $shopingCart = $request->input('shopingCart');
+//     $shopingCart = $request->input('shopingCart');
 
-    // Tạo một đơn hàng mới
-    $order = new Order();
-    $order->user_id = $userId;
-    $order->save();
-    if (!empty($shopingCart)) {
-    // Lặp qua từng sản phẩm trong giỏ hàng và lưu thông tin của chúng vào đơn hàng
-    foreach ($shopingCart as $item) {
-        $order->products()->attach($item->product_id, [
-            'quantity' => $item->quantity,
-            'price' => $item->product->price
-        ]);
-    }
-} else {
-    // Xóa giỏ hàng sau khi thanh toán
+//     // Tạo một đơn hàng mới
+//     $order = new Order();
+//     $order->user_id = $userId;
+//     $order->save();
+//     if (!empty($shopingCart)) {
+//     // Lặp qua từng sản phẩm trong giỏ hàng và lưu thông tin của chúng vào đơn hàng
+//     foreach ($shopingCart as $item) {
+//         $order->products()->attach($item->product_id, [
+//             'quantity' => $item->quantity,
+//             'price' => $item->product->price
+//         ]);
+//     }
+// } else {
+//     // Xóa giỏ hàng sau khi thanh toán
     ShoppingCart::where('user_id', $userId)->delete();
-}
-    // Sau khi lưu đơn hàng và các sản phẩm tương ứng, bạn có thể chuyển hướng người dùng đến trang xác nhận đơn hàng
-    return redirect()->route('purchase.confirmation');
+// }
+  
+   // return redirect()->route('purchase.confirmation');
+   return redirect()->route('cart.checkout');
 }
 
 
