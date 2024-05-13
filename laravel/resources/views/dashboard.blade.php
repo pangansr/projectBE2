@@ -13,12 +13,13 @@
 
         /* background: linear-gradient(to left, #12FFA0, #59DAB8, #F1F2B6); */
         /* background-color: #08ed11; */
-        background-color: #800000;
+        background-color: #B8D1E9;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 10px;
         margin-bottom: 20px;
+
 
     }
 
@@ -26,6 +27,7 @@
         display: flex;
         align-items: center;
         gap: 20px;
+
     }
 
     .nav-right {
@@ -38,7 +40,7 @@
 
     .nav-item {
         text-decoration: none;
-        color: white;
+        color: #333;
         padding: 10px;
         border-radius: 10px;
         font-size: large;
@@ -46,7 +48,8 @@
     }
 
     .nav-item:hover {
-        background-color: rgba(255, 255, 255, 0.2);
+        background-color: #69D5F3;
+        color: #AEFCAD;
     }
 
     .search-form {
@@ -57,18 +60,17 @@
 
     .search-input {
         border-radius: 15px;
-        border: 1px solid rgb(0, 0, 0);
-        background-color: #69D5F3;
-        color: black;
+        border: 1px solid #69D5F3;
+        color: #333;
         padding: 10px;
     }
 
     .search-button {
         border-radius: 0px 15px 15px 0px;
         margin-left: -25px;
-        border: 1px solid rgb(0, 0, 0);
+        border: 1px solid #69D5F3;
         background-color: #69D5F3;
-        color: rgb(255, 255, 255);
+        color: #333;
         padding: 10px 15px;
     }
 
@@ -101,8 +103,8 @@
     }
 
     .footer {
-        background-color: #f8f9fa;
-        padding: 50px 0;
+        background-color: #A8C4DB;
+        
     }
 
     .footer h5 {
@@ -150,7 +152,7 @@
             </form>
 
             <a href="{{ route('signout') }}">
-                <button style=" border: none; background-color: red;color: white; border-radius:5px; font-size: 10px; padding: 10px;">
+                <button style=" border: none; background-color: #60ACF4; border-radius:5px; font-size: 18px; padding: 10px;">
                     Đăng xuất
                 </button>
             </a>
@@ -168,50 +170,51 @@
             </div>
             <div class="modal-body">
                 <div class="cart-items">
-               <form action="{{ route('addDetailOrder') }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    @foreach($shopingCart as $item)
-    <div class="cart-row">
-        <div class="cart-item cart-column">
-            <img class="cart-item-image" src="{{ asset('images/' . $item->product->image1) }}" width="100" height="100">
-            <div>
-                <div class="cart-item-title">Tên sản phẩm: {{ $item->product->name }}</div><br>
-                <select name="products[{{ $loop->index }}][size]" style="width: 50px; font-size: 20px;">
-                    <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
-                    <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
-                    <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
-                    <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
-                </select>
-            </div>
-        </div>
-        <div class="cart-quantity cart-column">
-            <input class="cart-quantity-input" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
-        </div>
-        <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
-        <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
-        <div class="cart-action cart-column">
-            <a href="{{ route('cart.remove',['id'=>$item->id]) }}"><button style="background-color: red; padding: 5px 10px; border-radius: 10px; color: white;">Xóa</button></a>
-        </div>
-    </div>
-    @endforeach
-    @php
+                    <form action="{{ route('addDetailOrder') }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        @foreach($shopingCart as $item)
+                        <div class="cart-row">
+                            <div class="cart-item cart-column">
+                                <img class="cart-item-image" src="{{ asset('images/' . $item->product->image1) }}" width="80px" height="80px">
+                                <div class="product-row">
+                                    <div class="cart-item-title">{{ $item->product->name }}</div><br>
+                                    <select name="products[{{ $loop->index }}][size]" style="width: 35px; font-size: 15px;">
+                                        <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
+                                        <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
+                                        <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
+                                        <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
+                                    </select>
+                                    <div class="cart-quantity cart-column">
+                                        <input class="cart-quantity-input" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
+                            <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
+                            <div class="cart-action cart-column">
+                                <a href="{{ route('cart.remove',['id'=>$item->id]) }}"><button style="background-color: red; padding: 5px 10px; border-radius: 10px; color: white;">Xóa</button></a>
+                            </div>
+                        </div>
+                        @endforeach
+                        @php
                         $totalPrice = 0;
                         foreach($shopingCart as $item) {
                         $totalPrice += $item->price * $item->quantity;
                         }
                         @endphp
-    <input type="text" name="address" placeholder="Địa chỉ giao hàng">
-    <input type="text" name="phone_number" placeholder="Số điện thoại">
-    <div class="modal-footer">
-        <div class="cart-total">
-            <strong class="cart-total-title">Tổng Cộng:</strong>
-            <span class="cart-total-price">{{ $totalPrice }} VNĐ</span>
-        </div>
-        <div class="cart-button">
-            <input type="submit" class="btn btn-secondary close-footer" value="Thanh toán">
-        </div>
-    </div>
-</form>
+                        <input type="text" name="address" placeholder="Địa chỉ giao hàng">
+                        <input type="text" name="phone_number" placeholder="Số điện thoại">
+                        <div class="modal-footer">
+                            <div class="cart-total">
+                                <strong class="cart-total-title">Tổng Cộng:</strong>
+                                <span class="cart-total-price">{{ $totalPrice }} VNĐ</span>
+                            </div>
+                            <div class="cart-button">
+                                <input type="submit" class="btn btn-secondary close-footer" value="Thanh toán">
+                            </div>
+                        </div>
+                    </form>
 
                     <script>
                         // Lắng nghe sự kiện khi số lượng sản phẩm thay đổi

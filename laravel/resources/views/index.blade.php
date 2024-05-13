@@ -10,15 +10,17 @@
         
         body {
             margin: 0%;
+            /* background-color: #DEEFFF; */
         }
         .slideshow-container {
             margin-left: 40px;
-
         }
         .slide {
             display: flex;
             height: 250px;
             float: left;
+            width: 100%;
+            background-image: url(../images/back.jpg);
         }
 
         .fade {
@@ -49,7 +51,7 @@
         .category-list {
             margin-left: 10px;
             width: 250px;
-            background-color: #FFDEAD;
+            background-color: #D9DDF0;
             display: flex;
             flex-direction: column;
             font-size: 14px;
@@ -58,7 +60,7 @@
         }
 
         .category-list-header {
-            background-color: #993333;
+            background-color: #60ACF4;
             display: flex;
             padding: 8px 20px;
             border-radius: 5px;
@@ -80,7 +82,7 @@
 
         .category-item {
             border-radius: 10px;
-            background-color: #f0cbcb;
+            background-color: #B8D1E9;
             margin-top: 5px;
             margin-inline: 20px;
             padding: 2px 10px;
@@ -130,6 +132,10 @@
             flex-wrap: wrap;
             justify-content: center;
         }
+        .nut{
+            background-color: #B8D1E9;
+            border-radius: 20px;
+        }
     </style>
 @section('content')
     <div class="container">
@@ -154,23 +160,23 @@
                     <input type="text" name="name" value=""
                         style="width: 150px; padding: 10px; height:20px; margin-right:10px;">
                     <input type="submit" value="Thêm"
-                        style="border-radius:10px; padding: 10px; background-color: #01ddff">
+                        style="border-radius:10px ;border-color:#60ACF4; padding: 5px; background-color: #60ACF4">
                 </form>
             @endif
                 
                 <button class="category-item" style="">Tất cả</button>
                 @foreach ($category as $category)
                     <div
-                        style="display: flex; align-items: center; padding: 5px; margin: 10px;border-radius:10px; background-color: #ff6633">
+                        style="display: flex; align-items: center; padding: 5px; margin: 10px;border-radius:10px; background-color: #B8D1E9">
                         <button class="category-item" style="">{{ $category->name }}</button>
 
                           {{-- quyền admin --}}
                           @if (Auth::user()->email == 'admin@gmail.com')
                           <a href="">
                             <i class="fa fa-edit"
-                            style="font-size:25px; color: rgb(0, 68, 255); margin-right:15px; "></i></a>
+                            style="font-size:25px; color:#007bff; margin-right:15px; "></i></a>
                             <a href="#" onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
-                                <i class="fa fa-trash" style="font-size:25px;color:red;"></i>
+                                <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
                             </a>
                             <script>
                                 function confirmDelete(url) {
@@ -195,22 +201,22 @@
                 @endforeach
             </div>
         </div>
-        <div class="column">
+        <div class="column" >
             <div class="slideshow-container">
 
-                <div class="slide fade " style="display: flex;">
+                <div class="slide " style="display: flex;">
                     <h1>Welcome to the website </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. </p>
-                    <button type="button" class="btn btn-default get">Get it now</button>
+                    <button type="button" class="nut">Get it now</button>
                 </div>
-                <div class="slide fade" style="display: flex;">
+                <div class="slide " style="display: flex;">
                    
                         <h1>Trải nghiệm với đa dạng loại sản phẩm</h1>
                         <h2>Free Ecommerce Template</h2>
                         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                             labore et dolore magna aliqua. </p>
-                        <button type="button" class="btn btn-default get">Get it now</button>
+                        <button type="button" class="nut">Get it now</button>
                    
                 </div>
             </div>
