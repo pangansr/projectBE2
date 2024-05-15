@@ -193,7 +193,7 @@
                             <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
                             <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
                             <div class="cart-action cart-column">
-                                <a href="{{ route('cart.remove',['id'=>$item->id]) }}"><button style="background-color: red; padding: 5px 10px; border-radius: 10px; color: white;">Xóa</button></a>
+                                <a href="{{ route('cart.remove',['id'=>$item->id]) }}">Xóa</a>
                             </div>
                         </div>
                         @endforeach

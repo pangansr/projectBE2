@@ -69,7 +69,7 @@ Route::get('deleteProduct', [CrudProductController::class, 'deleteProduct'])->na
 //cart
 Route::post('/add-to-cart', [CrudCartController::class, 'addToCart'])->name('cart.add');
 Route::get('ViewCart', [CrudCartController::class, 'ViewCart'])->name('cart.ViewCart');
-Route::post('/cartRemove', [CrudCartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cartRemove', [CrudCartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart'])->name('cart.remove_all');
 Route::post('/checkout', [CrudCartController::class, 'checkout'])->name('cart.checkout');
 //Route::get('/purchase/confirmation', [PurchaseController::class, 'confirmation'])->name('purchase.confirmation');

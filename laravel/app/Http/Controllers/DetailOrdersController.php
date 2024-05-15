@@ -4,7 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\DetailOrder;
+use App\Models\Product;
+use App\Models\ShoppingCart;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\CrudCartController;
 class DetailOrdersController extends Controller
 {
     public function AddOrders(Request $request)
@@ -23,6 +26,14 @@ class DetailOrdersController extends Controller
         $detailOrder->address = $request->address;
         $detailOrder->phone_number = $request->phone_number;
         $detailOrder->save();
+        $productModel = Product::find($product['product_id']);
+        if ($productModel) {
+            $productModel->stock_quantity -= $product['quantity'];
+            $productModel->save();
+        }
+        $userId = Auth::id();
+        ShoppingCart::where('id', $userId)->delete();
+      
     }
 
     return redirect()->back();
