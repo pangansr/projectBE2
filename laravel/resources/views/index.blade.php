@@ -7,7 +7,47 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
     <style>
+        /*Danh mục sản phẩm */
+     
+.horizontal-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    padding: 0;
+    margin: 0;
+    list-style-type: none;
+    width: 100%;
+}
+.category-list {
+    width: 100%; 
+    overflow-x: auto; 
+}
+.category-item-container {
+    display: flex;
+    align-items: center;
         
+    margin-right: 10px;
+    flex-grow: 1; 
+}
+
+.category-item {
+    border: none;
+    background: none;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    font-size: inherit;
+    color: black;
+    width: 100%;
+}
+
+.admin-icons {
+    margin-left: auto;
+    color: black;
+}
+
+/* */
         body {
             margin: 0%;
             /* background-color: #DEEFFF; */
@@ -17,7 +57,7 @@
         }
         .slide {
             display: flex;
-            height: 250px;
+            height: 500px;
             float: left;
             width: 100%;
             background-image: url(../images/back.jpg);
@@ -48,7 +88,7 @@
             margin-top: 20px;
         }
 
-        .category-list {
+        /* .category-list {
             margin-left: 10px;
             width: 250px;
             background-color: #D9DDF0;
@@ -72,21 +112,21 @@
             flex-grow: 1;
             color: white;
             font-size: 20px;
-        }
+        } */
 
         .products-add {
             text-decoration: none;
             font-weight: 300;
             font-size: 30px
         }
-
+/* 
         .category-item {
             border-radius: 10px;
             background-color: #B8D1E9;
             margin-top: 5px;
             margin-inline: 20px;
             padding: 2px 10px;
-        }
+        } */
 
         .category-item:last-child {
             margin-bottom: 9px;
@@ -144,54 +184,53 @@
         </main>
     </div>
 
-    <div class="containerr">
-        <div class="column">
-            <div class="category-list">
-                <div class="category-list-header">
-                    <div class="category-list-title">Danh mục sản phẩm</div>
-
-                </div>
-
-                {{-- quyền admin --}}
-                @if (Auth::user()->email == 'admin@gmail.com')
-                <form action="{{ route('categories.add') }}" method="post"
-                    style="display:flex; justify-content: center; margin: 10px 0px;">
-                    @csrf
-                    <input type="text" name="name" value=""
-                        style="width: 150px; padding: 10px; height:20px; margin-right:10px;">
-                    <input type="submit" value="Thêm"
-                        style="border-radius:10px ;border-color:#60ACF4; padding: 5px; background-color: #60ACF4">
-                </form>
-            @endif
-                
-                <button class="category-item" style="">Tất cả</button>
-                @foreach ($category as $category)
-                    <div
-                        style="display: flex; align-items: center; padding: 5px; margin: 10px;border-radius:10px; background-color: #B8D1E9">
-                        <button class="category-item" style="">{{ $category->name }}</button>
-
-                          {{-- quyền admin --}}
-                          @if (Auth::user()->email == 'admin@gmail.com')
-                          <a href="">
-                            <i class="fa fa-edit"
-                            style="font-size:25px; color:#007bff; margin-right:15px; "></i></a>
-                            <a href="#" onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
-                                <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
-                            </a>
-                            <script>
-                                function confirmDelete(url) {
-                                    if (confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
-                                        window.location.href = url;
-                                    }
-                                }
-                            </script>
-
-                      @endif
-                        
-                                
-                    </div>
-                @endforeach
+   
+    <div class="category-list">
+    <ul class="horizontal-list">
+        {{-- quyền admin --}}
+        @if (Auth::user()->email == 'admin@gmail.com')
+        <form action="{{ route('categories.add') }}" method="post" style="display:flex; justify-content: center; margin: 10px 0px;">
+            @csrf
+            <input type="text" name="name" value="" style="width: 150px; padding: 10px; height:20px; margin-right:10px;">
+            <input type="submit" value="Thêm" style="border-radius:10px ;border-color:#60ACF4; padding: 5px; background-color: #60ACF4">
+        </form>
+        @endif
+        <li>
+            <div class="category-item-container">
+                <a class="category-item" onclick="changeColor(this)">Tất cả</a>
             </div>
+        </li>
+        @foreach ($categories as $category)
+    <li>
+        <div class="category-item-container">
+
+            <a class="category-item" href="{{ route('categories.products', ['categoryId' => $category->id]) }}" onclick="changeColor(this)" data-id="{{ $category->id }}">{{ $category->name }}</a>
+            {{-- quyền admin --}}
+            @if (Auth::user()->email == 'admin@gmail.com')
+            <div class="admin-icons">
+                <a href="#">
+                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px; "></i>
+                </a>
+                <a href="#" onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
+                    <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
+                </a>
+            </div>
+            <script>
+                function confirmDelete(url) {
+                    if (confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
+                        window.location.href = url;
+                    }
+                }
+            </script>
+            @endif
+        </div>
+    </li>
+@endforeach
+    </ul>
+</div>
+
+<div class="containerr">
+<!-- 
             <div class="category-list">
                 <div class="category-list-header">
                     <div class="category-list-title">Sản phẩm mới nhất</div>
@@ -200,7 +239,7 @@
                     <li>{{ $product->name }}</li>
                 @endforeach
             </div>
-        </div>
+        </div> -->
         <div class="column" >
             <div class="slideshow-container">
 
@@ -305,5 +344,19 @@
         slides[slideIndex - 1].style.display = "block";
         setTimeout(showSlides, 2500);
     }
+
+    function changeColor(element) {
+       
+        var items = document.querySelectorAll('.category-item');
+
+       
+        items.forEach(function(item) {
+            item.style.color = 'black';
+        });
+
+        
+        element.style.color = 'Blue';
+    }
+    
 </script>
 @endsection

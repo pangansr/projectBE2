@@ -18,6 +18,16 @@ use Illuminate\Support\Facades\File;
 use App\Models\ShoppingCart;
 class CrudProductController extends Controller
 {
+    public function showProductsByCategory($categoryId)
+    {
+       
+        $products = Product::where('category_id', $categoryId)->get();
+      
+        return view('index', ['category' => $category]);
+    }
+    
+
+
     public function index()
     {
       //  $products = Product::all();
