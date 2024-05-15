@@ -138,6 +138,9 @@
         .size {
             width: 'auto';
         }
+        .img-fluid{
+            background-color: :'red';
+        }
     </style>
 </head>
 @section('content')
@@ -146,7 +149,7 @@
 
 
     <div class="row">
-        <div class="col-lg-5">
+        <div class="col-lg-4">
             <div class="image-container">
                 <img src="{{ asset('images/' . $product->image1) }}" alt="" class="img-fluid" id="hienthi">
                 <div style="margin-top:20px; display: flex; justify-content: center;">
@@ -172,7 +175,7 @@
                 </div>
                 <div class="mb-3">
                     <span class="mota">Mô tả:<br> {{ $product->description }}</span><br><br><br>
-                    <div class="mb-3">
+                    <div class="mb-3 ">
                         <form action="{{ route('cart.add') }}" method="POST">
                             @csrf
                             <input name="id_user" type="hidden" value="{{$user->id}}">
