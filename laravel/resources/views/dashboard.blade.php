@@ -217,7 +217,6 @@
                     </form>
 
                     <script>
-                        // Lắng nghe sự kiện khi số lượng sản phẩm thay đổi
                         const quantityInputs = document.querySelectorAll('.cart-quantity-input');
                         quantityInputs.forEach(input => {
                             input.addEventListener('change', updateTotalPrice);
