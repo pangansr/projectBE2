@@ -13,12 +13,12 @@
     height: 90%;
     overflow: scroll;
     padding: 20px;
-    background-color: #60ACF4;
-    /* Màu xanh nhạt */
+    background-color: #60cdf4;
+    /* Màu xanh nhạt    60ACF4*/
 }
 
 .modal-content {
-    background-color: #a6e7a2;
+    background-color: #7ccdf4;
     width: 100%;
 
 }

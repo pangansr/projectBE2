@@ -14,7 +14,7 @@ class Products extends Seeder
     {
         DB::table('products')->insert([
             [
-                'name' => 'Áo sơ mi nam Urban Luxe',
+                'name' => 'Áo sơ mi nam Urban Luxe 1',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -32,7 +32,7 @@ class Products extends Seeder
                 'image3' => '3.jpg',
             ],
             [
-                'name' => 'Áo sơ mi nam Urban Luxe',
+                'name' => 'Áo sơ mi nam Urban Luxe 2',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -50,7 +50,7 @@ class Products extends Seeder
                 'image3' => '6.jpg',
             ],
             [
-                'name' => 'Áo sơ mi nam Urban Luxe',
+                'name' => 'Áo sơ mi nam Urban Luxe 3',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -68,7 +68,7 @@ class Products extends Seeder
                 'image3' => '9.jpg',
             ],
             [
-                'name' => 'Áo sơ mi nam Urban Luxe',
+                'name' => 'Áo sơ mi nam Urban Luxe 4',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -86,7 +86,7 @@ class Products extends Seeder
                 'image3' => '2.jpg',
             ],
             [
-                'name' => 'Áo sơ mi nam Urban Luxe',
+                'name' => 'Áo sơ mi nam Urban Luxe 5',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -104,7 +104,7 @@ class Products extends Seeder
                 'image3' => '14.jpg',
             ],
             [
-                'name' => 'Áo sơ mi nam Urban Luxe',
+                'name' => 'Áo sơ mi nam Urban Luxe 6',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -122,7 +122,7 @@ class Products extends Seeder
                 'image3' => '17.jpg',
             ],
             [
-                'name' => 'Áo sơ mi nam Urban Luxe',
+                'name' => 'Áo sơ mi nam Urban Luxe 7',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
