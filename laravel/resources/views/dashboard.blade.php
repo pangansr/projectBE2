@@ -170,7 +170,7 @@
             </div>
             <div class="modal-body">
                 <div class="cart-items">
-                    <form action="{{ route('addDetailOrder') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('addOrder') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @foreach($shopingCart as $item)
                         <div class="cart-row">

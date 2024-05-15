@@ -8,7 +8,7 @@ use App\Models\Product;
 use App\Models\ShoppingCart;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\CrudCartController;
-class DetailOrdersController extends Controller
+class OrdersController extends Controller
 {
     public function AddOrders(Request $request)
 {
