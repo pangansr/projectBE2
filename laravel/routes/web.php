@@ -78,9 +78,14 @@ Route::post('/checkout', [CrudCartController::class, 'checkout'])->name('cart.ch
 
 Route::post('addDetailOrder', [DetailOrdersController::class, 'AddOrders'])->name('addDetailOrder');
 
+//thanh toán
+Route::get('thanhtoan', [PayController::class, 'ViewPayment'])->name('thanhtoan');
+
+
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
 
 
 
 Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');
+
