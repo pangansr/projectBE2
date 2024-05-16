@@ -168,43 +168,31 @@
     </header>
     <div class="container">
 
-            <div class="invoice">
-                <h1>Chi tiết Đơn hàng</h1>
-                <ul>
-                    @foreach($detailOrders as $detailOrder)
-                    <li>
-                        <div class="product-details">
-                            <span><strong>Tên sản phẩm</strong> {{ $detailOrder->product_id }}</span>
-                            <span><strong>Kích cỡ:</strong> {{ $detailOrder->size }}</span>
-                        </div>
-                        <div class="product-details">
-                            <span><strong>Số lượng:</strong> {{ $detailOrder->quantity }}</span>
-                            <span><strong>Tổng tiền:</strong> {{ $detailOrder->total }} VND</span>
-                        </div>
-                    </li>
-                    @endforeach
-                </ul>
-                <div class="total">
+        <div class="invoice">
+            <h1>Chi tiết Đơn hàng</h1>
+            <ul>
+             
+            </ul>
+            <div class="total">
 
-                    Tổng cộng :0 VND
-                </div>
+                Tổng cộng :0 VND
             </div>
-        <div class="customer-info">
-            <h2>Thông tin khách hàng</h2>
-            <label for="name">Họ và tên:</label>
-            <input type="text" id="name" name="name" required>
-            <label for="email">Email:</label>
-            <input type="email" id="email" name="email" required>
-            <label for="phone">Số điện thoại:</label>
-            <input type="tel" id="phone" name="phone" required>
-            <label for="address">Địa chỉ:</label>
-            <input type="text" id="address" name="address" required>
-            <label for="note">Ghi chú:</label>
-            <textarea id="note" name="note" rows="4"></textarea>
         </div>
-        <div class="checkout">
-            <button>Thanh Toán</button>
-        </div>
+        <form action="{{ route('AddOrder') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="customer-info">
+                <h2>Thông tin khách hàng</h2>
+                <label for="phone">Số điện thoại:</label>
+                <input type="tel" id="phone" name="phone" required>
+                <label for="address">Địa chỉ:</label>
+                <input type="text" id="address" name="address" required>
+                <label for="note">Ghi chú:</label>
+                <textarea id="note" name="note" rows="4"></textarea>
+            </div>
+            <div class="checkout">
+                <input type="submit" value="Thanh Toán">
+            </div>
+        </form>
     </div>
 </body>
 
