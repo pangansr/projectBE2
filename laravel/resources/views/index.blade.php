@@ -143,6 +143,7 @@
         <main class="main-content">
         </main>
     </div>
+    <img src="images/2.jpg" alt="Your Image" class="diamond-image">
 
     <div class="containerr">
         <div class="column">
