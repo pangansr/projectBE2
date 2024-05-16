@@ -7,8 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends Model
 {
-    public function user()
-    {
-        return $this->belongsTo(Product::class);
-    }
+    use HasFactory;
+
+    protected $table = 'order_detail'; // Tên bảng trong cơ sở dữ liệu
+
+    protected $fillable = [
+        'order_id',
+        'product_id',
+        'quantity',
+        'price',
+    ];
 }
