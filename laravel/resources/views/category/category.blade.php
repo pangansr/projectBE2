@@ -2,7 +2,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Category</title>
     <link rel="stylesheet" href="cart.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
 </head>
@@ -64,11 +64,7 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
-<<<<<<< HEAD
-            height: 600px;
-=======
             position: relative;
->>>>>>> kien
             float: left;
         
             
@@ -225,7 +221,6 @@ h1, h2, p {
         <main class="main-content">
         </main>
     </div>
-    <img src="images/2.jpg" alt="Your Image" class="diamond-image">
 
    
     <div class="category-list">
@@ -240,7 +235,7 @@ h1, h2, p {
         @endif
         <li>
             <div class="category-item-container">
-                <a class="category-item" onclick="changeColor(this)">Tất cả</a>
+                <a href="{{ route('user.list') }}" class="category-item" onclick="changeColor(this)">Tất cả</a>
             </div>
         </li>
         @foreach ($category as $category)
@@ -270,6 +265,7 @@ h1, h2, p {
     </li>
 @endforeach
     </ul>
+    
 </div>
 <div class="hero">
         <img alt="Lamborghini Huracán STO" src="../images/background.png"  class="" style=" min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
@@ -296,41 +292,13 @@ h1, h2, p {
     </div>
     </div>
 <div class="containerr">
-<!-- 
-            <div class="category-list">
-                <div class="category-list-header">
-                    <div class="category-list-title">Sản phẩm mới nhất</div>
-                </div>
-                @foreach ($productss as $product)
-                    <li>{{ $product->name }}</li>
-                @endforeach
-            </div>
-        </div> -->
+
       
         <div class="column" >
        
 
-<<<<<<< HEAD
-                <div class="slide" style="display: flex;">
-                    <h1>Welcome to the website </h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. </p>
-                    <button type="button" class="nut">Get it now</button>
-                </div>
-                <div class="slide " style="display: flex;">
-                   
-                        <h1>Trải nghiệm với đa dạng loại sản phẩm</h1>
-                        <h2>Free Ecommerce Template</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. </p>
-                        <button type="button" class="nut">Get it now</button>
-                   
-                </div>
-            </div>
-=======
          
            
->>>>>>> kien
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
                 {{-- quyền admin --}}        
@@ -431,11 +399,4 @@ h1, h2, p {
     }
     
 </script>
-<script>
-    var errorMessage = "{{ session('error') }}";
-    if(errorMessage) {
-        alert(errorMessage);
-    }
-</script>
-
 @endsection

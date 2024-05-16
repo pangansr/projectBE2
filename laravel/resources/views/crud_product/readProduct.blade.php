@@ -55,8 +55,8 @@
         #hienthi {
             border: 2px double rgb(0, 0, 0);
             border-radius: 20px;
-            height: 900px;
-            width: 800px;
+            height: 700px;
+            width: 600px;
         }
 
         .anh {
