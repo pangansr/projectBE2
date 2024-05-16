@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgetPassword;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\PasswordResetTokens;
 use App\Models\Profile;
 use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
@@ -12,13 +14,48 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 /**
  * CRUD User controller
  */
 class CrudUserController extends Controller
 {
+    public function check_fogot_password(Request $request)
+{
+  $request->validate([
+    'email' => 'required|exists:users,email'
+  ], [
+    'email.exists' => 'Email không tồn tại trong hệ thống.'
+  ]);
 
+  $mail_user = User::where('email', $request->email)->get();
+
+  if ($mail_user) {
+    $token = Str::random(50);
+    $tokenData = [
+      'email' => $request->email,
+      'token' => $token,
+    ];
+
+    if (PasswordResetTokens::create($tokenData)) {
+      Mail::to($request->email)->send(new ForgetPassword($mail_user, $token));
+      return redirect()->back()->with('success', 'Vui lòng kiểm tra email');
+    }
+  } else {
+    // Xử lý trường hợp email không được tìm thấy
+    return redirect()->back()->with('error', 'Email không tồn tại trong hệ thống.');
+  }
+
+  return redirect()->back()->with('error', 'Vui lòng kiểm tra lại email'); // Dòng này không thể truy cập được, hãy cân nhắc xóa nó
+}
+
+
+    public function fogetpassword()
+    {
+        return view('reset_password.email');
+    }
     /**
      * Login page
      */
