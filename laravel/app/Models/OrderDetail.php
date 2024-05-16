@@ -8,8 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class OrderDetail extends Model
 {
     use HasFactory;
-<<<<<<< HEAD
-=======
 
     protected $table = 'order_detail'; // Tên bảng trong cơ sở dữ liệu
 
@@ -20,5 +18,5 @@ class OrderDetail extends Model
         'price',
     ];
     
->>>>>>> gfd
+
 }
