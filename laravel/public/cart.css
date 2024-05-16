@@ -9,7 +9,6 @@
     right: 0;
     top: 0;
     width: 30%;
-    /* Chiều rộng 1/4 màn hình */
     height: 90%;
     overflow: scroll;
     padding: 20px;
@@ -49,7 +48,7 @@
 
 .cart-item-details {
     flex: 1;
-    /* Điều này sẽ khiến phần còn lại của cart-item chiếm hết không gian còn lại */
+   
 }
 
 .cart-price {

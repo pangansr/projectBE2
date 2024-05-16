@@ -306,4 +306,11 @@
         setTimeout(showSlides, 2500);
     }
 </script>
+<script>
+    var errorMessage = "{{ session('error') }}";
+    if(errorMessage) {
+        alert(errorMessage);
+    }
+</script>
+
 @endsection

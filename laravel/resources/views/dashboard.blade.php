@@ -12,9 +12,6 @@
 </head>
 <style>
     .header {
-
-        /* background: linear-gradient(to left, #12FFA0, #59DAB8, #F1F2B6); */
-        /* background-color: #08ed11; */
         background-color: #B8D1E9;
         display: flex;
         align-items: center;
@@ -103,34 +100,6 @@
         width: 100px;
         height: 100px;
     }
-
-    .footer {
-        background-color: #A8C4DB;
-
-    }
-
-    .footer h5 {
-        color: #333;
-    }
-
-    .footer ul {
-        list-style: none;
-        padding-left: 0;
-    }
-
-    .footer ul li {
-        margin-bottom: 10px;
-    }
-
-    .footer-bottom {
-        background-color: #343a40;
-        color: #fff;
-        padding: 15px 0;
-    }
-
-    .footer-bottom p {
-        margin-bottom: 0;
-    }
 </style>
 
 <body>
@@ -176,28 +145,28 @@
                         @csrf
                         @foreach($shopingCart as $item)
                         <div class="cart-row">
-                            <div class="cart-item cart-column">
-                                <img class="cart-item-image" src="{{ asset('images/' . $item->product->image1) }}" width="80px" height="80px">
-                                <div class="product-row">
-                                    <div class="cart-item-title">{{ $item->product->name }}</div><br>
-                                    <select name="products[{{ $loop->index }}][size]" style="width: 35px; font-size: 15px;">
-                                        <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
-                                        <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
-                                        <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
-                                        <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
-                                    </select>
-                                    <div class="cart-quantity cart-column">
-                                        <input class="cart-quantity-input" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
-                                    </div>
-                                </div>
-                            </div>
+    <div class="cart-item cart-column">
+        <img class="cart-item-image" src="{{ asset('images/' . $item->product->image1) }}" width="80px" height="80px">
+        <div class="product-row">
+            <div class="cart-item-title">{{ $item->product->name }}</div>
+            <select name="products[{{ $loop->index }}][size]" class="cart-item-size">
+                <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
+                <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
+                <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
+                <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
+            </select>
+            <div class="cart-quantity cart-column">
+                <input class="cart-quantity-input" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
+            </div>
+        </div>
+    </div>
+    <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
+    <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
+    <div class="cart-action cart-column">
+        <a href="{{ route('cart.remove',['id'=>$item->id]) }}" class="cart-remove">Xóa</a>
+    </div>
+</div>
 
-                            <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
-                            <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
-                            <div class="cart-action cart-column">
-                                <a href="{{ route('cart.remove',['id'=>$item->id]) }}">Xóa</a>
-                            </div>
-                        </div>
                         @endforeach
                         @php
                         $totalPrice = 0;
@@ -240,7 +209,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     <script src="cart.js"></script>
     @yield('content')
