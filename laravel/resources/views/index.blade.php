@@ -286,7 +286,7 @@ h1, h2, p {
                       <h2>The Perfect Space to Enjoy Fantastic Food</h2>
                       <h5>Festive dining at Farthings where we are strong believers in using the very best produce</h5>
                       <div class="d-md-flex align-items-center">
-                         <a href="menu-1.html" class="button">See Our Menus</a>
+                         <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
                          <div class="video">
                          <a data-fancybox="" href="https://www.youtube.com/watch?v=1La4QzGeaaQ"><i>
                            <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -305,7 +305,8 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>grilled cheese</h2>
+                      <h2>Lorem, ipsum dolor.
+                      </h2>
                       <h1>burger</h1>
                       <h6>limited time offer</h6>
                       <div class="d-md-flex align-items-center">
@@ -321,9 +322,9 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>delicious</h2>
-                      <h1>Hot Pizza</h1>
-                      <h6>don't miss this deal</h6>
+                      <h2>Lorem.</h2>
+                      <h1>Lorem, ipsum dolor.</h1>
+                      <h6>don't miss this</h6>
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">get offer today</a>
                       </div>
@@ -337,7 +338,7 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>Summer Drink</h2>
+                      <h2>Summer favorite</h2>
                       <h1>Cocktail</h1>
                       <h6>limited time offer</h6>
                       <div class="d-md-flex align-items-center">
