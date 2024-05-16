@@ -8,6 +8,7 @@ use App\Http\Controllers\CrudCategoriesController;
 use App\Http\Controllers\RevenueStatisticsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -72,7 +73,10 @@ Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart']
 
 
 
-Route::post('addOrder', [OrdersController::class, 'AddOrders'])->name('addOrder');
+Route::post('GetOrderDetails', [OrdersController::class, 'GetOrderDetails'])->name('GetOrderDetails');
+Route::get('ViewOrder', [OrdersController::class, 'ViewOrder'])->name('ViewOrder');
+Route::post('AddOrder', [OrdersController::class, 'AddOrder'])->name('AddOrder');
+
 
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
@@ -80,3 +84,4 @@ Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenu
 
 
 Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');
+

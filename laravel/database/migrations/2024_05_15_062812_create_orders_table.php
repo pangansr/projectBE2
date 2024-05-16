@@ -20,6 +20,7 @@ class CreateOrdersTable extends Migration
             $table->text('note')->nullable();
             $table->timestamps();
             $table->foreign('id_users')->references('id')->on('users')->onDelete('cascade');
+            $table->decimal('total', 10, 2)->nullable();
         });
     }
 

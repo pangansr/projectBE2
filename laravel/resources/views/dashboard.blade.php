@@ -106,7 +106,7 @@
 
     .footer {
         background-color: #A8C4DB;
-        
+
     }
 
     .footer h5 {
@@ -172,7 +172,7 @@
             </div>
             <div class="modal-body">
                 <div class="cart-items">
-                    <form action="{{ route('addOrder') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('GetOrderDetails')}}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @foreach($shopingCart as $item)
                         <div class="cart-row">
@@ -205,8 +205,6 @@
                         $totalPrice += $item->price * $item->quantity;
                         }
                         @endphp
-                        <input type="text" name="address" placeholder="Địa chỉ giao hàng">
-                        <input type="text" name="phone_number" placeholder="Số điện thoại">
                         <div class="modal-footer">
                             <div class="cart-total">
                                 <strong class="cart-total-title">Tổng Cộng:</strong>
@@ -244,51 +242,8 @@
         </div>
     </div>
     </div>
-
-
-
-
-
     <script src="cart.js"></script>
     @yield('content')
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <h5>Liên kết</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="#">Trang chủ</a></li>
-                        <li><a href="#">Sản phẩm</a></li>
-                        <li><a href="#">Về chúng tôi</a></li>
-                        <li><a href="#">Liên hệ</a></li>
-                    </ul>
-                </div>
-                <div class="col-md-4">
-                    <h5>Thông tin liên hệ</h5>
-                    <p>123 Đường ABC, Quận XYZ, TP HCM</p>
-                    <p>Email: contact@example.com</p>
-                    <p>Điện thoại: 0123 456 789</p>
-                </div>
-                <div class="col-md-4">
-                    <h5>Theo dõi chúng tôi</h5>
-                    <ul class="list-inline">
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li>
-                        <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i></a></li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-        <div class="footer-bottom">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 text-center">
-                        <p>&copy; 2024 Tên Công Ty. Tất cả các quyền được bảo lưu.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </footer>
 </body>
 
 </html>
