@@ -104,7 +104,7 @@
 
     .footer {
         background-color: #A8C4DB;
-        
+
     }
 
     .footer h5 {
@@ -170,7 +170,11 @@
             </div>
             <div class="modal-body">
                 <div class="cart-items">
+<<<<<<< HEAD
                     <form action="{{ route('addOrder') }}" method="POST" enctype="multipart/form-data">
+=======
+                    <form action="" method="POST" enctype="multipart/form-data">
+>>>>>>> 2-nhanhmoi
                         @csrf
                         @foreach($shopingCart as $item)
                         <div class="cart-row">
@@ -211,7 +215,7 @@
                                 <span class="cart-total-price">{{ $totalPrice }} VNĐ</span>
                             </div>
                             <div class="cart-button">
-                                <input type="submit" class="btn btn-secondary close-footer" value="Thanh toán">
+                                <input type="submit" onclick="window.location.href='{{route('thanhtoan')}}'" class="btn btn-secondary close-footer" value="Thanh toán">
                             </div>
                         </div>
                     </form>

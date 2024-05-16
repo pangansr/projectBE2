@@ -74,9 +74,14 @@ Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart']
 
 Route::post('addOrder', [OrdersController::class, 'AddOrders'])->name('addOrder');
 
+//thanh toán
+Route::get('thanhtoan', [PayController::class, 'ViewPayment'])->name('thanhtoan');
+
+
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
 
 
 
 Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');
+

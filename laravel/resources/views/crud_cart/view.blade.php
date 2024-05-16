@@ -24,6 +24,7 @@
         border-radius: 5px;
         cursor: pointer;
     }
+    
 </style>
 @section('content')
 
@@ -53,6 +54,7 @@
                     <td><img src="{{ asset('images/' . $item->product->image1) }}" alt="{{ $item->product->name }}" class="avatar"></td>
                     <td>{{ $item->product->name }}</td>
                     <td class="pricedefau">{{ $item->product->price }}</td>
+                    <div class="details">
                     <td>
                         <select name="size" class="form-control size-select">
                             <option value="S" data-price="{{ $item->product->price_S }}">S</option>
@@ -64,7 +66,7 @@
                     <td>
                         <input type="number" name="quantity" class="form-control quantity-input" style="width: 20px;" data-price="{{ $item->product->price }}">
                     </td>
-
+                    </div>
                     <td>
                         <div class="price" id="total-price-{{ $loop->index }}">{{ $item->product->price * $item->quantity }}</div>
                     </td>
