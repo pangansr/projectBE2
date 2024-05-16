@@ -84,4 +84,7 @@ Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenu
 
 
 Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');
+//update user
+Route::post('/read', [CrudUserController::class, 'updateProfile'])->name('profile.update');
+//oute::get('/read', [CrudUserController::class, 'updateProfile']);
 
