@@ -12,7 +12,7 @@
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 0 5px ;
         }
 
         .invoice h1 {
@@ -65,9 +65,9 @@
         }
 
         header {
-            background: #333;
-            color: #fff;
-            padding: 10px 0;
+            background: #60ACF4;
+            color: #333;
+            padding: 3px;
             text-align: center;
         }
 
