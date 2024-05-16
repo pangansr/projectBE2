@@ -73,7 +73,7 @@ Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart']
 
 
 
-Route::post('GetOrderDetails', [OrdersController::class, 'AddOrders'])->name('GetOrderDetails');
+Route::post('GetOrderDetails', [OrdersController::class, 'GetOrderDetails'])->name('GetOrderDetails');
 
 
 
