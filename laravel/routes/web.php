@@ -83,3 +83,6 @@ Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name(
 //Route::get('/revenue-statistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
 
 Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStatsByCategory'])->name('getStatsByCategory');
+
+Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
+

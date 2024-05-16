@@ -309,11 +309,13 @@
         flex-direction: column;
         margin: auto 0;
     }
+
     .stats-kh {
         display: flex;
         flex-direction: column;
         margin: auto 0;
     }
+
     .stats-gt {
         display: flex;
         flex-direction: column;
@@ -487,6 +489,62 @@
     }
 </style>
 @section('content')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script>
+    $(document).ready(function () {
+     //chang
+        $('#category_id').change(function () {
+            var categoryId = $(this).val();
+            if (categoryId == 0 || categoryId === "") { 
+                $.ajax({
+                    url: '{{ route("getAllStats") }}', 
+                    method: 'GET',
+                    success: function (response) {
+                        $('.stats-content .value').text(response.orderCount);
+                        $('.stats-gt .value').text(response.totalValue);
+                        $('.stats-kh .value').text(response.customerCount);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            } else {
+                $.ajax({
+                    url: '{{ route("getStatsByCategory") }}',
+                    method: 'GET',
+                    data: { categoryId: categoryId },
+                    success: function (response) {
+                        $('.stats-content .value').text(response.orderCount);
+                        $('.stats-gt .value').text(response.totalValue);
+                        $('.stats-kh .value').text(response.customerCount);
+                    },
+                    error: function (xhr, status, error) {
+                        console.error(error);
+                    }
+                });
+            }
+        });
+
+        //mới dô
+        var initialCategoryId = $('#category_id').val();
+        if (initialCategoryId == 0 || initialCategoryId === "") {
+          
+            $.ajax({
+                url: '{{ route("getAllStats") }}',
+                method: 'GET',
+                success: function (response) {
+                    $('.stats-content .value').text(response.orderCount);
+                    $('.stats-gt .value').text(response.totalValue);
+                    $('.stats-kh .value').text(response.customerCount);
+                },
+                error: function (xhr, status, error) {
+                    console.error(error);
+                }
+            });
+        }
+    });
+</script>
+
 <div class="statistics-container">
     <div class="statistics-wrapper">
         <section class="filter-section">
@@ -500,41 +558,25 @@
                         <input type="date" id="toDate" class="date-input" />
                         <label class="text">Doanh mục</label>
                         <select id="category_id" name="category_id" required class="form-control">
-                        <option value="0">Tất cả
-                            </option>  
-                        <?php foreach ($categories as $category): ?>        
-                            <option value="<?php    echo $category['id']; ?>"><?php    echo $category['name']; ?>
-                            </option>
-                            <?php endforeach; ?>
+                            <option value="0">Tất cả</option>
+                            @foreach ($categories as $category)
+                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
                         </select>
+
+
 
                     </div>
                     <input type="submit" value="Tìm kiếm" class="button">
                 </div>
-                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-                <script>
-                    $(document).ready(function () {
-                        $('#category_id').change(function () {
-                            var categoryId = $(this).val();
-                            $.ajax({
-                                url: '{{ route("getStatsByCategory") }}',
-                                method: 'GET',
-                                data: { categoryId: categoryId },
-                                success: function (response) {
-                                    $('.stats-content .value').text(response.orderCount);
-                                    $('.stats-gt .value').text(response.totalValue);
-                                    $('.stats-kh .value').text(response.customerCount);
-                                },
-                                error: function (xhr, status, error) {
-                                    console.error(error);
-                                }
-                            });
-                        });
-                    });
-                </script>
+               
+
                 <div class="stats-content">
-         
+
                 </div>
+
+
+
                 <div class="overview-section">
 
                     <header class="main-header">
@@ -548,6 +590,7 @@
                         </div>
                         <img src="./image/slkhpng.png" alt="" class="stats-icon" />
                     </div>
+                    
                     <div class="overview-table">
                         <table>
                             <thead>
@@ -655,6 +698,8 @@
 
             </div>
         </section>
+
     </div>
+
 </div>
 @endsection
