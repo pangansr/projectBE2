@@ -95,5 +95,5 @@ Route::post('/read', [CrudUserController::class, 'updateProfile'])->name('profil
 Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStatsByCategory'])->name('getStatsByCategory');
 
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
->>>>>>> gfd
+
 

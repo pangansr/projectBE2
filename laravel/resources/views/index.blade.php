@@ -64,11 +64,8 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
-<<<<<<< HEAD
             height: 600px;
-=======
             position: relative;
->>>>>>> kien
             float: left;
         
             
@@ -221,23 +218,19 @@ h1, h2, p {
     </style>
 @section('content')
     <div class="container">
-        
         <main class="main-content">
         </main>
     </div>
-    <img src="images/2.jpg" alt="Your Image" class="diamond-image">
-
-   
-    <div class="category-list">
-    <ul class="horizontal-list">
-        {{-- quyền admin --}}
+    {{-- quyền admin --}}
         @if (Auth::user()->email == 'admin@gmail.com')
-        <form action="{{ route('categories.add') }}" method="post" style="display:flex; justify-content: center; margin: 10px 0px;">
+        <form action="{{ route('categories.add') }}" method="post" style="margin: 10px 0px;">
             @csrf
             <input type="text" name="name" value="" style="width: 150px; padding: 10px; height:20px; margin-right:10px;">
             <input type="submit" value="Thêm" style="border-radius:10px ;border-color:#60ACF4; padding: 5px; background-color: #60ACF4">
         </form>
         @endif
+    <div class="category-list">
+    <ul class="horizontal-list">
         <li>
             <div class="category-item-container">
                 <a class="category-item" onclick="changeColor(this)">Tất cả</a>
@@ -309,8 +302,6 @@ h1, h2, p {
       
         <div class="column" >
        
-
-<<<<<<< HEAD
                 <div class="slide" style="display: flex;">
                     <h1>Welcome to the website </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
@@ -327,10 +318,8 @@ h1, h2, p {
                    
                 </div>
             </div>
-=======
-         
-           
->>>>>>> kien
+  
+        
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
                 {{-- quyền admin --}}        
@@ -418,15 +407,10 @@ h1, h2, p {
     }
 
     function changeColor(element) {
-       
-        var items = document.querySelectorAll('.category-item');
-
-       
+        var items = document.querySelectorAll('.category-item');       
         items.forEach(function(item) {
             item.style.color = 'black';
         });
-
-        
         element.style.color = 'Blue';
     }
     
