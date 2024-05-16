@@ -12,11 +12,11 @@
 </head>
 <style>
     .header {
-        background-color: #B8D1E9;
         display: flex;
         align-items: center;
         justify-content: space-between;
         padding: 10px;
+        padding-top: 20px;
         margin-bottom: 20px;
 
 
@@ -46,32 +46,56 @@
         transition: background-color 0.3s ease;
     }
 
-    .nav-item:hover {
-        background-color: #69D5F3;
-        color: #AEFCAD;
-    }
+    .nav-item {
+    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    z-index: 1;
+}
+
+.nav-item:hover {
+    background-color: #69D5F3;
+    color: white;
+    text-decoration: none;
+    transform: translateY(-5px); /* Di chuyển lên trên 5px */
+    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
+}
+
 
     .search-form {
         display: flex;
         align-items: right;
         margin-inline: 70px;
+        margin-bottom: -10px;
     }
 
     .search-input {
-        border-radius: 15px;
-        border: 1px solid #69D5F3;
-        color: #333;
-        padding: 10px;
-    }
+    border-radius: 20px; 
+    border: 1px solid black; 
+    color: black;
+    padding: 12px; 
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+}
 
-    .search-button {
-        border-radius: 0px 15px 15px 0px;
-        margin-left: -25px;
-        border: 1px solid #69D5F3;
-        background-color: #69D5F3;
-        color: #333;
-        padding: 10px 15px;
-    }
+.search-input:focus {
+    border-color: #69D5F3; /* Đổi màu viền khi input được focus */
+    box-shadow: 0 0 5px rgba(105, 213, 243, 0.5); /* Hiệu ứng đổ bóng khi input được focus */
+}
+
+.search-button {
+    border-radius: 0px 20px 20px 0px; 
+    margin-left: -25px;
+    border: 1px solid black;
+    background-color: #69D5F3;
+    color: white;
+    padding: 12px 20px; 
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.search-button:hover {
+    background-color: #69D5F3; /* Đổi màu nền khi di chuột qua */
+    color: white; /* Đổi màu chữ khi di chuột qua */
+}
+
 
     .avatar {
         width: 70px;
@@ -79,6 +103,7 @@
         margin-inline: 5px;
         border: 3px solid black;
         border-radius: 50%;
+        margin-bottom: -10px;
     }
 
     @keyframes fade {
@@ -91,29 +116,41 @@
         }
     }
 
-    .nav-item:hover {
-        color: black;
-        border: 1px solid #000;
-    }
 
     .logo {
-        width: 100px;
-        height: 100px;
+        width: 140px;
+        height: 130px;
+        
     }
+    .logout {
+    margin-bottom: -10px;
+    border: 2px solid red; 
+    background-color: white;
+    border-radius: 5px;
+    font-size: 18px;
+    padding: 10px;
+    transition: border-color 0.3s ease; 
+}
+
+.logout:hover {
+    background-color: red;
+    color: white;
+}
+
 </style>
 
 <body>
     <header class="header">
         <nav class="header-nav">
-            <img src="images/logo.png" alt="Logo" class="logo" />
+            <img src="images/logo.png" alt="Logo" class="logo"  />
             <a href="{{ route('user.list') }}" class="nav-item">
-                <h3>Trang chủ </h3>
+                <h3>TRANG CHỦ</h3>
             </a>
             <div id="cart" class="nav-item">
-                <h3> Giỏ Hàng </h3>
+                <h3>GIỎ HÀNG </h3>
             </div>
             <a href="{{ route('ViewRevenueStatistics') }}" class="nav-item">
-                <h3>Thống kê</h3>
+                <h3>THỐNG KÊ</h3>
             </a>
         </nav>
         <div class="nav-right">
@@ -123,7 +160,7 @@
             </form>
 
             <a href="{{ route('signout') }}">
-                <button style=" border: none; background-color: #60ACF4; border-radius:5px; font-size: 18px; padding: 10px;">
+                <button class="logout">
                     Đăng xuất
                 </button>
             </a>
@@ -132,7 +169,7 @@
             </a>
         </div>
     </header>
-
+<hr>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -191,7 +228,6 @@
                             input.addEventListener('change', updateTotalPrice);
                         });
 
-                        // Hàm cập nhật tổng giá trị
                         function updateTotalPrice() {
                             let totalPrice = 0;
                             quantityInputs.forEach(input => {
@@ -200,7 +236,6 @@
                                 totalPrice += price * quantity;
                             });
 
-                            // Hiển thị tổng giá trị mới
                             const cartTotalPriceElement = document.querySelector('.cart-total-price');
                             cartTotalPriceElement.textContent = `${totalPrice} VNĐ`;
                         }

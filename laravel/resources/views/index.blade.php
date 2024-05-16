@@ -17,7 +17,7 @@
         }
         .slide {
             display: flex;
-            height: 250px;
+            height: 600px;
             float: left;
             width: 100%;
             background-image: url(../images/back.jpg);
@@ -204,7 +204,7 @@
         <div class="column" >
             <div class="slideshow-container">
 
-                <div class="slide " style="display: flex;">
+                <div class="slide" style="display: flex;">
                     <h1>Welcome to the website </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
                         labore et dolore magna aliqua. </p>
