@@ -8,6 +8,7 @@ use App\Http\Controllers\CrudCategoriesController;
 use App\Http\Controllers\RevenueStatisticsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,9 +74,6 @@ Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart']
 
 
 Route::post('addOrder', [OrdersController::class, 'AddOrders'])->name('addOrder');
-
-//thanh toán
-Route::get('thanhtoan', [PayController::class, 'ViewPayment'])->name('thanhtoan');
 
 
 

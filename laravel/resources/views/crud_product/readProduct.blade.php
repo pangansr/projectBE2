@@ -190,12 +190,6 @@
                             <br><br>
                             <input type="submit" class="btn btn-warning px-3 py-2" value="Thêm vào giỏ hàng">
                         </form>
-                        <form action="{{ route('user.postUser') }}" method="POST">
-                            @csrf
-                            <input name="id_user" type="hidden" value="{{$user->id}}">
-                            <input name="id_product" type="hidden" value="{{request('id')}}">
-                            <input type="submit" class="btn btn-success px-3 py-2" value="Mua">
-                        </form>
                     </div>
                 </div>
                 <hr>

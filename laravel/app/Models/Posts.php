@@ -19,7 +19,7 @@ class Posts extends Model
      * Relationship
      * @return BelongsTo
      */
-    public function user(): BelongsTo
+    public function user()
     {
         return $this->belongsTo(User::class);
     }
