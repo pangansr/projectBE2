@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ForgetPassword;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
+use App\Models\PasswordResetTokens;
 use App\Models\Profile;
 use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
@@ -12,13 +14,39 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Str;
 
 /**
  * CRUD User controller
  */
 class CrudUserController extends Controller
 {
-
+    public function check_fogot_password(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|exists:users,email'
+        ], [
+            'email.exists' => 'Email không tồn tại trong hệ thống.'
+        ]);
+        $mail_user = User::where('email', $request->email)->first();
+        $token = Str::random(50);
+        $tokenData = [
+            'email' => $request->email,
+            'token' => $token,
+        ];
+        //dd($tokenData);
+        if (PasswordResetTokens::create($tokenData)) {
+            Mail::to($request->email)->send(new ForgetPassword($mail_user, $token));
+            return redirect()->back()->with('sucsess', 'Vui lòng kiểm tra email');
+        };
+        
+        return redirect()->back()->with('error', 'Vui lòng kiểm tra lại email');
+    }
+    public function fogetpassword()
+    {
+        return view('reset_password.email');
+    }
     /**
      * Login page
      */
@@ -34,7 +62,7 @@ class CrudUserController extends Controller
             'phone' => 'required|numeric',
             'address' => 'nullable',
         ]);
-    
+
         // Tạo mới hoặc cập nhật profile
         $profile = Profile::updateOrCreate(
             ['user_id' => $request->input('id_user')],
@@ -49,14 +77,14 @@ class CrudUserController extends Controller
                 'address' => $request->input('address')
             ]
         );
-    
+
         if ($profile) {
             return redirect()->back()->with('success', 'Profile đã được cập nhật thành công!');
         } else {
             return redirect()->back()->with('error', 'Đã xảy ra lỗi khi cập nhật profile!');
         }
     }
-    
+
     public function ViewRevenueStatistics(Request $request)
     {
         $user_id = $request->get('id');
@@ -147,10 +175,10 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user_hienTai = Auth::user();
         $shopingCart = ShoppingCart::where('user_id', $user_hienTai->id)->get();
-      $profile = Profile:: where('user_id',$user_hienTai->id)->first();
+        $profile = Profile::where('user_id', $user_hienTai->id)->first();
         $user = User::find($user_id);
 
-        return view('crud_user.read', ['user' => $user], compact('shopingCart','profile'));
+        return view('crud_user.read', ['user' => $user], compact('shopingCart', 'profile'));
     }
 
     /**

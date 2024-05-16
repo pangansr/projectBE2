@@ -87,4 +87,13 @@ Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name(
 //update user
 Route::post('/read', [CrudUserController::class, 'updateProfile'])->name('profile.update');
 //oute::get('/read', [CrudUserController::class, 'updateProfile']);
+//Lay Mat Khau
+//get form email
+Route::get('/fogotpass', [CrudUserController::class, 'fogetpassword'])->name('user.fogetpass');
+Route::post('/fogotpass', [CrudUserController::class, 'check_fogot_password'])->name('user.checkpassword');
+
+
+Route::get('/reset-password/{token}', [CrudUserController::class, 'reset_password'])->name('account.reset_password');
+Route::post('/reset-password/{token}', [CrudUserController::class, 'check_reset_password']);
+
 
