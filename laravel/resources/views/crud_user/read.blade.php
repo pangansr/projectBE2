@@ -8,20 +8,19 @@
     </script>
     <style>
         .avt {
-            background-color: 'red';
+            background-color: red;
             border-radius: 50%;
         }
         @media (min-width: 1025px) {
-.h-custom {
-height: 100vh !important;
-}
-}
+            .h-custom {
+                height: 100vh !important;
+            }
+        }
     </style>
     <section style="background-color: #eee;">
         <div class="container py-5">
             <div class="row">
                 <div class="col">
-
                 </div>
             </div>
 
@@ -29,36 +28,44 @@ height: 100vh !important;
                 <div class="col-lg-4">
                     <div class="card mb-4">
                         <div class="card-body text-center">
-                            <img src="{{ asset('avatar/' . $user->avatar) }}"class="avt" width="100px" height="100px"
-                                alt="avatar">
-                            <h5 class="my-3">Full Name<h5>
-                                    <p class="text-muted mb-1">Full Stack Developer</p>
-                                    <p class="text-muted mb-4">Bay Area, San Francisco, CA</p>
-                                    <div class="d-flex justify-content-center mb-2">
-                                        <a href="{{ route('user.updateUser',['id'=>$user->id])}}" class="chinhSua">Chỉnh sửa</a>
-                                    </div>
+                            <img src="{{ asset('avatar/' . $user->avatar) }}" class="avt" width="100px" height="100px" alt="avatar">
+                            <h5 class="my-3">@if($profile)
+                                {{  $profile->first_name }} {{ $profile->last_name }} 
+                            @else
+                                <p>null</p>
+                            @endif</h5>
+                            <p class="text-muted mb-1">@if($profile)
+                                {{ $profile->discription }} 
+                            @else
+                                <p>null</p>
+                            @endif</p>
+                            <p class="text-muted mb-4">@if($profile)
+                                {{ $profile->address }} 
+                            @else
+                                <p>null</p>
+                            @endif</p>
+                            <div class="d-flex justify-content-center mb-2">
+                                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editModal">Chỉnh sửa</button>
+                            </div>
                         </div>
                     </div>
-
                 </div>
                 <div class="col-lg-8">
                     <div class="card mb-4">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-sm-3">
-                                    <p class="mb-0">ID_user</p>
-                                </div>
-                                <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $user->id }}</p>
-                                </div>
                             </div>
                             <hr>
                             <div class="row">
                                 <div class="col-sm-3">
-                                    <p class="mb-0">Full Name</p>
+                                   <p class="mb-0">Full Name</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Johnatan Smith</p>
+                                    @if($profile)
+                                    {{ $profile->first_name }} {{ $profile->last_name }}
+                                @else
+                                    <p>null</p>
+                                @endif
                                 </div>
                             </div>
                             <hr>
@@ -76,7 +83,9 @@ height: 100vh !important;
                                     <p class="mb-0">Phone</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">{{ $user->phone }}</p>
+                                    <p class="text-muted mb-0">
+                                        {{ $user->phone }} 
+                                    </p>
                                 </div>
                             </div>
                             <hr>
@@ -85,7 +94,19 @@ height: 100vh !important;
                                     <p class="mb-0">Sex</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">(098) 765-4321</p>
+                                    <p class="text-muted mb-0">
+                                        @if($profile)
+                                            @if ($profile->sex == 1)
+                                                <p>Nữ</p>
+                                            @elseif ($profile->sex == 2)
+                                                <p>Nam</p>
+                                            @else
+                                                <p>Khác</p>
+                                            @endif
+                                        @else
+                                            <p>null</p>
+                                        @endif
+                                    </p>
                                 </div>
                             </div>
                             <hr>
@@ -94,80 +115,76 @@ height: 100vh !important;
                                     <p class="mb-0">Address</p>
                                 </div>
                                 <div class="col-sm-9">
-                                    <p class="text-muted mb-0">Bay Area, San Francisco, CA</p>
+                                    <p class="text-muted mb-0">@if($profile)
+                                        {{ $profile->address }} 
+                                    @else
+                                        <p>null</p>
+                                    @endif</p>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-
-
                     </div>
                 </div>
             </div>
         </div>
     </section>
-    <section class="h-100 h-custom" style="background-color: #8fc4b7;">
-        <div class="container py-5 h-100">
-          <div class="row d-flex justify-content-center align-items-center h-100">
-            <div class="col-lg-8 col-xl-6">
-              <div class="card rounded-3">
-                <img src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/img3.webp"
-                  class="w-100" style="border-top-left-radius: .3rem; border-top-right-radius: .3rem;"
-                  alt="Sample photo">
-                <div class="card-body p-4 p-md-5">
-                  <h3 class="mb-4 pb-2 pb-md-0 mb-md-5 px-md-2">Registration Info</h3>
-      
-                  <form class="px-md-2">
-      
-                    <div data-mdb-input-init class="form-outline mb-4">
-                      <input type="text" id="form3Example1q" class="form-control" />
-                      <label class="form-label" for="form3Example1q">Name</label>
-                    </div>
-      
-                    <div class="row">
-                      <div class="col-md-6 mb-4">
-      
-                        <div data-mdb-input-init class="form-outline datepicker">
-                          <input type="text" class="form-control" id="exampleDatepicker1" />
-                          <label for="exampleDatepicker1" class="form-label">Select a date</label>
-                        </div>
-      
-                      </div>
-                      <div class="col-md-6 mb-4">
-      
-                        <select data-mdb-select-init>
-                          <option value="1" disabled>Gender</option>
-                          <option value="2">Female</option>
-                          <option value="3">Male</option>
-                          <option value="4">Other</option>
-                        </select>
-      
-                      </div>
-                    </div>
-      
-                    <div class="mb-4">
-                    </div>
-      
-                    <div class="row mb-4 pb-2 pb-md-0 mb-md-5">
-                      <div class="col-md-6">
-      
-                        <div data-mdb-input-init class="form-outline">
-                          <input type="text" id="form3Example1w" class="form-control" />
-                          <label class="form-label" for="form3Example1w">Registration code</label>
-                        </div>
-      
-                      </div>
-                    </div>
-      
-                    <button type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-success btn-lg mb-1">Submit</button>
-      
-                  </form>
-      
+
+    <!-- Modal -->
+    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="editModalLabel">Cập Nhật</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-              </div>
+                <div class="modal-body">
+                    <form action="{{route('profile.update',['id'=>$user->id])}}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                
+                                <input type="hidden" class="form-control" id="id" name="id_user" value="{{$user->id}}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName" class="form-label">First Name</label>
+                                <input type="text" class="form-control" id="firstName" name="firstName" value="{{$profile->first_name ?? ''}}">
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName" class="form-label">Last Name</label>
+                                <input type="text" class="form-control" id="lastName" name="lastName"value="{{$profile->last_name ?? ''}}">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="description" class="form-label" >Description</label>
+                            <textarea class="form-control" id="description" rows="3" name="description" value="{{$profile->discription ?? ''}}"></textarea>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="gender" class="form-label">Giới tính</label>
+                                <select class="form-select" id="gender" name="gioitinh">
+                                
+                                    <option value="1">Nữ</option>
+                                    <option value="2">Nam</option>
+                                    <option value="3">Khác</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="phone" class="form-label">Phone</label>
+                                <input type="text" class="form-control" id="phone" name="phone" value="{{$profile->phone ?? ''}}">
+                            </div>
+                        </div>
+                        <div class="mb-3">
+                            <label for="address" class="form-label">Địa chỉ</label>
+                            <input type="text" class="form-control" id="address" name="address" value="{{$profile->address ?? ''}}">
+                        </div>
+                        <button type="submit" class="btn btn-success">Submit</button>
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
-      </section>
+    </div>
+
 @endsection

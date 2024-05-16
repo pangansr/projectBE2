@@ -172,7 +172,7 @@
             </div>
             <div class="modal-body">
                 <div class="cart-items">
-                    <form action="{{ route('addDetailOrder') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('addOrder') }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         @foreach($shopingCart as $item)
                         <div class="cart-row">
@@ -195,7 +195,7 @@
                             <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
                             <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
                             <div class="cart-action cart-column">
-                                <a href="{{ route('cart.remove',['id'=>$item->id]) }}"><button style="background-color: red; padding: 5px 10px; border-radius: 10px; color: white;">Xóa</button></a>
+                                <a href="{{ route('cart.remove',['id'=>$item->id]) }}">Xóa</a>
                             </div>
                         </div>
                         @endforeach
@@ -219,7 +219,6 @@
                     </form>
 
                     <script>
-                        // Lắng nghe sự kiện khi số lượng sản phẩm thay đổi
                         const quantityInputs = document.querySelectorAll('.cart-quantity-input');
                         quantityInputs.forEach(input => {
                             input.addEventListener('change', updateTotalPrice);

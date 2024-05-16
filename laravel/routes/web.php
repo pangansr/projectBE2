@@ -5,12 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\CrudCartController;
 use App\Http\Controllers\CrudCategoriesController;
-use App\Http\Controllers\PayController;
-use Illuminate\Support\Facades\Session;
-use App\Http\Controllers\PurchaseController;
 use App\Http\Controllers\RevenueStatisticsController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\DetailOrdersController;
+use App\Http\Controllers\OrdersController;
 
 /*
 |--------------------------------------------------------------------------
@@ -43,7 +40,7 @@ Route::get('index', [CrudUserController::class, 'index'])->name('user.list');
 Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('crud_user.login');
 });
 
 
@@ -69,14 +66,13 @@ Route::get('deleteProduct', [CrudProductController::class, 'deleteProduct'])->na
 //cart
 Route::post('/add-to-cart', [CrudCartController::class, 'addToCart'])->name('cart.add');
 Route::get('ViewCart', [CrudCartController::class, 'ViewCart'])->name('cart.ViewCart');
-Route::post('/cartRemove', [CrudCartController::class, 'removeFromCart'])->name('cart.remove');
+Route::get('/cartRemove', [CrudCartController::class, 'removeFromCart'])->name('cart.remove');
 Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart'])->name('cart.remove_all');
-Route::post('/checkout', [CrudCartController::class, 'checkout'])->name('cart.checkout');
-//Route::get('/purchase/confirmation', [PurchaseController::class, 'confirmation'])->name('purchase.confirmation');
 
 
 
-Route::post('addDetailOrder', [DetailOrdersController::class, 'AddOrders'])->name('addDetailOrder');
+
+Route::post('addOrder', [OrdersController::class, 'AddOrders'])->name('addOrder');
 
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
