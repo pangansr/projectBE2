@@ -82,15 +82,14 @@ Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenu
 
 
 Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');
-<<<<<<< HEAD
+
 //update user
 Route::post('/read', [CrudUserController::class, 'updateProfile'])->name('profile.update');
 //oute::get('/read', [CrudUserController::class, 'updateProfile']);
-=======
 //Route::get('/revenue-statistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
 
 Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStatsByCategory'])->name('getStatsByCategory');
 
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
->>>>>>> gfd
+
 

@@ -11,7 +11,7 @@ class DetailOrder extends Model
 
     use HasFactory;
 
-    protected $table = 'order_details'; // Tên bảng trong cơ sở dữ liệu
+    protected $table = 'order_detail'; // Tên bảng trong cơ sở dữ liệu
 
     protected $fillable = [
         'order_id',
