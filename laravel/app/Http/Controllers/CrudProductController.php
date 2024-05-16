@@ -18,12 +18,22 @@ use Illuminate\Support\Facades\File;
 use App\Models\ShoppingCart;
 class CrudProductController extends Controller
 {
-    public function showProductsByCategory($categoryId)
+    public function showProductsByCategory($id)
     {
        
-        $products = Product::where('category_id', $categoryId)->get();
-      
-        return view('index', ['category' => $category]);
+        
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
+        if (Auth::check()) {
+           // $products = Product::where('category_id', $id)->get();
+           // $products = Product::paginate(5); 
+           $products = Product::where('category_id', $id)->paginate(1); 
+            $category = Category::all();
+            $user = Auth::user();
+            return view('category.category', compact('user','products','category','shopingCart'));
+        } else {
+          
+        }
     }
     
 
