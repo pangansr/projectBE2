@@ -2,12 +2,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Category</title>
+    <title>Document</title>
     <link rel="stylesheet" href="cart.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+
 </head>
     <style>
-        /*Danh mục sản phẩm */
+
      
 .horizontal-list {
     display: flex;
@@ -15,7 +16,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 0;
-    margin: 0;
+    margin: 30px;
     list-style-type: none;
     width: 100%;
 }
@@ -38,9 +39,16 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-    font-size: inherit;
+    font-size: 25px;
     color: black;
     width: 100%;
+}
+.category-item:hover {
+    border: none;
+    text-decoration: none;
+    color: #F3274C;
+    transform: translateY(-5px);
+    border-radius: 5px;
 }
 
 .admin-icons {
@@ -64,6 +72,7 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
+            height: 600px;
             position: relative;
             float: left;
         
@@ -97,57 +106,27 @@
             margin-top: 20px;
         }
 
-        /* .category-list {
-            margin-left: 10px;
-            width: 250px;
-            background-color: #D9DDF0;
-            display: flex;
-            flex-direction: column;
-            font-size: 14px;
-            justify-content: center;
-            border-radius: 5px;
-        }
 
-        .category-list-header {
-            background-color: #60ACF4;
-            display: flex;
-            padding: 8px 20px;
-            border-radius: 5px;
-        }
-
-        .category-list-title {
-            display: flex;
-            align-items: center;
-            flex-grow: 1;
-            color: white;
-            font-size: 20px;
-        } */
 
         .products-add {
             text-decoration: none;
             font-weight: 300;
             font-size: 30px
         }
-/* 
-        .category-item {
-            border-radius: 10px;
-            background-color: #B8D1E9;
-            margin-top: 5px;
-            margin-inline: 20px;
-            padding: 2px 10px;
-        } */
+
 
         .category-item:last-child {
             margin-bottom: 9px;
         }
 
         .product {
+            align-items: center;
             border: 1px solid #ccc;
             border-radius: 5px;
             padding: 15px;
-            width: 300px;
+            width: 400px;
             text-align: center;
-            background: white;
+            background: wheat;
             margin: 20px;
         }
 
@@ -213,26 +192,32 @@ h1, h2, p {
     object-fit: cover;
     display: block;
 }
-
+.btn-addPro{
+    font-size: 25px; 
+    border: 2px solid #F3274C; 
+    padding: 15px; 
+    border-radius: 10px;
+    background-color: white;
+    color:#F3274C; 
+    font-weight:700; 
+    margin-left: 30px; 
+}
+.btn-addPro:hover{
+    background-color: #F3274C;
+    color: white;
+    transform: translateY(-5px);
+    border-radius: 5px;
+}
     </style>
 @section('content')
+
     <div class="container">
-        
         <main class="main-content">
         </main>
     </div>
-
    
     <div class="category-list">
     <ul class="horizontal-list">
-        {{-- quyền admin --}}
-        @if (Auth::user()->email == 'admin@gmail.com')
-        <form action="{{ route('categories.add') }}" method="post" style="display:flex; justify-content: center; margin: 10px 0px;">
-            @csrf
-            <input type="text" name="name" value="" style="width: 150px; padding: 10px; height:20px; margin-right:10px;">
-            <input type="submit" value="Thêm" style="border-radius:10px ;border-color:#60ACF4; padding: 5px; background-color: #60ACF4">
-        </form>
-        @endif
         <li>
             <div class="category-item-container">
                 <a href="{{ route('user.list') }}" class="category-item" onclick="changeColor(this)">Tất cả</a>
@@ -264,46 +249,161 @@ h1, h2, p {
         </div>
     </li>
 @endforeach
+{{-- quyền admin --}}
+        @if (Auth::user()->email == 'admin@gmail.com')
+        <form action="{{ route('categories.add') }}" method="post" style="margin-bottom: 15px;">
+            @csrf
+            <input type="text" name="name" value="" style="width: 150px; padding: 10px; height:35px; margin-right:10px;">
+            <input type="submit" value="Thêm" style="border-radius:10px ;border-color:#60ACF4; padding: 5px; background-color: #60ACF4; height: 35px;">
+        </form>
+        @endif
     </ul>
-    
 </div>
+
+
+
+<section class="slider-hero">
+    <div class="slider-home-1 owl-carousel owl-theme">
+       <div class="hero-section item" style="background-image: url(../images/background.png)">
+          <div class="container">
+             <div class="row align-items-end">
+                <div class="col-xl-6">
+                   <div class="featured-area">
+                      <h2>The Perfect Space to Enjoy Fantastic Food</h2>
+                      <h5>Festive dining at Farthings where we are strong believers in using the very best produce</h5>
+                      <div class="d-md-flex align-items-center">
+                         <a href="menu-1.html" class="button">See Our Menus</a>
+                         <div class="video">
+                         <a data-fancybox="" href="https://www.youtube.com/watch?v=1La4QzGeaaQ"><i>
+                           <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
+                             <path d="M11 8.5L0.5 0.272758L0.5 16.7272L11 8.5Z" fill="#fff"/>
+                           </svg>
+                            </i>Watch Video</a>
+                         </div>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="hero-section item" style="background-image: url(../images/background1.png)">
+          <div class="container">
+             <div class="row align-items-end">
+                <div class="col-xl-6">
+                   <div class="featured-area">
+                      <h2>grilled cheese</h2>
+                      <h1>burger</h1>
+                      <h6>limited time offer</h6>
+                      <div class="d-md-flex align-items-center">
+                         <a href="menu-1.html" class="button">get offer today</a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="hero-section item" style="background-image: url(../images/hero-slider-three.webp)">
+          <div class="container">
+             <div class="row align-items-end">
+                <div class="col-xl-6">
+                   <div class="featured-area">
+                      <h2>delicious</h2>
+                      <h1>Hot Pizza</h1>
+                      <h6>don't miss this deal</h6>
+                      <div class="d-md-flex align-items-center">
+                         <a href="menu-1.html" class="button">get offer today</a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+       <div class="hero-section item" style="background-image: url(../images/hero-slider-two.webp)">
+          <div class="container">
+             <div class="row align-items-end">
+                <div class="col-xl-6">
+                   <div class="featured-area">
+                      <h2>Summer Drink</h2>
+                      <h1>Cocktail</h1>
+                      <h6>limited time offer</h6>
+                      <div class="d-md-flex align-items-center">
+                         <a href="menu-1.html" class="button">get offer today</a>
+                      </div>
+                   </div>
+                </div>
+             </div>
+          </div>
+       </div>
+    </div>
+ 
+</section>
+
+
+<section class="gap">
+   <div class="container">
+      <div class="row">
+         <div class="col-lg-6">
+            <div class="bbq" style="background-image: url(../images/anhnen.jpg)">
+               <h2>Áo khoác</h2>
+               <p>canonical classics to obscure<br> vải len</p>
+               <div class="bbr-price">
+                  <div>
+                     <h3>$120</h3>
+                     <span>per person</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+         <div class="col-lg-6">
+            <div class="bbq mb-0" style="background-image: url(../images/6.jpg)">
+               <h2>Đồ bộ</h2>
+               <p>canonical classics to obscure <br> Lorem, ipsum.</p>
+               <div class="bbr-price">
+                  <div>
+                     <h3>$120</h3>
+                     <span>per person</span>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+
+
+
+
+<div id="progress">
+      <span id="progress-value"><i class="fa-solid fa-arrow-up"></i></span>
+</div>
+
+<!-- Bootstrap Js -->
+<script src="assets/js/bootstrap.min.js"></script>
+<script src="assets/js/owl.carousel.min.js"></script>
+<!-- fancybox -->
+<script src="assets/js/jquery.fancybox.min.js"></script>
+<script src="assets/js/custom.js"></script>
+
+<!-- Form Script -->
+<script src="assets/js/contact.js"></script>
+<script type="text/javascript" src="assets/js/sweetalert.min.js"></script>
+
+
 <div class="hero">
-        <img alt="Lamborghini Huracán STO" src="../images/background.png"  class="" style=" min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-        </div>
-        <div class="hero">
-        <img alt="Lamborghini Huracán STO" src="../images/background1.png"  class="" style=" min-width: 100%; max-width: 100%; min-height: 100%; max-height: 100%;">
-        <div class="slideshow-container">
-            <div class="slide">
-        <div class="content">
-            <h1>Welcome to the website </h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <button type="button" class="nut">Get it now</button>
-        </div>
-    </div>
-    <div class="slide">
-        <div class="content">
-            <h1>Trải nghiệm với đa dạng loại sản phẩm</h1>
-            <h2>Free Ecommerce Template</h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-            <button type="button" class="nut">Get it now</button>
-        </div>
-    </div>
-    
-    </div>
-    </div>
+
 <div class="containerr">
 
       
         <div class="column" >
        
-
-         
-           
+                
+  
+        
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
                 {{-- quyền admin --}}        
                 @if (Auth::user()->email == 'admin@gmail.com')
-                <a class="products-add" href="{{ route('products.index') }}"><button style="font-size: 25px; width: 40px; height: 40px; border-radius: 50%; background-color: #000000; color: rgb(255, 255, 255); font-weight:700; margin-left: 30px; ">+</button></a>
+                <a class="products-add" href="{{ route('products.index') }}"><button class="btn-addPro" >Thêm sản phẩm mới</button></a>
             @endif
 
                 <br>
@@ -313,10 +413,10 @@ h1, h2, p {
             <div class="container-product"  style="clear: both;">
                 @foreach ($products as $product)
                     <div class="product">
-                        <img src="{{ asset('images/' . $product->image1) }}" alt="Ảnh sản phẩm">
+                        <img src="{{ asset('../images/' . $product->image1) }}" style="width: 370px; height: 370px;" alt="Ảnh sản phẩm"><br><br>
                         <h2>{{ $product->name }}</h2>
                         <p class="price">Giá: {{ $product->price }}</p>
-                        <p class="rating">Lượt đánh giá: 50</p>
+                        <p class="rating">Số lượng  : {{$product->stock_quantity }}</p>
                         <a href="{{ route('product.read', ['id' => $product->id]) }}">Chi tiết</a> |
 
 
@@ -386,17 +486,19 @@ h1, h2, p {
     }
 
     function changeColor(element) {
-       
-        var items = document.querySelectorAll('.category-item');
-
-       
+        var items = document.querySelectorAll('.category-item');       
         items.forEach(function(item) {
             item.style.color = 'black';
         });
-
-        
         element.style.color = 'Blue';
     }
     
 </script>
+<script>
+    var errorMessage = "{{ session('error') }}";
+    if(errorMessage) {
+        alert(errorMessage);
+    }
+</script>
+
 @endsection

@@ -56,14 +56,14 @@
             border: 2px double rgb(0, 0, 0);
             border-radius: 20px;
             height: 700px;
-            width: 600px;
+            width: 800px;
         }
 
         .anh {
             border: 2px solid rgb(9, 9, 9);
             border-radius: 20px;
             height: 180px;
-            width: 250px;
+            width: 220px;
             opacity: 0.5;
             transition: opacity 0.3s ease-in-out;
         }
