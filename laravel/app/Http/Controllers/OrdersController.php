@@ -12,7 +12,7 @@ use App\Http\Controllers\CrudCartController;
 
 class OrdersController extends Controller
 {
-    public function AddOrders(Request $request)
+    public function GetOrderDetails(Request $request)
 {
     $user = Auth::user();
     
