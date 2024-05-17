@@ -49,6 +49,7 @@ Route::get('/', function () {
 //categories
 Route::post('addCategories', [CrudCategoriesController::class, 'postCategories'])->name('categories.add');
 Route::get('deleteCategories', [CrudCategoriesController::class, 'deleteCategories'])->name('categories.delete');
+Route::post('updateCategories', [CrudCategoriesController::class, 'updateCategories'])->name('categories.update');
 
 
 
