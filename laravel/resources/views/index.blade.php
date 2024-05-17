@@ -64,11 +64,11 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
-<<<<<<< HEAD
+
             height: 600px;
 =======
             position: relative;
->>>>>>> kien
+
             float: left;
         
             
@@ -310,7 +310,7 @@ h1, h2, p {
         <div class="column" >
        
 
-<<<<<<< HEAD
+
                 <div class="slide" style="display: flex;">
                     <h1>Welcome to the website </h1>
                     <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
@@ -327,10 +327,10 @@ h1, h2, p {
                    
                 </div>
             </div>
-=======
+
          
            
->>>>>>> kien
+
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
                 {{-- quyền admin --}}        

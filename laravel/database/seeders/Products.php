@@ -21,23 +21,16 @@ class Products extends Seeder
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
                 Thiết kế tinh tế: Áo được thiết kế với các đường may chắc chắn và tỉ mỉ, cùng với các chi tiết như túi ngực nhỏ và các nút cài được làm tỉ mỉ, tạo nên sự tinh tế và phong cách.
                 Đa dạng màu sắc: Áo sơ mi Urban Luxe có sẵn trong một loạt các màu sắc phong phú và tươi sáng như trắng, xanh navy, xám, hoặc hồng nhạt, phù hợp với mọi cơ hội và sở thích cá nhân của người mặc.
-<<<<<<< HEAD
+   
                 Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.',
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 1,
-
-=======
-                Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.
-                Kích thước:
-                S, M, L, XL, XXL',
-                'price' => 999,
-                'stock_quantity' => 111,
-                'category_id' => 5,
->>>>>>> kien
                 'image1' => '1.jpg',
                 'image2' => '2.jpg',
                 'image3' => '3.jpg',
+   
+           
             ],
             [
                 'name' => 'Áo sơ mi nam Urban Luxe 2',
@@ -46,31 +39,21 @@ class Products extends Seeder
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
                 Thiết kế tinh tế: Áo được thiết kế với các đường may chắc chắn và tỉ mỉ, cùng với các chi tiết như túi ngực nhỏ và các nút cài được làm tỉ mỉ, tạo nên sự tinh tế và phong cách.
                 Đa dạng màu sắc: Áo sơ mi Urban Luxe có sẵn trong một loạt các màu sắc phong phú và tươi sáng như trắng, xanh navy, xám, hoặc hồng nhạt, phù hợp với mọi cơ hội và sở thích cá nhân của người mặc.
-<<<<<<< HEAD
+   
                 Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.',
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 1,
-
-=======
-                Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.
-                Kích thước:
-                S, M, L, XL, XXL',
-                'price' => 999,
-                'category_id' => 5,
-                'stock_quantity' => 111,
-        
->>>>>>> kien
                 'image1' => '4.jpg',
                 'image2' => '5.jpg',
                 'image3' => '6.jpg',
+
             ],
             [
-<<<<<<< HEAD
+   
                 'name' => 'Áo sơ mi nam Urban Luxe 3',
-=======
-                'name' => 'Áo Khoác  nam Urban Luxe',
->>>>>>> kien
+   
+   
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -87,64 +70,50 @@ class Products extends Seeder
                 'image3' => '9.jpg',
             ],
             [
-<<<<<<< HEAD
+   
                 'name' => 'Áo sơ mi nam Urban Luxe 4',
-=======
-                'name' => 'Quần dài nam Urban Luxe',
->>>>>>> kien
+   
+            
+   
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
                 Thiết kế tinh tế: Áo được thiết kế với các đường may chắc chắn và tỉ mỉ, cùng với các chi tiết như túi ngực nhỏ và các nút cài được làm tỉ mỉ, tạo nên sự tinh tế và phong cách.
                 Đa dạng màu sắc: Áo sơ mi Urban Luxe có sẵn trong một loạt các màu sắc phong phú và tươi sáng như trắng, xanh navy, xám, hoặc hồng nhạt, phù hợp với mọi cơ hội và sở thích cá nhân của người mặc.
-<<<<<<< HEAD
+   
                 Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.',
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 1,
+                'image1' => '18.jpg',
+                'image2' => '19.jpg',
+                'image3' => '20.jpg',
 
-=======
-                Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.
-                Kích thước:
-                S, M, L, XL, XXL',
-                'price' => 999,
-                'category_id' => 2,
-                'stock_quantity' => 111,
-                
->>>>>>> kien
-                'image1' => '10.jpg',
-                'image2' => '11.jpg',
-                'image3' => '2.jpg',
+   
             ],
             [
-<<<<<<< HEAD
+   
                 'name' => 'Áo sơ mi nam Urban Luxe 5',
-=======
-                'name' => 'Quần short nam Urban Luxe',
->>>>>>> kien
+   
+            
+   
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
                 Thiết kế tinh tế: Áo được thiết kế với các đường may chắc chắn và tỉ mỉ, cùng với các chi tiết như túi ngực nhỏ và các nút cài được làm tỉ mỉ, tạo nên sự tinh tế và phong cách.
                 Đa dạng màu sắc: Áo sơ mi Urban Luxe có sẵn trong một loạt các màu sắc phong phú và tươi sáng như trắng, xanh navy, xám, hoặc hồng nhạt, phù hợp với mọi cơ hội và sở thích cá nhân của người mặc.
                 Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.
-<<<<<<< HEAD
+   
                 ',
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 1,
+                'image1' => '18.jpg',
+                'image2' => '19.jpg',
+                'image3' => '20.jpg',
 
-=======
-                Kích thước:
-                S, M, L, XL, XXL',
-                'price' => 999,
-                'category_id' => 3,
-                'stock_quantity' => 111,
-              
->>>>>>> kien
-                'image1' => '12.jpg',
-                'image2' => '13.jpg',
-                'image3' => '14.jpg',
+   
+                
             ],
             [
                 'name' => 'Áo sơ mi nam Urban Luxe 6',
@@ -154,23 +123,16 @@ class Products extends Seeder
                 Thiết kế tinh tế: Áo được thiết kế với các đường may chắc chắn và tỉ mỉ, cùng với các chi tiết như túi ngực nhỏ và các nút cài được làm tỉ mỉ, tạo nên sự tinh tế và phong cách.
                 Đa dạng màu sắc: Áo sơ mi Urban Luxe có sẵn trong một loạt các màu sắc phong phú và tươi sáng như trắng, xanh navy, xám, hoặc hồng nhạt, phù hợp với mọi cơ hội và sở thích cá nhân của người mặc.
                 Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.
-<<<<<<< HEAD
+   
                 ',
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 2,
+                'image1' => '18.jpg',
+                'image2' => '19.jpg',
+                'image3' => '20.jpg',
 
-=======
-                Kích thước:
-                S, M, L, XL, XXL',
-                'price' => 999,
-                'category_id' => 4,
-                'stock_quantity' => 111,
-            
->>>>>>> kien
-                'image1' => '15.jpg',
-                'image2' => '16.jpg',
-                'image3' => '17.jpg',
+   
             ],
             [
                 'name' => 'Áo sơ mi nam Urban Luxe 7',
@@ -180,7 +142,7 @@ class Products extends Seeder
                 Thiết kế tinh tế: Áo được thiết kế với các đường may chắc chắn và tỉ mỉ, cùng với các chi tiết như túi ngực nhỏ và các nút cài được làm tỉ mỉ, tạo nên sự tinh tế và phong cách.
                 Đa dạng màu sắc: Áo sơ mi Urban Luxe có sẵn trong một loạt các màu sắc phong phú và tươi sáng như trắng, xanh navy, xám, hoặc hồng nhạt, phù hợp với mọi cơ hội và sở thích cá nhân của người mặc.
                 Dễ phối hợp: Với thiết kế đơn giản và màu sắc đa dạng, áo sơ mi Urban Luxe dễ dàng phối hợp với các loại quần jean, quần tây, hoặc quần short, phù hợp cho cả các sự kiện công sở hoặc dạo phố cuối tuần.
-<<<<<<< HEAD
+   
 ',
                 'price' => 100,
                 'stock_quantity' => 50,
@@ -235,17 +197,10 @@ class Products extends Seeder
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 4,
-=======
-                Kích thước:
-                S, M, L, XL, XXL',
-                'price' => 999,
-                'stock_quantity' => 111,
-                'category_id' => 4,
-              
->>>>>>> kien
                 'image1' => '18.jpg',
                 'image2' => '19.jpg',
                 'image3' => '20.jpg',
+   
             ],
         ]);
     }
