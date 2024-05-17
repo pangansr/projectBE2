@@ -1,5 +1,4 @@
 @extends('dashboard')
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,7 +31,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 0;
-    margin: 0;
+    margin: 30px;
     list-style-type: none;
     width: 100%;
 }
@@ -55,7 +54,7 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-    font-size: inherit;
+    font-size: 25px;
     color: black;
     width: 100%;
 }
@@ -83,42 +82,40 @@
             position: absolute;
         bottom: 0;
         right: 0;
-    }
-
-    .slide {
-        justify-content: flex-end;
-        align-items: flex-end;
-        display: flex;
-        height: 600px;
-        position: relative;
-        float: left;
-
-
-
-
-    }
-
-    .fade {
-        animation-name: fade;
-        animation-duration: 1.5s;
-    }
-
-    @keyframes fade {
-        from {
-            opacity: 0.4;
+        }
+        .slide {
+            justify-content: flex-end;
+    align-items: flex-end;
+            display: flex;
+            height: 600px;
+            position: relative;
+            float: left;
+        
+            
+           
+           
         }
 
-        to {
-            opacity: 1;
+        .fade {
+            animation-name: fade;
+            animation-duration: 1.5s;
         }
-    }
 
-    .containerr {
-        display: flex;
-    }
+        @keyframes fade {
+            from {
+                opacity: 0.4;
+            }
 
-    .pagination-container {
-        display: flex;
+            to {
+                opacity: 1;
+            }
+        }
+
+        .containerr {
+            display: flex;
+        }
+
+        .pagination-container {
             display: flex;
             justify-content: center;
             margin-top: 20px;
@@ -135,200 +132,109 @@
 
         .category-item:last-child {
             margin-bottom: 9px;
+        }
 
-    .product {
-        align-items: center;
-        border: 1px solid #ccc;
-        border-radius: 5px;
-        padding: 15px;
-        width: 400px;
-        text-align: center;
-        background: wheat;
-        margin: 20px;
-    }
+        .product {
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 15px;
+            width: 400px;
+            text-align: center;
+            background: wheat;
+            margin: 20px;
+        }
 
-    .product img {
-        width: 100%;
-        height: 350px;
-        border-radius: 5px;
-    }
+        .product img {
+            width: 100%;
+            height: 350px;
+            border-radius: 5px;
+        }
 
-    .product h2 {
-        font-size: 20px;
-        margin-top: 10px;
-    }
+        .product h2 {
+            font-size: 20px;
+            margin-top: 10px;
+        }
 
-    .product p {
-        margin-top: 5px;
-    }
+        .product p {
+            margin-top: 5px;
+        }
 
-    .price {
-        color: #007bff;
-        /* Màu sắc cho giá */
-    }
+        .price {
+            color: #007bff;
+            /* Màu sắc cho giá */
+        }
 
-    .rating {
-        color: #28a745;
-        /* Màu sắc cho lượt đánh giá */
-    }
+        .rating {
+            color: #28a745;
+            /* Màu sắc cho lượt đánh giá */
+        }
 
-    .container-product {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .content {
+        .container-product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+      .content{
         width: 700px;
         height: 440px;
-    }
+      }
 
 
-    h1,
-    h2,
-    p {
-        margin: 10px 0;
-        /* Adjust as needed */
-    }
+h1, h2, p {
+    margin: 10px 0; /* Adjust as needed */
+}
 
-    .nut {
-        margin-top: 10px;
-        padding: 10px 20px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-
-    .hero {
-        position: relative;
-        width: 100%;
-        height: calc(120vh - 40px);
-
-    }
-
-    .hero img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        display: block;
-    }
-
-    .btn-addPro {
-        font-size: 25px;
-        border: 2px solid #F3274C;
-        padding: 15px;
-        border-radius: 10px;
-        background-color: white;
-        color: #F3274C;
-        font-weight: 700;
-        margin-left: 30px;
-    }
-
-    .btn-addPro:hover {
-        background-color: #F3274C;
-        color: white;
-        transform: translateY(-5px);
-        border-radius: 5px;
-    }
-</style>
+.nut {
+    margin-top: 10px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+        
+        .hero {
+    position: relative;
+    width: 100%;
+    height: calc(120vh - 40px); 
+  
+}
+.hero img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+.btn-addPro{
+    font-size: 25px; 
+    border: 2px solid #F3274C; 
+    padding: 15px; 
+    border-radius: 10px;
+    background-color: white;
+    color:#F3274C; 
+    font-weight:700; 
+    margin-left: 30px; 
+}
+.btn-addPro:hover{
+    background-color: #F3274C;
+    color: white;
+    transform: translateY(-5px);
+    border-radius: 5px;
+}
+    </style>
 @section('content')
     <div class="container">
         <main class="main-content">
         </main>
     </div>
-
+   
     <div class="category-list">
-        <ul class="horizontal-list">
-            <li>
-                <div class="category-item-container">
-                    <a class="category-item" onclick="changeColor(this)" href="{{ route('user.list') }}">Tất cả</a>
-                </div>
-            </li>
-            @foreach ($category as $category)
-                <li>
-                    <div class="category-item-container">
-
-                        <a class="category-item" href="{{ route('categories.products', ['id' => $category->id]) }}"
-                            data-id="{{ $category->id }}">{{ $category->name }}</a>
-                        {{-- quyền admin --}}
-                        @if (Auth::user()->email == 'admin@gmail.com')
-                            <div class="admin-icons">
-                                <a href="#" onclick="showEditModal('{{ $category->id }}', '{{ $category->name }}')">
-                                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px;"></i>
-                                </a>
-                                <a href="#"
-                                    onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
-                                    <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
-                                </a>
-                            </div>
-                            <script>
-                                function confirmDelete(url) {
-                                    if (confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
-                                        window.location.href = url;
-                                    }
-                                }
-
-                                function showEditModal(id, name) {
-                                    // Cập nhật giá trị của các trường input trong modal
-                                    document.getElementById('id').value = id;
-                                    document.getElementById('name').value = name;
-
-                                    // Hiển thị modal
-                                    var myModal = new bootstrap.Modal(document.getElementById('editModal'));
-                                    myModal.show();
-                                }
-                            </script>
-                        @endif
-                    </div>
-                </li>
-            @endforeach
-            {{-- quyền admin --}}
-            @if (Auth::user()->email == 'admin@gmail.com')
-                <form action="{{ route('categories.add') }}" method="post" style="margin-bottom: 15px;">
-                    @csrf
-                    <input type="text" name="name" value=""
-                        style="width: 150px; padding: 10px; height:35px; margin-right:10px;">
-                    <input type="submit" value="Thêm"
-                        style="border-radius:10px ;border-color:#60ACF4; padding: 5px; background-color: #60ACF4; height: 35px;">
-                </form>
-            @endif
-        </ul>
-    </div>
-
-    {{-- lấy form sửa --}}
-    <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editModalLabel">Cập Nhật</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <form action="{{ route('categories.update', ['id' => $category->id]) }}" method="POST"
-                        enctype="multipart/form-data">
-                        @csrf
-                        <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <label for="id" class="form-label">ID</label>
-                                <input type="text" class="form-control" id="id" name="id" readonly>
-                            </div>
-                            <div class="mb-3">
-                                <label for="name" class="form-label">Tên</label>
-                                <input type="text" class="form-control" id="name" name="name" value="">
-                            </div>
-                        </div>
-                        <button type="submit" class="btn btn-success">Submit</button>
-                    </form>
-
-                </div>
-            </div>
-        </div>
     <ul class="horizontal-list">
         <li>
             <div class="category-item-container">
-                <a class="category-item" onclick="changeColor(this)">Tất cả</a>
+                <a class="category-item" onclick="changeColor(this)" href="{{ route('user.list') }}">Tất cả</a>
             </div>
         </li>
         @foreach ($category as $category)
@@ -339,8 +245,8 @@
             {{-- quyền admin --}}
             @if (Auth::user()->email == 'admin@gmail.com')
             <div class="admin-icons">
-                <a href="#">
-                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px; "></i>
+                <a href="#" onclick="showEditModal('{{ $category->id }}', '{{ $category->name }}')">
+                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px;"></i>
                 </a>
                 <a href="#" onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
                     <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
@@ -352,6 +258,15 @@
                         window.location.href = url;
                     }
                 }
+                function showEditModal(id, name) {
+                                    // Cập nhật giá trị của các trường input trong modal
+                                    document.getElementById('id').value = id;
+                                    document.getElementById('name').value = name;
+
+                                    // Hiển thị modal
+                                    var myModal = new bootstrap.Modal(document.getElementById('editModal'));
+                                    myModal.show();
+                                }
             </script>
             @endif
         </div>
@@ -367,7 +282,36 @@
         @endif
     </ul>
 </div>
+{{-- lấy form sửa --}}
+<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editModalLabel">Cập Nhật</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form action="{{ route('categories.update', ['id' => $category->id]) }}" method="POST"
+                    enctype="multipart/form-data">
+                    @csrf
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="id" class="form-label">ID</label>
+                            <input type="text" class="form-control" id="id" name="id" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Tên</label>
+                            <input type="text" class="form-control" id="name" name="name" value="">
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-success">Submit</button>
+                </form>
 
+            </div>
+        </div>
+    </div>
+</div>
+{{-- lấy form sửa --}}
 
 
 <section class="slider-hero">
@@ -377,11 +321,11 @@
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2></h2>
-                      <h5></h5>
+                      <h2> </h2>
+                      <h5>    .</h5>
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
-                         <div class="video">
+                         <div class="video" >
                          <a data-fancybox="" href="https://www.youtube.com/watch?v=gbLmku5QACM"><i>
                            <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path d="M11 8.5L0.5 0.272758L0.5 16.7272L11 8.5Z" fill="#fff"/>
@@ -502,115 +446,112 @@
 
 <div class="containerr">
 
+      
+        <div class="column" >
+       
+                
+  
+        
+            <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
-            <div class="column">
+                {{-- quyền admin --}}        
+                @if (Auth::user()->email == 'admin@gmail.com')
+                <a class="products-add" href="{{ route('products.index') }}"><button class="btn-addPro" >Thêm sản phẩm mới</button></a>
+            @endif
+
+                <br>
+                <hr>
+            </div>
+
+            <div class="container-product"  style="clear: both;">
+                @foreach ($products as $product)
+                    <div class="product">
+                        <img src="{{ asset('images/' . $product->image1) }}" style="width: 370px; height: 370px;" alt="Ảnh sản phẩm"><br><br>
+                        <h2>{{ $product->name }}</h2>
+                        <p class="price">Giá: {{ $product->price }}</p>
+                        <p class="rating">Số lượng  : {{$product->stock_quantity }}</p>
+                        <a href="{{ route('product.read', ['id' => $product->id]) }}">Chi tiết</a> |
 
 
-
-
-                <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
-
-                    {{-- quyền admin --}}
-                    @if (Auth::user()->email == 'admin@gmail.com')
-                        <a class="products-add" href="{{ route('products.index') }}"><button class="btn-addPro">Thêm sản
-                                phẩm mới</button></a>
+                        {{-- quyền admin --}}
+                        @if (Auth::user()->email == 'admin@gmail.com')
+                        <a href="{{ route('product.updateProduct', ['id' => $product->id]) }}">Sửa</a> |
+                        <a href="#" onclick="confirmDelete('{{ route('product.deleteProduct', ['id' => $product->id]) }}')">Delete</a>
                     @endif
+                      
 
-                    <br>
-                    <hr>
-                </div>
-
-                <div class="container-product" style="clear: both;">
-                    @foreach ($products as $product)
-                        <div class="product">
-                            <img src="{{ asset('images/' . $product->image1) }}" style="width: 370px; height: 370px;"
-                                alt="Ảnh sản phẩm"><br><br>
-                            <h2>{{ $product->name }}</h2>
-                            <p class="price">Giá: {{ $product->price }}</p>
-                            <p class="rating">Số lượng : {{ $product->stock_quantity }}</p>
-                            <a href="{{ route('product.read', ['id' => $product->id]) }}">Chi tiết</a> |
-
-
-                            {{-- quyền admin --}}
-                            @if (Auth::user()->email == 'admin@gmail.com')
-                                <a href="{{ route('product.updateProduct', ['id' => $product->id]) }}">Sửa</a> |
-                                <a href="#"
-                                    onclick="confirmDelete('{{ route('product.deleteProduct', ['id' => $product->id]) }}')">Delete</a>
-                            @endif
-
-
-                            <script>
-                                function confirmDelete(url) {
-                                    if (confirm("Are you sure you want to delete this product?")) {
-                                        window.location.href = url;
-                                    }
+                        <script>
+                            function confirmDelete(url) {
+                                if (confirm("Are you sure you want to delete this product?")) {
+                                    window.location.href = url;
                                 }
-                            </script>
+                            }
+                        </script>
+                        
+                        
 
 
 
+                    </div>
+                @endforeach
 
+            </div>
+            <div class="pagination-container">
+                <!-- Hiển thị nút Quay lại -->
+                @if ($products->onFirstPage())
+                    <span style="margin: 10px;" class="disabled">&laquo;</span>
+                @else
+                    <a href="{{ $products->previousPageUrl() }}" style="margin: 10px;" rel="prev">&laquo;</a>
+                @endif
 
-                        </div>
-                    @endforeach
+                <!-- Hiển thị các trang -->
+                @for ($i = 1; $i <= $products->lastPage(); $i++)
+                    <a href="{{ $products->url($i) }}" style="margin: 10px;"
+                        class="{{ $products->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
+                @endfor
 
-                </div>
-                <div class="pagination-container">
-                    <!-- Hiển thị nút Quay lại -->
-                    @if ($products->onFirstPage())
-                        <span style="margin: 10px;" class="disabled">&laquo;</span>
-                    @else
-                        <a href="{{ $products->previousPageUrl() }}" style="margin: 10px;" rel="prev">&laquo;</a>
-                    @endif
-
-                    <!-- Hiển thị các trang -->
-                    @for ($i = 1; $i <= $products->lastPage(); $i++)
-                        <a href="{{ $products->url($i) }}" style="margin: 10px;"
-                            class="{{ $products->currentPage() == $i ? 'active' : '' }}">{{ $i }}</a>
-                    @endfor
-
-                    <!-- Hiển thị nút Trang kế tiếp -->
-                    @if ($products->hasMorePages())
-                        <a href="{{ $products->nextPageUrl() }}" style="margin: 10px;" rel="next">&raquo;</a>
-                    @else
-                        <span style="margin: 10px;" class="disabled">&raquo;</span>
-                    @endif
-                </div>
+                <!-- Hiển thị nút Trang kế tiếp -->
+                @if ($products->hasMorePages())
+                    <a href="{{ $products->nextPageUrl() }}" style="margin: 10px;" rel="next">&raquo;</a>
+                @else
+                    <span style="margin: 10px;" class="disabled">&raquo;</span>
+                @endif
             </div>
         </div>
-        {{-- Model --}}
+    </div>
+<!-- The Modal -->
+<script>
+    var slideIndex = 0;
+    showSlides();
 
-        <!-- The Modal -->
-        <script>
-            var slideIndex = 0;
-            showSlides();
+    function showSlides() {
+        var i;
+        var slides = document.getElementsByClassName("slide");
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) {
+            slideIndex = 1
+        }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 2500);
+    }
 
-            function showSlides() {
-                var i;
-                var slides = document.getElementsByClassName("slide");
-                for (i = 0; i < slides.length; i++) {
-                    slides[i].style.display = "none";
-                }
-                slideIndex++;
-                if (slideIndex > slides.length) {
-                    slideIndex = 1
-                }
-                slides[slideIndex - 1].style.display = "block";
-                setTimeout(showSlides, 2500);
-            }
+    function changeColor(element) {
+        var items = document.querySelectorAll('.category-item');       
+        items.forEach(function(item) {
+            item.style.color = 'black';
+        });
+        element.style.color = 'Blue';
+    }
+    
+</script>
+<script>
+    var errorMessage = "{{ session('error') }}";
+    if(errorMessage) {
+        alert(errorMessage);
+    }
+</script>
 
-            function changeColor(element) {
-                var items = document.querySelectorAll('.category-item');
-                items.forEach(function(item) {
-                    item.style.color = 'black';
-                });
-                element.style.color = 'Blue';
-            }
-        </script>
-        <script>
-            var errorMessage = "{{ session('error') }}";
-            if (errorMessage) {
-                alert(errorMessage);
-            }
-        </script>
-    @endsection
+@endsection
