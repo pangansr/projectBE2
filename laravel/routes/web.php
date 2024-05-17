@@ -53,6 +53,9 @@ Route::get('deleteCategories', [CrudCategoriesController::class, 'deleteCategori
 
 
 //product
+// lay danh muc hien thi
+Route::get('categories/{id}', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
+
 Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
 
 Route::post('/addProduct', [CrudProductController::class, 'postProduct'])->name('products.add');
@@ -77,13 +80,12 @@ Route::post('GetOrderDetails', [OrdersController::class, 'GetOrderDetails'])->na
 Route::get('ViewOrder', [OrdersController::class, 'ViewOrder'])->name('ViewOrder');
 Route::post('AddOrder', [OrdersController::class, 'AddOrder'])->name('AddOrder');
 
-
-
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
 
 
 
 Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');
+
 //update user
 Route::post('/read', [CrudUserController::class, 'updateProfile'])->name('profile.update');
 //oute::get('/read', [CrudUserController::class, 'updateProfile']);
@@ -95,5 +97,12 @@ Route::post('/fogotpass', [CrudUserController::class, 'check_fogot_password'])->
 
 Route::get('/reset-password/{token}', [CrudUserController::class, 'reset_password'])->name('account.reset_password');
 Route::post('/reset-password/{token}', [CrudUserController::class, 'check_reset_password'])->name('account.check_reset_password');
+
+
+//Route::get('/revenue-statistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
+
+Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStatsByCategory'])->name('getStatsByCategory');
+
+Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
 
 
