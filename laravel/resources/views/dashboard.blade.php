@@ -3,27 +3,26 @@
 
 <head>
     <title>Shop bán hàng</title>
-   
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="icon" href="assets/img/logo-icon.png">
-  <!-- CSS only -->
-   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-   <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
-   <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
-   <!-- fancybox -->
-   <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+    <link rel="icon" href="assets/img/logo-icon.png">
+    <!-- CSS only -->
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+    <!-- fancybox -->
+    <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
 
-   <link rel="stylesheet" href="assets/css/style.css">
-   <!-- responsive -->
-   <link rel="stylesheet" href="assets/css/responsive.css">
-   <!-- color -->
-   <link rel="stylesheet" href="assets/css/color.css">
-   <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="assets/css/style.css">
+    <!-- responsive -->
+    <link rel="stylesheet" href="assets/css/responsive.css">
+    <!-- color -->
+    <link rel="stylesheet" href="assets/css/color.css">
+    <link rel="stylesheet" href="cart.css" />
 </head>
 <style>
-    
     .header {
         display: flex;
         align-items: center;
@@ -60,18 +59,20 @@
     }
 
     .nav-item {
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        z-index: 1;
+    }
 
-.nav-item:hover {
-    background-color: #F3274C;
-    color: white;
-    text-decoration: none;
-    transform: translateY(-5px); /* Di chuyển lên trên 5px */
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
-}
+    .nav-item:hover {
+        background-color: #F3274C;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-5px);
+        /* Di chuyển lên trên 5px */
+        box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);
+        /* Hiệu ứng đổ bóng */
+    }
 
 
     .search-form {
@@ -82,32 +83,36 @@
     }
 
     .search-input {
-    border-radius: 20px; 
-    border: 1px solid #F3274C; 
-    color: black;
-    padding: 12px; 
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
-}
+        border-radius: 20px;
+        border: 1px solid #F3274C;
+        color: black;
+        padding: 12px;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
 
-.search-input:focus {
-    border-color: #69D5F3; /* Đổi màu viền khi input được focus */
-    box-shadow: 0 0 5px rgba(105, 213, 243, 0.5); /* Hiệu ứng đổ bóng khi input được focus */
-}
+    .search-input:focus {
+        border-color: #69D5F3;
+        /* Đổi màu viền khi input được focus */
+        box-shadow: 0 0 5px rgba(105, 213, 243, 0.5);
+        /* Hiệu ứng đổ bóng khi input được focus */
+    }
 
-.search-button {
-    border-radius: 0px 20px 20px 0px; 
-    margin-left: -25px;
-    border: 1px solid black;
-    background-color: #F3274C;
-    color: white;
-    padding: 12px 20px; 
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+    .search-button {
+        border-radius: 0px 20px 20px 0px;
+        margin-left: -25px;
+        border: 1px solid black;
+        background-color: #F3274C;
+        color: white;
+        padding: 12px 20px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-.search-button:hover {
-    background-color: #F3274C; /* Đổi màu nền khi di chuột qua */
-    color: white; /* Đổi màu chữ khi di chuột qua */
-}
+    .search-button:hover {
+        background-color: #F3274C;
+        /* Đổi màu nền khi di chuột qua */
+        color: white;
+        /* Đổi màu chữ khi di chuột qua */
+    }
 
 
     .avatar {
@@ -133,29 +138,29 @@
     .logo {
         width: 140px;
         height: 130px;
-        
+
     }
+
     .logout {
-    margin-bottom: -10px;
-    border: 2px solid red; 
-    background-color: white;
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 10px;
-    transition: border-color 0.3s ease; 
-}
+        margin-bottom: -10px;
+        border: 2px solid red;
+        background-color: white;
+        border-radius: 5px;
+        font-size: 18px;
+        padding: 10px;
+        transition: border-color 0.3s ease;
+    }
 
-.logout:hover {
-    background-color: #F3274C;
-    color: white;
-}
-
+    .logout:hover {
+        background-color: #F3274C;
+        color: white;
+    }
 </style>
 
 <body>
     <header class="header">
         <nav class="header-nav">
-            <img src="images/logo.png" alt="Logo" class="logo"  />
+            <img src="images/logo.png" alt="Logo" class="logo" />
             <a href="{{ route('user.list') }}" class="nav-item">
                 <h3>TRANG CHỦ</h3>
             </a>
@@ -165,27 +170,29 @@
             <a href="{{ route('ViewDetailOrder') }}" class="nav-item">
                 <h3>ĐƠN HÀNG</h3>
             </a>
+            @if (Auth::user()->email == 'admin@gmail.com')
             <a href="{{ route('ViewRevenueStatistics') }}" class="nav-item">
                 <h3>THỐNG KÊ</h3>
             </a>
+            @endif
         </nav>
         <div class="nav-right">
-        <form class="search-form" action="{{ route('search') }}" method="GET">
-    <input type="text" name="key" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
-   <button type="submit" class="search-button">Tìm kiếm</button>
-</form>
+            <form class="search-form" action="{{ route('search') }}" method="GET">
+                <input type="text" name="key" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
+                <button type="submit" class="search-button">Tìm kiếm</button>
+            </form>
 
 
             <a href="{{ route('user.readUser', ['id' => $user->id]) }}">
                 <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
             </a>
             <a href="{{ route('signout') }}">
-                
+
                 <i class="bi bi-box-arrow-right" style="font-weight: 300;"></i> Logout
             </a>
         </div>
     </header>
-<hr>
+    <hr>
     <div id="myModal" class="modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -198,27 +205,27 @@
                         @csrf
                         @foreach($shopingCart as $item)
                         <div class="cart-row">
-    <div class="cart-item cart-column">
-        <img class="cart-item-image" src="{{ asset('images/' . $item->product->image1) }}" width="80px" height="80px">
-        <div class="product-row">
-            <div class="cart-item-title">{{ $item->product->name }}</div>
-            <select name="products[{{ $loop->index }}][size]" class="cart-item-size" style="width: 50px; height: 30px; margin-inline:10px ; margin-bottom: 5px;">
-                <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
-                <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
-                <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
-                <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
-            </select>
-            <div class="cart-quantity cart-column">
-                <input class="cart-quantity-input" style="width: 50px; height: 30px;" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
-            </div>
-        </div>
-    </div>
-    <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
-    <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
-    <div class="cart-action cart-column">
-        <a href="{{ route('cart.remove',['id'=>$item->id]) }}" class="cart-remove">Xóa</a>
-    </div>
-</div>
+                            <div class="cart-item cart-column">
+                                <img class="cart-item-image" src="{{ asset('images/' . $item->product->image1) }}" width="80px" height="80px">
+                                <div class="product-row">
+                                    <div class="cart-item-title">{{ $item->product->name }}</div>
+                                    <select name="products[{{ $loop->index }}][size]" class="cart-item-size" style="width: 50px; height: 30px; margin-inline:10px ; margin-bottom: 5px;">
+                                        <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
+                                        <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
+                                        <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
+                                        <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
+                                    </select>
+                                    <div class="cart-quantity cart-column">
+                                        <input class="cart-quantity-input" style="width: 50px; height: 30px;" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
+                                    </div>
+                                </div>
+                            </div>
+                            <input type="hidden" name="products[{{ $loop->index }}][product_id]" value="{{ $item->product->id }}">
+                            <input type="hidden" name="products[{{ $loop->index }}][price]" value="{{ $item->price }}">
+                            <div class="cart-action cart-column">
+                                <a href="{{ route('cart.remove',['id'=>$item->id]) }}" class="cart-remove">Xóa</a>
+                            </div>
+                        </div>
 
                         @endforeach
                         @php
@@ -232,6 +239,7 @@
                                 <strong class="cart-total-title">Tổng Cộng:</strong>
                                 <span class="cart-total-price">{{ $totalPrice }} VNĐ</span>
                             </div>
+                            <input type="hidden" name="total" value="{{ $totalPrice }}">
                             <div class="cart-button">
                                 <input type="submit" class="btn btn-secondary close-footer" value="Thanh toán">
                             </div>

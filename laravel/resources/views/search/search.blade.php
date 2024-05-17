@@ -31,7 +31,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 0;
-    margin: 30px;
+    margin: 0;
     list-style-type: none;
     width: 100%;
 }
@@ -54,7 +54,7 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-    font-size: 25px;
+    font-size: inherit;
     color: black;
     width: 100%;
 }
@@ -87,8 +87,12 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
+
             height: 600px;
             position: relative;
+
+            position: relative;
+
             float: left;
         
             
@@ -141,7 +145,7 @@
             padding: 15px;
             width: 400px;
             text-align: center;
-            background: wheat;
+            background: white;
             margin: 20px;
         }
 
@@ -234,7 +238,7 @@ h1, h2, p {
     <ul class="horizontal-list">
         <li>
             <div class="category-item-container">
-                <a class="category-item" onclick="changeColor(this)" href="{{ route('user.list') }}">Tất cả</a>
+                <a class="category-item" onclick="changeColor(this)">Tất cả</a>
             </div>
         </li>
         @foreach ($category as $category)
@@ -245,8 +249,8 @@ h1, h2, p {
             {{-- quyền admin --}}
             @if (Auth::user()->email == 'admin@gmail.com')
             <div class="admin-icons">
-                <a href="#" onclick="showEditModal('{{ $category->id }}', '{{ $category->name }}')">
-                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px;"></i>
+                <a href="#">
+                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px; "></i>
                 </a>
                 <a href="#" onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
                     <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
@@ -258,15 +262,6 @@ h1, h2, p {
                         window.location.href = url;
                     }
                 }
-                function showEditModal(id, name) {
-                                    // Cập nhật giá trị của các trường input trong modal
-                                    document.getElementById('id').value = id;
-                                    document.getElementById('name').value = name;
-
-                                    // Hiển thị modal
-                                    var myModal = new bootstrap.Modal(document.getElementById('editModal'));
-                                    myModal.show();
-                                }
             </script>
             @endif
         </div>
@@ -282,36 +277,7 @@ h1, h2, p {
         @endif
     </ul>
 </div>
-{{-- lấy form sửa --}}
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Cập Nhật</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('categories.update', ['id' => $category->id]) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="id" class="form-label">ID</label>
-                            <input type="text" class="form-control" id="id" name="id" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Tên</label>
-                            <input type="text" class="form-control" id="name" name="name" value="">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
 
-            </div>
-        </div>
-    </div>
-</div>
-{{-- lấy form sửa --}}
 
 
 <section class="slider-hero">
@@ -321,11 +287,10 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2> </h2>
-                      <h5>    .</h5>
+                    
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
-                         <div class="video" >
+                         <div class="video">
                          <a data-fancybox="" href="https://www.youtube.com/watch?v=gbLmku5QACM"><i>
                            <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path d="M11 8.5L0.5 0.272758L0.5 16.7272L11 8.5Z" fill="#fff"/>
@@ -449,9 +414,13 @@ h1, h2, p {
       
         <div class="column" >
        
-                
-  
-        
+
+
+           
+
+         
+           
+
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
                 {{-- quyền admin --}}        

@@ -37,20 +37,4 @@ class CrudCategoriesController extends Controller
         Category::where('id', $category)->delete();
         return redirect()->back();
     }
-    public function updateCategories(Request $request) {
-        $categoryId = $request->input('id');
-        $category = Category::find($categoryId);
-        
-        if (!$category) {
-            // Xử lý khi không tìm thấy danh mục
-            return redirect()->back()->with('error', 'Không tìm thấy danh mục cần cập nhật.');
-        }
-    
-        // Cập nhật thông tin của danh mục
-        $category->name = $request->input('name');
-        $category->save();
-    
-        return redirect()->back();
-    }
-    
 }

@@ -252,6 +252,7 @@ h1, h2, p {
                     <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
                 </a>
             </div>
+            
             <script>
                 function confirmDelete(url) {
                     if (confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
@@ -547,6 +548,7 @@ h1, h2, p {
     }
     
 </script>
+<<<<<<< HEAD
 <script>
     var errorMessage = "{{ session('error') }}";
     if(errorMessage) {
@@ -554,4 +556,14 @@ h1, h2, p {
     }
 </script>
 
+=======
+@if (session('error'))
+    <script>
+        var errorMessage = "{{ session('error') }}";
+        if(errorMessage) {
+            alert(errorMessage);
+        }
+    </script>
+@endif
+>>>>>>> origin/quenmk
 @endsection
