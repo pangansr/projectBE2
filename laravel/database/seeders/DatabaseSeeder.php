@@ -16,29 +16,26 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'id' => 1,
-
-                'name' => 'Áo khoác',
+                'name' => 'T-Shirt',
 
                
             ],
             [
                 'id' => 2,
- 
-                'name' => 'Sơ mi',
+                'name' => 'Hoodie',
   
              
                
             ],
             [
                 'id' => 3,
- 
-                'name' => 'Áo thun',
+                'name' => 'Shorts',
   
             ],
             [
                 'id' => 4,
  
-                'name' => 'Quần dài',
+                'name' => 'Jacket',
   
   
                
@@ -46,7 +43,7 @@ class DatabaseSeeder extends Seeder
             [
                 'id' => 5,
  
-                'name' => 'Quần short',
+                'name' => 'Trousers',
   
                
             ],

@@ -417,22 +417,7 @@ h1, h2, p {
        
 
 
-                <div class="slide" style="display: flex;">
-                    <h1>Welcome to the website </h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua. </p>
-                    <button type="button" class="nut">Get it now</button>
-                </div>
-                <div class="slide " style="display: flex;">
-                   
-                        <h1>Trải nghiệm với đa dạng loại sản phẩm</h1>
-                        <h2>Free Ecommerce Template</h2>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. </p>
-                        <button type="button" class="nut">Get it now</button>
-                   
-                </div>
-            </div>
+       
 
          
            
