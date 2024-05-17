@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="row">
-                                    <div class="col-md-8" style="text-align: right; margin-top: 6px; margin-left:">
+                                    <div class="col-md-8" style="text-align: right; margin-top: 6px;">
                                         <a href="http://127.0.0.1:8000/login" style="text-align: right; text-decoration: none; font-size: 13px;">Đã có tài khoản</a>
                                     </div>
                                     <div class="col-md-4">
