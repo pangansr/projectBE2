@@ -3,10 +3,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="../cart.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-        
+    <link rel="icon" href="assets/img/logo-icon.png">
+  <!-- CSS only -->
+   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
+   <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+   <!-- fancybox -->
+   <link rel="stylesheet" href="../assets/css/jquery.fancybox.min.css">
 
+   <link rel="stylesheet" href="../assets/css/style.css">
+   <!-- responsive -->
+   <link rel="stylesheet" href="../assets/css/responsive.css">
+   <!-- color -->
+   <link rel="stylesheet" href="../assets/css/color.css">
+   <!-- jQuery -->
+   <script src="../assets/js/jquery-3.6.0.min.js"></script>
+   <script src="../assets/js/preloader.js"></script>
 </head>
     <style>
 
@@ -211,7 +225,6 @@ h1, h2, p {
 }
     </style>
 @section('content')
-
     <div class="container">
         <main class="main-content">
         </main>
@@ -221,7 +234,7 @@ h1, h2, p {
     <ul class="horizontal-list">
         <li>
             <div class="category-item-container">
-                <a href="{{ route('user.list') }}" class="category-item" onclick="changeColor(this)">Tất cả</a>
+                <a class="category-item" onclick="changeColor(this)" href="{{ route('user.list') }}">Tất cả</a>
             </div>
         </li>
         @foreach ($category as $category)
@@ -265,7 +278,7 @@ h1, h2, p {
 
 <section class="slider-hero">
     <div class="slider-home-1 owl-carousel owl-theme">
-       <div class="hero-section item" style="background-image: url(../images/background.png)">
+       <div class="hero-section item" style="background-image: url(../public/images/background.png)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -273,7 +286,7 @@ h1, h2, p {
                       <h2>The Perfect Space to Enjoy Fantastic Food</h2>
                       <h5>Festive dining at Farthings where we are strong believers in using the very best produce</h5>
                       <div class="d-md-flex align-items-center">
-                         <a href="menu-1.html" class="button">See Our Menus</a>
+                         <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
                          <div class="video">
                          <a data-fancybox="" href="https://www.youtube.com/watch?v=1La4QzGeaaQ"><i>
                            <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -292,7 +305,8 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>grilled cheese</h2>
+                      <h2>Lorem, ipsum dolor.
+                      </h2>
                       <h1>burger</h1>
                       <h6>limited time offer</h6>
                       <div class="d-md-flex align-items-center">
@@ -308,9 +322,9 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>delicious</h2>
-                      <h1>Hot Pizza</h1>
-                      <h6>don't miss this deal</h6>
+                      <h2>Lorem.</h2>
+                      <h1>Lorem, ipsum dolor.</h1>
+                      <h6>don't miss this</h6>
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">get offer today</a>
                       </div>
@@ -324,7 +338,7 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>Summer Drink</h2>
+                      <h2>Summer favorite</h2>
                       <h1>Cocktail</h1>
                       <h6>limited time offer</h6>
                       <div class="d-md-flex align-items-center">
@@ -414,7 +428,7 @@ h1, h2, p {
             <div class="container-product"  style="clear: both;">
                 @foreach ($products as $product)
                     <div class="product">
-                        <img src="{{ asset('../images/' . $product->image1) }}" style="width: 370px; height: 370px;" alt="Ảnh sản phẩm"><br><br>
+                        <img src="{{ asset('images/' . $product->image1) }}" style="width: 370px; height: 370px;" alt="Ảnh sản phẩm"><br><br>
                         <h2>{{ $product->name }}</h2>
                         <p class="price">Giá: {{ $product->price }}</p>
                         <p class="rating">Số lượng  : {{$product->stock_quantity }}</p>
