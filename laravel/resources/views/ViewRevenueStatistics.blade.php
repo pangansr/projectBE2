@@ -555,10 +555,6 @@
                 <div class="filter-content">
                     <h2 class="filter-title">Thống kê doanh thu</h2>
                     <div class="date-range">
-                        <label class="text">Từ ngày:</label>
-                        <input type="date" id="fromDate" class="date-input" />
-                        <label class="text">Đến ngày</label>
-                        <input type="date" id="toDate" class="date-input" />
                         <label class="text">Doanh mục</label>
                         <select id="category_id" name="category_id" required class="form-control">
                             <option value="0">Tất cả</option>
@@ -645,8 +641,8 @@
                             <img src="./image/tien.png" style="width: 90px" alt="" class="stats-icon stats-icon-red" />
                         </div>
                         <div class="stats-item stats-item-purple">
-                            <div class="stats-content">
-                                <div class="value">2461</div>
+                            <div class="stats-f">
+                                <div class="value">{{$remainingQuantity}}</div>
                                 <div class="texttk">Sản phẩm còn lại</div>
                             </div>
                             <img src="./image/tải xuống.png" alt="" class="stats-icon stats-icon-purple" />
