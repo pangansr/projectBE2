@@ -26,7 +26,7 @@ class CrudProductController extends Controller
         if (Auth::check($key)) {
             
            
-                $products = Product::where('name', 'LIKE', "%{$key}%")->paginate(1);
+                $products = Product::where('name', 'LIKE', "%{$key}%")->paginate(10);
                 $category = Category::all();
                 return view('search.search', compact('user', 'products', 'category', 'shopingCart'));
            
@@ -45,19 +45,18 @@ class CrudProductController extends Controller
 
         // return view('search.search', compact('products'));
     }
-    public function showProductsByCategory($id)
+    public function showProductsByCategory( Request $request)
     {
        
-        
         $user = Auth::user();
         $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
         if (Auth::check()) {
            // $products = Product::where('category_id', $id)->get();
            // $products = Product::paginate(5); 
-           $products = Product::where('category_id', $id)->paginate(1); 
+           $products = Product::where('category_id', $request->get('id'))->paginate(5); 
             $category = Category::all();
             $user = Auth::user();
-            return view('category', compact('user','products','category','shopingCart'));
+            return view('category',['id' => $request->get('id')], compact('user','products','category','shopingCart'));
         } else {
           
         }

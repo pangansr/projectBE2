@@ -646,7 +646,7 @@
                         </div>
                         <div class="stats-item stats-item-purple">
                             <div class="stats-content">
-                                <div class="value">2461</div>
+                                <div class="value">11</div>
                                 <div class="texttk">Sản phẩm còn lại</div>
                             </div>
                             <img src="./image/tải xuống.png" alt="" class="stats-icon stats-icon-purple" />

@@ -5,11 +5,20 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\OrderDetail;
 use App\Models\Product;
+use App\Models\ShoppingCart;
 use App\Models\Order;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
 class OrdersController extends Controller
 {
+    public function ViewDetailOrder()
+    {
+        $user = Auth::user();
+        $orders = Order::with('user')->where('id_users', $user->id)->get(); 
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
+        return view('order', compact('user', 'orders', 'shopingCart'));
+    }
     public function ViewOrder()
     {
         return view('thanhtoan.thanhtoan');
@@ -49,7 +58,8 @@ class OrdersController extends Controller
         }
 
         session(['detailOrders' => $detailOrders]);
-        return view('thanhtoan.thanhtoan');
+        return view('thanhtoan.thanhtoan'   );
+        
     }
 
 

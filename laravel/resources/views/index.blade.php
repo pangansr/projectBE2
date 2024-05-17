@@ -283,12 +283,12 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>The Perfect Space to Enjoy Fantastic Food</h2>
-                      <h5>Festive dining at Farthings where we are strong believers in using the very best produce</h5>
+                      <h2> </h2>
+                      <h5>    .</h5>
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
-                         <div class="video">
-                         <a data-fancybox="" href="https://www.youtube.com/watch?v=1La4QzGeaaQ"><i>
+                         <div class="video" >
+                         <a data-fancybox="" href="https://www.youtube.com/watch?v=gbLmku5QACM"><i>
                            <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path d="M11 8.5L0.5 0.272758L0.5 16.7272L11 8.5Z" fill="#fff"/>
                            </svg>

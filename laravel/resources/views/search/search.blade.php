@@ -287,8 +287,7 @@ h1, h2, p {
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>The Perfect Space to Enjoy Fantastic Food</h2>
-                      <h5>Festive dining at Farthings where we are strong believers in using the very best produce</h5>
+                    
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
                          <div class="video">

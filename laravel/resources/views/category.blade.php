@@ -3,24 +3,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="../cart.css" />
+    <link rel="stylesheet" href="cart.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="assets/img/logo-icon.png">
   <!-- CSS only -->
-   <link rel="stylesheet" type="text/css" href="../assets/css/bootstrap.min.css">
-   <link rel="stylesheet" href="../assets/css/owl.carousel.min.css">
-   <link rel="stylesheet" href="../assets/css/owl.theme.default.min.css">
+   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+   <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
    <!-- fancybox -->
-   <link rel="stylesheet" href="../assets/css/jquery.fancybox.min.css">
+   <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
 
-   <link rel="stylesheet" href="../assets/css/style.css">
+   <link rel="stylesheet" href="assets/css/style.css">
    <!-- responsive -->
-   <link rel="stylesheet" href="../assets/css/responsive.css">
+   <link rel="stylesheet" href="assets/css/responsive.css">
    <!-- color -->
-   <link rel="stylesheet" href="../assets/css/color.css">
+   <link rel="stylesheet" href="assets/css/color.css">
    <!-- jQuery -->
-   <script src="../assets/js/jquery-3.6.0.min.js"></script>
-   <script src="../assets/js/preloader.js"></script>
+   <script src="assets/js/jquery-3.6.0.min.js"></script>
+   <script src="assets/js/preloader.js"></script>
 </head>
     <style>
 
@@ -31,7 +31,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 0;
-    margin: 30px;
+    margin: 0;
     list-style-type: none;
     width: 100%;
 }
@@ -54,7 +54,7 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-    font-size: 25px;
+    font-size: inherit;
     color: black;
     width: 100%;
 }
@@ -87,8 +87,12 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
+
             height: 600px;
             position: relative;
+
+            position: relative;
+
             float: left;
         
             
@@ -141,7 +145,7 @@
             padding: 15px;
             width: 400px;
             text-align: center;
-            background: wheat;
+            background: white;
             margin: 20px;
         }
 
@@ -234,7 +238,7 @@ h1, h2, p {
     <ul class="horizontal-list">
         <li>
             <div class="category-item-container">
-                <a class="category-item" onclick="changeColor(this)" href="{{ route('user.list') }}">Tất cả</a>
+                <a class="category-item" onclick="changeColor(this)">Tất cả</a>
             </div>
         </li>
         @foreach ($category as $category)
@@ -278,17 +282,17 @@ h1, h2, p {
 
 <section class="slider-hero">
     <div class="slider-home-1 owl-carousel owl-theme">
-       <div class="hero-section item" style="background-image: url(../public/images/background.png)">
+       <div class="hero-section item" style="background-image: url(images/background.png)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
                    <div class="featured-area">
-                      <h2>The Perfect Space to Enjoy Fantastic Food</h2>
-                      <h5>Festive dining at Farthings where we are strong believers in using the very best produce</h5>
+                      <h2></h2>
+                      <h5></h5>
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
                          <div class="video">
-                         <a data-fancybox="" href="https://www.youtube.com/watch?v=1La4QzGeaaQ"><i>
+                         <a data-fancybox="" href="https://www.youtube.com/watch?v=gbLmku5QACM"><i>
                            <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path d="M11 8.5L0.5 0.272758L0.5 16.7272L11 8.5Z" fill="#fff"/>
                            </svg>
@@ -300,7 +304,7 @@ h1, h2, p {
              </div>
           </div>
        </div>
-       <div class="hero-section item" style="background-image: url(../images/background1.png)">
+       <div class="hero-section item" style="background-image: url(images/background1.png)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -317,7 +321,7 @@ h1, h2, p {
              </div>
           </div>
        </div>
-       <div class="hero-section item" style="background-image: url(../images/hero-slider-three.webp)">
+       <div class="hero-section item" style="background-image: url(images/hero-slider-three.webp)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -333,7 +337,7 @@ h1, h2, p {
              </div>
           </div>
        </div>
-       <div class="hero-section item" style="background-image: url(../images/hero-slider-two.webp)">
+       <div class="hero-section item" style="background-image: url(images/hero-slider-two.webp)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -358,7 +362,7 @@ h1, h2, p {
    <div class="container">
       <div class="row">
          <div class="col-lg-6">
-            <div class="bbq" style="background-image: url(../images/anhnen.jpg)">
+            <div class="bbq" style="background-image: url(images/anhnen.jpg)">
                <h2>Áo khoác</h2>
                <p>canonical classics to obscure<br> vải len</p>
                <div class="bbr-price">
@@ -370,7 +374,7 @@ h1, h2, p {
             </div>
          </div>
          <div class="col-lg-6">
-            <div class="bbq mb-0" style="background-image: url(../images/6.jpg)">
+            <div class="bbq mb-0" style="background-image: url(images/6.jpg)">
                <h2>Đồ bộ</h2>
                <p>canonical classics to obscure <br> Lorem, ipsum.</p>
                <div class="bbr-price">
@@ -411,9 +415,13 @@ h1, h2, p {
       
         <div class="column" >
        
-                
-  
-        
+
+
+           
+
+         
+           
+
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
                 {{-- quyền admin --}}        
