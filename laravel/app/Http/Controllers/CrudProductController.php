@@ -56,7 +56,7 @@ class CrudProductController extends Controller
            $products = Product::where('category_id', $request->get('id'))->paginate(10); 
             $category = Category::all();
             $user = Auth::user();
-            return view('category',['id' => $request->get('id')], compact('user','products','category','shopingCart'));
+            return view('category.category',['id' => $request->get('id')], compact('user','products','category','shopingCart'));
         } else {
           
         }
