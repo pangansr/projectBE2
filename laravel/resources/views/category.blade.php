@@ -3,7 +3,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="cart.css" />
+    <link rel="stylesheet" href="../cart.css" />
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" href="assets/img/logo-icon.png">
   <!-- CSS only -->
@@ -278,7 +278,7 @@ h1, h2, p {
 
 <section class="slider-hero">
     <div class="slider-home-1 owl-carousel owl-theme">
-       <div class="hero-section item" style="background-image: url(images/background.png)">
+       <div class="hero-section item" style="background-image: url(../public/images/background.png)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -300,7 +300,7 @@ h1, h2, p {
              </div>
           </div>
        </div>
-       <div class="hero-section item" style="background-image: url(images/background1.png)">
+       <div class="hero-section item" style="background-image: url(../images/background1.png)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -317,7 +317,7 @@ h1, h2, p {
              </div>
           </div>
        </div>
-       <div class="hero-section item" style="background-image: url(images/hero-slider-three.webp)">
+       <div class="hero-section item" style="background-image: url(../images/hero-slider-three.webp)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -333,7 +333,7 @@ h1, h2, p {
              </div>
           </div>
        </div>
-       <div class="hero-section item" style="background-image: url(images/hero-slider-two.webp)">
+       <div class="hero-section item" style="background-image: url(../images/hero-slider-two.webp)">
           <div class="container">
              <div class="row align-items-end">
                 <div class="col-xl-6">
@@ -358,7 +358,7 @@ h1, h2, p {
    <div class="container">
       <div class="row">
          <div class="col-lg-6">
-            <div class="bbq" style="background-image: url(images/anhnen.jpg)">
+            <div class="bbq" style="background-image: url(../images/anhnen.jpg)">
                <h2>Áo khoác</h2>
                <p>canonical classics to obscure<br> vải len</p>
                <div class="bbr-price">
@@ -370,7 +370,7 @@ h1, h2, p {
             </div>
          </div>
          <div class="col-lg-6">
-            <div class="bbq mb-0" style="background-image: url(images/6.jpg)">
+            <div class="bbq mb-0" style="background-image: url(../images/6.jpg)">
                <h2>Đồ bộ</h2>
                <p>canonical classics to obscure <br> Lorem, ipsum.</p>
                <div class="bbr-price">
