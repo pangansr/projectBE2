@@ -98,9 +98,21 @@ Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStats
 
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
 
+<<<<<<< HEAD
 Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
 
 Route::get('/search', [CrudProductController::class, 'search'])->name('search');
 
 
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
+
+=======
+<<<<<<< HEAD
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
+
+Route::get('/search', [CrudProductController::class, 'search'])->name('search');
+
+
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
+>>>>>>> ThongKeSP
 

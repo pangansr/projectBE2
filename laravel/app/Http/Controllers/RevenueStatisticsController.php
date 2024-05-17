@@ -59,9 +59,15 @@ class RevenueStatisticsController extends Controller
                 $finalProducts = array_values($uniqueProducts);
             
         
+                $productQuantity = DB::table('products')->sum('stock_quantity');
 
+                // Lấy tổng số lượng đã bán từ bảng order_details
+                $soldQuantity = DB::table('order_details')->sum('quantity');
+            
+                // Tính toán số lượng sản phẩm còn lại
+                $remainingQuantity = $productQuantity - $soldQuantity;
           
-        return view('ViewRevenueStatistics', compact('user', 'product', 'categories', 'shopingCart', 'totalOrders', 'selectedCategoryId', 'customerRevenue','finalProducts'));
+        return view('ViewRevenueStatistics', compact('user', 'product', 'categories', 'shopingCart', 'totalOrders', 'selectedCategoryId', 'customerRevenue','finalProducts','remainingQuantity'));
     }
 
 
