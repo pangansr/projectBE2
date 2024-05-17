@@ -49,7 +49,6 @@ Route::get('/', function () {
 //categories
 Route::post('addCategories', [CrudCategoriesController::class, 'postCategories'])->name('categories.add');
 Route::get('deleteCategories', [CrudCategoriesController::class, 'deleteCategories'])->name('categories.delete');
-Route::post('updateCategories', [CrudCategoriesController::class, 'updateCategories'])->name('categories.update');
 
 
 
@@ -92,24 +91,12 @@ Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name(
 //update user
 Route::post('/read', [CrudUserController::class, 'updateProfile'])->name('profile.update');
 //oute::get('/read', [CrudUserController::class, 'updateProfile']);
-//Lay Mat Khau
-//get form email
-Route::get('/fogotpass', [CrudUserController::class, 'fogetpassword'])->name('user.fogetpass');
-Route::post('/fogotpass', [CrudUserController::class, 'check_fogot_password'])->name('user.checkpassword');
-
-
-Route::get('/reset-password/{token}', [CrudUserController::class, 'reset_password'])->name('account.reset_password');
-Route::post('/reset-password/{token}', [CrudUserController::class, 'check_reset_password'])->name('account.check_reset_password');
-
 
 //Route::get('/revenue-statistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
 
 Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStatsByCategory'])->name('getStatsByCategory');
 
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
-// Xóa User
-Route::delete('/users/{user}', [CrudUserController::class,'delete'])->name('users.delete');
-
 
 Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
 
