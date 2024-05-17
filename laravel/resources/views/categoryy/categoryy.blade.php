@@ -31,7 +31,7 @@
     flex-wrap: nowrap;
     overflow-x: auto;
     padding: 0;
-    margin: 30px;
+    margin: 0;
     list-style-type: none;
     width: 100%;
 }
@@ -54,7 +54,7 @@
     padding: 0;
     margin: 0;
     cursor: pointer;
-    font-size: 25px;
+    font-size: inherit;
     color: black;
     width: 100%;
 }
@@ -87,8 +87,12 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
+
             height: 600px;
             position: relative;
+
+            position: relative;
+
             float: left;
         
             
@@ -141,7 +145,7 @@
             padding: 15px;
             width: 400px;
             text-align: center;
-            background: wheat;
+            background: white;
             margin: 20px;
         }
 
@@ -295,7 +299,7 @@ h1, h2, p {
     <ul class="horizontal-list">
         <li>
             <div class="category-item-container">
-                <a class="category-item" onclick="changeColor(this)" href="{{ route('user.list') }}">Tất cả</a>
+                <a class="category-item" onclick="changeColor(this)">Tất cả</a>
             </div>
         </li>
         @foreach ($category as $category)
@@ -386,7 +390,7 @@ h1, h2, p {
                       <h5>    .</h5>
                       <div class="d-md-flex align-items-center">
                          <a href="menu-1.html" class="button">Lorem, ipsum dolor.</a>
-                         <div class="video" >
+                         <div class="video">
                          <a data-fancybox="" href="https://www.youtube.com/watch?v=gbLmku5QACM"><i>
                            <svg width="15" height="22" viewBox="0 0 11 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                              <path d="M11 8.5L0.5 0.272758L0.5 16.7272L11 8.5Z" fill="#fff"/>
@@ -510,9 +514,13 @@ h1, h2, p {
       
         <div class="column" >
        
-                
-  
-        
+
+
+           
+
+         
+           
+
             <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
 
                 {{-- quyền admin --}}        
