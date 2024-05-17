@@ -54,7 +54,7 @@ Route::get('deleteCategories', [CrudCategoriesController::class, 'deleteCategori
 
 //product
 // lay danh muc hien thi
-Route::get('categories', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
+Route::get('/categories', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
 
 Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
 

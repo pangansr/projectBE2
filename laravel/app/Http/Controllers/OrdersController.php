@@ -58,7 +58,8 @@ class OrdersController extends Controller
         }
 
         session(['detailOrders' => $detailOrders]);
-        return view('thanhtoan.thanhtoan'   );
+        session('total', $request->input('total'));
+        return view('thanhtoan.thanhtoan' );
         
     }
 
@@ -86,6 +87,7 @@ class OrdersController extends Controller
         }
 
         session()->forget('detailOrders');
+        session()->forget('total');
         return redirect()->route('user.list');
     }
 }

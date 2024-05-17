@@ -57,12 +57,12 @@
 
                 <div class="form-group">
                     <label for="price">Giá</label>
-                    <input type="number" id="price" name="price" required class="form-control">
+                    <input type="number" id="price" name="price" required class="form-control" min="1">
                 </div>
 
                 <div class="form-group">
                     <label for="stock_quantity">Số Lượng Kho</label>
-                    <input type="number" id="stock_quantity" name="stock_quantity" required class="form-control">
+                    <input type="number" id="stock_quantity" name="stock_quantity" required class="form-control" min="1">
                 </div>
 
                 <div class="form-group">

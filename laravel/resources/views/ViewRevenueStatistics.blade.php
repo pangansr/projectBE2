@@ -702,4 +702,12 @@
     </div>
 
 </div>
+@if (session('error'))
+    <script>
+        var errorMessage = "{{ session('error') }}";
+        if(errorMessage) {
+            alert(errorMessage);
+        }
+    </script>
+@endif
 @endsection
