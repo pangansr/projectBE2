@@ -199,7 +199,7 @@
 
         .text-end {
             display: flex;
-            justify-content: space-between;
+            justify-content: space-between;4
         }
         .text-end a {
   color: #1ecece; /* màu chữ mặc định */
@@ -288,7 +288,7 @@
                     <br>
                     <div class="text-end">
                         <a href="{{ route('user.createUser') }}" class="text-decoration-none">Tạo tài khoản?</a>
-                        <a href="" class="text-decoration-none">Bạn Quên Mật Khẩu?</a>
+                        <a href="{{route('user.fogetpass')}}" class="text-decoration-none">Bạn Quên Mật Khẩu?</a>
                     </div>
                 </form>
             </div>
