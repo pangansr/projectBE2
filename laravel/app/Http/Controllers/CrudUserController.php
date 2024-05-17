@@ -2,11 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Mail\ForgetPassword;
 use App\Models\User;
 use App\Models\Product;
 use App\Models\Category;
-use App\Models\PasswordResetTokens;
 use App\Models\Profile;
 use App\Models\ShoppingCart;
 use Illuminate\Http\Request;
@@ -14,9 +12,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-use Illuminate\Support\Facades\Mail;
-use Illuminate\Support\Facades\Log;
-use Illuminate\Support\Str;
 
 /**
  * CRUD User controller
@@ -39,7 +34,7 @@ class CrudUserController extends Controller
             'phone' => 'required|numeric',
             'address' => 'nullable',
         ]);
-
+    
         // Tạo mới hoặc cập nhật profile
         $profile = Profile::updateOrCreate(
             ['user_id' => $request->input('id_user')],
@@ -54,14 +49,14 @@ class CrudUserController extends Controller
                 'address' => $request->input('address')
             ]
         );
-
+    
         if ($profile) {
             return redirect()->back()->with('success', 'Profile đã được cập nhật thành công!');
         } else {
             return redirect()->back()->with('error', 'Đã xảy ra lỗi khi cập nhật profile!');
         }
     }
-
+    
     public function ViewRevenueStatistics(Request $request)
     {
         $user_id = $request->get('id');
@@ -152,10 +147,10 @@ class CrudUserController extends Controller
         $user_id = $request->get('id');
         $user_hienTai = Auth::user();
         $shopingCart = ShoppingCart::where('user_id', $user_hienTai->id)->get();
-        $profile = Profile::where('user_id', $user_hienTai->id)->first();
+      $profile = Profile:: where('user_id',$user_hienTai->id)->first();
         $user = User::find($user_id);
-        $users = User::all();
-        return view('crud_user.read', ['user' => $user], compact('users', 'shopingCart', 'profile'));
+
+        return view('crud_user.read', ['user' => $user], compact('shopingCart','profile'));
     }
 
     /**
@@ -167,11 +162,6 @@ class CrudUserController extends Controller
         $user = User::destroy($user_id);
 
         return redirect("list")->withSuccess('You have signed-in');
-    }
-    public function delete(User $user)
-    {
-        $user->delete(); // Xóa người dùng
-        return redirect()->back()->with('success', 'Người dùng đã được xóa thành công.');
     }
 
 
@@ -251,75 +241,5 @@ class CrudUserController extends Controller
         Auth::logout();
 
         return Redirect('login');
-    }
-    ///Lấy Lại Pass
-
-    public function check_fogot_password(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|exists:users,email'
-        ], [
-            'email.exists' => 'Email không tồn tại trong hệ thống.'
-        ]);
-
-        $mail_user = User::where('email', $request->email)->first();
-        $token = Str::random(50);
-
-        $tokenData = [
-            'email' => $request->email,
-            'token' => $token,
-        ];
-
-        if (PasswordResetTokens::create($tokenData)) {
-            Log::info('Sending email to: ' . $request->email);
-            Mail::to($request->email)->send(new ForgetPassword($mail_user, $token));
-            Log::info('Email sent to: ' . $request->email);
-            return redirect()->back()->with('success', 'Vui lòng kiểm tra email');
-        }
-
-        return redirect()->back()->with('error', 'Vui lòng kiểm tra lại email');
-    }
-    public function fogetpassword()
-    {
-        return view('reset_password.email');
-    }
-    public function reset_password($token)
-    {
-
-        $tokenData = PasswordResetTokens::checkToken($token);
-        // $tokenUser = User::where('email',$tokenData->email)->firstorFail();
-        $user = $tokenData->user;
-
-        return view('reset_password.resetpass');
-    }
-
-    public function check_reset_password($token)
-    {
-        request()->validate([
-            'password' => 'required|min:4',
-            'confirm_password' => 'required|same:password',
-        ]);
-
-        // Tìm token
-        $tokenData = PasswordResetTokens::where('token', $token)->first();
-
-        if (!$tokenData) {
-            return redirect()->back()->with('error', 'Token không hợp lệ.');
-        }
-
-        // Tìm người dùng theo email
-        $user = User::where('email', $tokenData->email)->first();
-
-        if (!$user) {
-            return redirect()->back()->with('error', 'Người dùng không tồn tại.');
-        }
-
-        // Cập nhật mật khẩu
-        $user->password = bcrypt(request('password'));
-        $user->save();
-        PasswordResetTokens::where('token', $token)->delete();
-
-        return redirect()->route('login')->with('success', 'Mật khẩu đã được thay đổi thành công.');
-        
     }
 }

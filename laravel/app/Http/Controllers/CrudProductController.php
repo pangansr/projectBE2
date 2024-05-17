@@ -18,19 +18,45 @@ use Illuminate\Support\Facades\File;
 use App\Models\ShoppingCart;
 class CrudProductController extends Controller
 {
-    public function showProductsByCategory($id)
+    public function search(Request $request, $id = null)
+    {
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
+        $key = $request->input('key');
+        if (Auth::check($key)) {
+            
+           
+                $products = Product::where('name', 'LIKE', "%{$key}%")->paginate(10);
+                $category = Category::all();
+                return view('search.search', compact('user', 'products', 'category', 'shopingCart'));
+           
+    
+          
+           
+            
+        } else {
+            // Handle the case where the user is not authenticated
+            // Redirect or return a view if necessary
+           // return redirect()->route('index'); // Assuming you have a login route
+        }
+
+        // $key = $request->input('key');
+        // $products = Product::where('name', 'LIKE', "%{$key}%")->get();
+
+        // return view('search.search', compact('products'));
+    }
+    public function showProductsByCategory( Request $request)
     {
        
-        
         $user = Auth::user();
         $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
         if (Auth::check()) {
            // $products = Product::where('category_id', $id)->get();
            // $products = Product::paginate(5); 
-           $products = Product::where('category_id', $id)->paginate(1); 
+           $products = Product::where('category_id', $request->get('id'))->paginate(5); 
             $category = Category::all();
             $user = Auth::user();
-            return view('category', compact('user','products','category','shopingCart'));
+            return view('category',['id' => $request->get('id')], compact('user','products','category','shopingCart'));
         } else {
           
         }
