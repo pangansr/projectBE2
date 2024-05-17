@@ -9,7 +9,7 @@ class OrderDetail extends Model
 {
     use HasFactory;
 
-    protected $table = 'order_detail'; // Tên bảng trong cơ sở dữ liệu
+    protected $table = 'order_details'; // Tên bảng trong cơ sở dữ liệu
 
     protected $fillable = [
         'order_id',
@@ -18,5 +18,8 @@ class OrderDetail extends Model
         'price',
     ];
     
-
+    public function product()
+    {
+        return $this->belongsTo(Product::class);
+    }
 }

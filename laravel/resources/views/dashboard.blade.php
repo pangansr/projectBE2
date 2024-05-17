@@ -53,7 +53,7 @@
     .nav-item {
         text-decoration: none;
         color: #333;
-        padding: 10px;
+        padding: 25px;
         border-radius: 10px;
         font-size: large;
         transition: background-color 0.3s ease;
@@ -162,17 +162,20 @@
             <div id="cart" class="nav-item">
                 <h3>GIỎ HÀNG </h3>
             </div>
+            <a href="{{ route('ViewDetailOrder') }}" class="nav-item">
+                <h3>ĐƠN HÀNG</h3>
+            </a>
             <a href="{{ route('ViewRevenueStatistics') }}" class="nav-item">
                 <h3>THỐNG KÊ</h3>
             </a>
         </nav>
         <div class="nav-right">
-            <form class="search-form">
-                <input type="text" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
-                <button type="submit" class="search-button">Tìm kiếm</button>
-            </form>
+        <form class="search-form" action="{{ route('search') }}" method="GET">
+    <input type="text" name="key" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
+   <button type="submit" class="search-button">Tìm kiếm</button>
+</form>
 
-         
+
             <a href="{{ route('user.readUser', ['id' => $user->id]) }}">
                 <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
             </a>

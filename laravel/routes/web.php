@@ -55,7 +55,7 @@ Route::post('updateCategories', [CrudCategoriesController::class, 'updateCategor
 
 //product
 // lay danh muc hien thi
-Route::get('categories/{id}', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
+Route::get('categories', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
 
 Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
 
@@ -79,6 +79,8 @@ Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart']
 
 Route::post('GetOrderDetails', [OrdersController::class, 'GetOrderDetails'])->name('GetOrderDetails');
 Route::get('ViewOrder', [OrdersController::class, 'ViewOrder'])->name('ViewOrder');
+
+Route::get('ViewDetailOrder', [OrdersController::class, 'ViewDetailOrder'])->name('ViewDetailOrder');
 Route::post('AddOrder', [OrdersController::class, 'AddOrder'])->name('AddOrder');
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
@@ -108,5 +110,20 @@ Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->n
 // Xóa User
 Route::delete('/users/{user}', [CrudUserController::class,'delete'])->name('users.delete');
 
+
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
+
+Route::get('/search', [CrudProductController::class, 'search'])->name('search');
+
+
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
+
+
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
+
+Route::get('/search', [CrudProductController::class, 'search'])->name('search');
+
+
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
 
 

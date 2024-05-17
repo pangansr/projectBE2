@@ -178,7 +178,10 @@
         width: 530px;
         align-self: center;
         max-width: 100%;
-        height: 200px;
+        height: 300px;
+        max-height: 250px;
+        /* Điều chỉnh chiều cao theo ý bạn */
+        overflow-y: auto;
 
     }
 
@@ -492,10 +495,10 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-     //chang
+        //chang
         $('#category_id').change(function () {
             var categoryId = $(this).val();
-            if (categoryId == 0 || categoryId === "") { 
+            if (categoryId == 0 || categoryId === "") {
                 $.ajax({
                     url: '{{ route("getAllStats") }}', 
                     method: 'GET',
@@ -528,7 +531,7 @@
         //mới dô
         var initialCategoryId = $('#category_id').val();
         if (initialCategoryId == 0 || initialCategoryId === "") {
-          
+
             $.ajax({
                 url: '{{ route("getAllStats") }}',
                 method: 'GET',
@@ -569,7 +572,7 @@
                     </div>
                     <input type="submit" value="Tìm kiếm" class="button">
                 </div>
-               
+
 
                 <div class="stats-content">
 
@@ -590,7 +593,7 @@
                         </div>
                         <img src="./image/slkhpng.png" alt="" class="stats-icon" />
                     </div>
-                    
+
                     <div class="overview-table">
                         <table>
                             <thead>
@@ -601,21 +604,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Khách hàng A</td>
-                                    <td>$1000</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Khách hàng B</td>
-                                    <td>$1500</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Khách hàng C</td>
-                                    <td>$800</td>
-                                </tr>
+                                @foreach($customerRevenue as $index => $revenue)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $revenue->customerName }}</td>
+                                        <td>{{ number_format($revenue->totalRevenue, 2) }} VND</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -623,6 +618,10 @@
 
             </div>
         </section>
+
+
+
+
         <section class="main-section">
             <div class="main-container">
                 <div class="main-content">
@@ -647,7 +646,9 @@
                         </div>
                         <div class="stats-item stats-item-purple">
                             <div class="stats-content">
-                                <div class="value">2461</div>
+                                <div class="value">11</div>
+                            <div class="stats-f">
+                                <div class="value">{{$remainingQuantity}}</div>
                                 <div class="texttk">Sản phẩm còn lại</div>
                             </div>
                             <img src="./image/tải xuống.png" alt="" class="stats-icon stats-icon-purple" />
@@ -668,28 +669,22 @@
                                         <th>Thành tiền</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>SP001</td>
-                                        <td>Sản phẩm 1</td>
-                                        <td>10</td>
-                                        <td>$100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>SP002</td>
-                                        <td>Sản phẩm 2</td>
-                                        <td>8</td>
-                                        <td>$80</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>SP003</td>
-                                        <td>Sản phẩm 3</td>
-                                        <td>15</td>
-                                        <td>$150</td>
-                                    </tr>
+                                    @php $index = 1 @endphp
+                                    @foreach($finalProducts as $product)
+                                        <tr>
+                                            <td>{{ $index }}</td>
+                                            <td>{{ 'SP' . $product['productId'] }}</td>
+                                            <td>{{ $product['productName'] }}</td>
+                                            <td>{{ $product['totalQuantity'] }}</td>
+                                            <td>{{ '$' . number_format($product['total'], 2) }}</td>
+                                        </tr>
+                                        @php $index++ @endphp
+                                    @endforeach
+
+
+
                                 </tbody>
                             </table>
                         </div>
