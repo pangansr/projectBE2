@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\File;
 use App\Models\ShoppingCart;
 class CrudProductController extends Controller
 {
+
+
     public function search(Request $request, $id = null)
     {
         $user = Auth::user();
@@ -26,7 +28,7 @@ class CrudProductController extends Controller
         if (Auth::check($key)) {
             
            
-                $products = Product::where('name', 'LIKE', "%{$key}%")->paginate(1);
+                $products = Product::where('name', 'LIKE', "%{$key}%")->paginate(10);
                 $category = Category::all();
                 return view('search.search', compact('user', 'products', 'category', 'shopingCart'));
            
@@ -37,7 +39,7 @@ class CrudProductController extends Controller
         } else {
             // Handle the case where the user is not authenticated
             // Redirect or return a view if necessary
-           // return redirect()->route('index'); // Assuming you have a login route
+            return redirect()->route('index'); // Assuming you have a login route
         }
 
         // $key = $request->input('key');
@@ -45,7 +47,7 @@ class CrudProductController extends Controller
 
         // return view('search.search', compact('products'));
     }
-    public function showProductsByCategory($id)
+    public function showProductsByCategory(Request $request)
     {
        
       
@@ -54,10 +56,10 @@ class CrudProductController extends Controller
         if (Auth::check()) {
            // $products = Product::where('category_id', $id)->get();
            // $products = Product::paginate(5); 
-           $products = Product::where('category_id', $id)->paginate(1); 
+           $products = Product::where('category_id', $request -> get('id'))->paginate(1); 
             $category = Category::all();
             $user = Auth::user();
-            return view('category', compact('user','products','category','shopingCart'));
+            return view('categoryy.categoryy',['id'=> $request -> get('id')], compact('user','products','category','shopingCart'));
         } else {
           
         }

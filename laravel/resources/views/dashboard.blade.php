@@ -31,15 +31,19 @@
         padding: 10px;
         padding-top: 20px;
         margin-bottom: 20px;
-
-
+        position: fixed;
+        width: 100%;
+        top: 0;
+        background-color: white;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     }
 
     .header-nav {
         display: flex;
         align-items: center;
         gap: 20px;
-
+        height: 100px;
     }
 
     .nav-right {
@@ -48,8 +52,6 @@
         align-items: center;
     }
 
-
-
     .nav-item {
         text-decoration: none;
         color: #333;
@@ -57,22 +59,18 @@
         border-radius: 10px;
         font-size: large;
         transition: background-color 0.3s ease;
+        transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+        position: relative;
+        z-index: 1;
     }
 
-    .nav-item {
-    transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
-    position: relative;
-    z-index: 1;
-}
-
-.nav-item:hover {
-    background-color: #F3274C;
-    color: white;
-    text-decoration: none;
-    transform: translateY(-5px); /* Di chuyển lên trên 5px */
-    box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2); /* Hiệu ứng đổ bóng */
-}
-
+    .nav-item:hover {
+        background-color: #F3274C;
+        color: white;
+        text-decoration: none;
+        transform: translateY(-5px);
+        box-shadow: 0px 15px 15px rgba(0, 0, 0, 0.2);
+    }
 
     .search-form {
         display: flex;
@@ -82,33 +80,32 @@
     }
 
     .search-input {
-    border-radius: 20px; 
-    border: 1px solid #F3274C; 
-    color: black;
-    padding: 12px; 
-    transition: border-color 0.3s ease, box-shadow 0.3s ease; 
-}
+        border-radius: 20px; 
+        border: 1px solid #F3274C; 
+        color: black;
+        padding: 12px; 
+        transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+    }
 
-.search-input:focus {
-    border-color: #69D5F3; /* Đổi màu viền khi input được focus */
-    box-shadow: 0 0 5px rgba(105, 213, 243, 0.5); /* Hiệu ứng đổ bóng khi input được focus */
-}
+    .search-input:focus {
+        border-color: #69D5F3; 
+        box-shadow: 0 0 5px rgba(105, 213, 243, 0.5); 
+    }
 
-.search-button {
-    border-radius: 0px 20px 20px 0px; 
-    margin-left: -25px;
-    border: 1px solid black;
-    background-color: #F3274C;
-    color: white;
-    padding: 12px 20px; 
-    transition: background-color 0.3s ease, color 0.3s ease;
-}
+    .search-button {
+        border-radius: 0px 20px 20px 0px; 
+        margin-left: -25px;
+        border: 1px solid black;
+        background-color: #F3274C;
+        color: white;
+        padding: 12px 20px; 
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
 
-.search-button:hover {
-    background-color: #F3274C; /* Đổi màu nền khi di chuột qua */
-    color: white; /* Đổi màu chữ khi di chuột qua */
-}
-
+    .search-button:hover {
+        background-color: #F3274C;
+        color: white;
+    }
 
     .avatar {
         width: 70px;
@@ -123,39 +120,41 @@
         from {
             opacity: 0.4;
         }
-
         to {
             opacity: 1;
         }
     }
 
-
     .logo {
         width: 140px;
         height: 130px;
-        
     }
-    .logout {
-    margin-bottom: -10px;
-    border: 2px solid red; 
-    background-color: white;
-    border-radius: 5px;
-    font-size: 18px;
-    padding: 10px;
-    transition: border-color 0.3s ease; 
-}
 
-.logout:hover {
-    background-color: #F3274C;
-    color: white;
-}
+    .logout {
+        margin-bottom: -10px;
+        border: 2px solid red; 
+        background-color: white;
+        border-radius: 5px;
+        font-size: 18px;
+        padding: 10px;
+        transition: border-color 0.3s ease;
+    }
+
+    .logout:hover {
+        background-color: #F3274C;
+        color: white;
+    }
+
+    body {
+        padding-top: 180px; /* Adjust this value based on the height of your navbar */
+    }
 
 </style>
 
 <body>
     <header class="header">
         <nav class="header-nav">
-            <img src="images/logo.png" alt="Logo" class="logo"  />
+        <a href="{{ route('user.list') }}">    <img src="images/logo.png" alt="Logo" class="logo"  /></a>
             <a href="{{ route('user.list') }}" class="nav-item">
                 <h3>TRANG CHỦ</h3>
             </a>
@@ -167,9 +166,9 @@
             </a>
         </nav>
         <div class="nav-right">
-        <form class="search-form" action="{{ route('search') }}" method="GET">
+        <form class="search-form" action="{{route('search')}}" method="GET">
     <input type="text" name="key" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
-   <a href="{{ route('search') }}"></a> <button type="submit" class="search-button">Tìm kiếm</button>
+   <button type="submit" class="search-button">Tìm kiếm</button>
 </form>
 
 
