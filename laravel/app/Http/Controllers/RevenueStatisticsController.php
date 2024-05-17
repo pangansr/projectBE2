@@ -32,9 +32,9 @@ class RevenueStatisticsController extends Controller
         $categoryId = $request->input('categoryId');
 
         // cê a i
-        $stats = OrderDetail::selectRaw('COUNT(order_detail.id) as orderCount, SUM(order_detail.total) as totalValue, COUNT(DISTINCT orders.id_users) as customerCount')
-            ->join('orders', 'order_detail.orders_id', '=', 'orders.id')
-            ->join('products', 'order_detail.product_id', '=', 'products.id')
+        $stats = OrderDetail::selectRaw('COUNT(order_details.id) as orderCount, SUM(order_details.total) as totalValue, COUNT(DISTINCT orders.id_users) as customerCount')
+            ->join('orders', 'order_details.order_id', '=', 'orders.id')
+            ->join('products', 'order_details.product_id', '=', 'products.id')
             ->where('products.category_id', $categoryId)
             ->first();
 
@@ -43,8 +43,8 @@ class RevenueStatisticsController extends Controller
     }
     public function getAllStats(Request $request)
     {
-        $stats = OrderDetail::selectRaw('COUNT(order_detail.id) as orderCount, SUM(order_detail.total) as totalValue, COUNT(DISTINCT orders.id_users) as customerCount')
-            ->join('orders', 'order_detail.orders_id', '=', 'orders.id')
+        $stats = OrderDetail::selectRaw('COUNT(order_details.id) as orderCount, SUM(order_details.total) as totalValue, COUNT(DISTINCT orders.id_users) as customerCount')
+            ->join('orders', 'order_details.order_id', '=', 'orders.id')
             ->first();
 
         return response()->json($stats);
