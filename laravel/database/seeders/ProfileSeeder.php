@@ -17,7 +17,7 @@ class ProfileSeeder extends Seeder
             'user_id' => 1,
             'first_name' => 'System',
             'last_name' => 'Management',
-            'sex' => 0, //O: male, 1: female, 2: other
+            'sex' => 0, 
             'phone' => '213456789',
             'address' => 'The official instagram of the City of Orem'
         ]);
