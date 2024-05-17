@@ -139,14 +139,24 @@
             width: 'auto';
         }
         .img-fluid{
-            background-color: :'red';
+            background-color: 'red';
         }
     </style>
 </head>
 @section('content')
-
 <body>
+    <!-- Phần hiển thị thông báo lỗi và thông báo thành công -->
+    @if (session('error'))
+        <div class="alert alert-danger">
+            {{ session('error') }}
+        </div>
+    @endif
 
+    @if (session('success'))
+        <div class="alert alert-success">
+            {{ session('success') }}
+        </div>
+    @endif
 
     <div class="row">
         <div class="col-lg-4">
@@ -164,11 +174,13 @@
                 <div class="mb-3">
                     <h1 class="name">{{ $product->name }}</h1>
                     <h1 class="">{{ number_format($averageRating, 2) }}/5</h1>
-                    @for ($i = 1; $i <= 5; $i++) @if ($i <=round($averageRating)) <i class="bi bi-star-fill" style="font-size: 40px; color: yellow;"></i> <!-- Biểu tượng sao đầy -->
+                    @for ($i = 1; $i <= 5; $i++)
+                        @if ($i <= round($averageRating))
+                            <i class="bi bi-star-fill" style="font-size: 40px; color: yellow;"></i>
                         @else
-                        <i class="bi bi-star" style="font-size: 40px; color: yellow;"></i> <!-- Biểu tượng sao trống -->
+                            <i class="bi bi-star" style="font-size: 40px; color: yellow;"></i>
                         @endif
-                        @endfor
+                    @endfor
                 </div>
                 <div class="mb-3 price">
                     <span>Giá: {{ $product->price }}đ</span>
@@ -178,13 +190,13 @@
                     <div class="mb-3 ">
                         <form action="{{ route('cart.add') }}" method="POST">
                             @csrf
-                            <input name="id_user" type="hidden" value="{{$user->id}}">
-                            <input name="product_id" type="hidden" value="{{request('id')}}">
-                            <label for="quantity"  style=" font-size: 20px; ">Số lượng:</label>
+                            <input name="id_user" type="hidden" value="{{ $user->id }}">
+                            <input name="product_id" type="hidden" value="{{ $product->id }}">
+                            <label for="quantity" style=" font-size: 20px; ">Số lượng:</label>
                             <input type="number" id="quantity" name="quantity" min="1" value="1" style="width: 50px; font-size: 20px; ">
                             <br><br>
-                            <label for="size"  style=" font-size: 20px; ">Chọn kích thước:</label>
-                            <select id="size" name="size"  style="width: 50px; font-size: 20px; ">
+                            <label for="size" style=" font-size: 20px; ">Chọn kích thước:</label>
+                            <select id="size" name="size" style="width: 50px; font-size: 20px; ">
                                 <option value="S">S</option>
                                 <option value="M">M</option>
                                 <option value="L">L</option>
@@ -197,11 +209,7 @@
                 </div>
                 <hr>
             </div>
-
-
-
-
-
+            <!-- hiển thị sao để đánh giá -->
             @foreach($post as $post_productt)
             <div class="comments-container">
                 <div class="comment">
