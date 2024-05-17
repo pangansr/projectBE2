@@ -285,43 +285,41 @@ class CrudUserController extends Controller
     }
     public function reset_password($token)
     {
-        
+
         $tokenData = PasswordResetTokens::checkToken($token);
         // $tokenUser = User::where('email',$tokenData->email)->firstorFail();
         $user = $tokenData->user;
-        
+
         return view('reset_password.resetpass');
     }
 
     public function check_reset_password($token)
-{
-    request()->validate([
-        'password' => 'required|min:4',
-        'confirm_password' => 'required|same:password',
-    ]);
+    {
+        request()->validate([
+            'password' => 'required|min:4',
+            'confirm_password' => 'required|same:password',
+        ]);
 
-    // Tìm token
-    $tokenData = PasswordResetTokens::where('token', $token)->first();
+        // Tìm token
+        $tokenData = PasswordResetTokens::where('token', $token)->first();
 
-    if (!$tokenData) {
-        return redirect()->back()->with('error', 'Token không hợp lệ.');
+        if (!$tokenData) {
+            return redirect()->back()->with('error', 'Token không hợp lệ.');
+        }
+
+        // Tìm người dùng theo email
+        $user = User::where('email', $tokenData->email)->first();
+
+        if (!$user) {
+            return redirect()->back()->with('error', 'Người dùng không tồn tại.');
+        }
+
+        // Cập nhật mật khẩu
+        $user->password = bcrypt(request('password'));
+        $user->save();
+        PasswordResetTokens::where('token', $token)->delete();
+
+        return redirect()->route('login')->with('success', 'Mật khẩu đã được thay đổi thành công.');
+        
     }
-
-    // Tìm người dùng theo email
-    $user = User::where('email', $tokenData->email)->first();
-
-    if (!$user) {
-        return redirect()->back()->with('error', 'Người dùng không tồn tại.');
-    }
-
-    // Cập nhật mật khẩu
-    $user->password = bcrypt(request('password'));
-    $user->save();
-
-    // Xóa token sau khi sử dụng
-    //$tokenData->delete();
-
-    return redirect()->route('login')->with('success', 'Mật khẩu đã được thay đổi thành công.');
-}
-
 }
