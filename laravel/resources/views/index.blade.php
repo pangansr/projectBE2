@@ -234,7 +234,7 @@ h1, h2, p {
     <ul class="horizontal-list">
         <li>
             <div class="category-item-container">
-                <a class="category-item" onclick="changeColor(this)">Tất cả</a>
+                <a class="category-item" onclick="changeColor(this)" href="{{ route('user.list') }}">Tất cả</a>
             </div>
         </li>
         @foreach ($category as $category)
