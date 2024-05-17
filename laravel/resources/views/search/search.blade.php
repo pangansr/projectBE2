@@ -90,7 +90,7 @@
 
             height: 600px;
             position: relative;
-=======
+
             position: relative;
 
             float: left;

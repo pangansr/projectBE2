@@ -96,5 +96,6 @@ Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStats
 
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
 
-//Search
 Route::get('/search', [CrudProductController::class, 'search'])->name('search');
+
+
