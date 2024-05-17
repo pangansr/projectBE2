@@ -667,19 +667,21 @@
                                         <th>Thành tiền</th>
                                     </tr>
                                 </thead>
-                                <tbody>
 
+                                <tbody>
                                     @php $index = 1 @endphp
-                                    @foreach($purchasedProducts as $product)
+                                    @foreach($finalProducts as $product)
                                         <tr>
                                             <td>{{ $index }}</td>
-                                            <td>{{ 'SP' . $product->productId }}</td>
-                                            <td>{{ $product->productName }}</td>
-                                            <td>{{ $product->quantity }}</td>
-                                            <td>{{ '$' . number_format($product->total, 2) }}</td>
+                                            <td>{{ 'SP' . $product['productId'] }}</td>
+                                            <td>{{ $product['productName'] }}</td>
+                                            <td>{{ $product['totalQuantity'] }}</td>
+                                            <td>{{ '$' . number_format($product['total'], 2) }}</td>
                                         </tr>
                                         @php $index++ @endphp
                                     @endforeach
+
+
 
                                 </tbody>
                             </table>

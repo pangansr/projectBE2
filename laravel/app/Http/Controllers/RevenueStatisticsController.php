@@ -28,14 +28,40 @@ class RevenueStatisticsController extends Controller
             ->select('users.name as customerName', DB::raw('SUM(orders.total) as totalRevenue'))
             ->groupBy('users.name')
             ->get();
-
-            $purchasedProducts = DB::table('order_details')
-            ->join('products', 'order_details.product_id', '=', 'products.id')
-            ->select('products.id as productId', 'products.name as productName', 'order_details.quantity', DB::raw('order_details.quantity * products.price as total'))
-            ->get();
+          
+                // Lấy thông tin sản phẩm từ bảng order_details và kết hợp với thông tin từ bảng products
+                $purchasedProducts = DB::table('order_details')
+                    ->join('products', 'order_details.product_id', '=', 'products.id')
+                    ->select('products.id as productId', 'products.name as productName', DB::raw('SUM(order_details.quantity) as totalQuantity'), DB::raw('SUM(order_details.quantity * products.price) as total'))
+                    ->groupBy('products.id', 'products.name')
+                    ->get();
+            
+                // Tạo một mảng tạm thời để lưu trữ thông tin sản phẩm với mã sản phẩm làm key
+                $uniqueProducts = [];
+                foreach ($purchasedProducts as $product) {
+                    $productId = $product->productId;
+                    if (!isset($uniqueProducts[$productId])) {
+                        // Nếu sản phẩm chưa tồn tại trong mảng tạm thời, thêm nó vào với số lượng và thành tiền ban đầu
+                        $uniqueProducts[$productId] = [
+                            'productId' => $product->productId,
+                            'productName' => $product->productName,
+                            'totalQuantity' => $product->totalQuantity,
+                            'total' => $product->total,
+                        ];
+                    } else {
+                        // Nếu sản phẩm đã tồn tại trong mảng tạm thời, cộng thêm số lượng và thành tiền vào
+                        $uniqueProducts[$productId]['totalQuantity'] += $product->totalQuantity;
+                        $uniqueProducts[$productId]['total'] += $product->total;
+                    }
+                }
+            
+                // Chuyển đổi mảng tạm thời thành mảng kết quả
+                $finalProducts = array_values($uniqueProducts);
+            
+        
 
           
-        return view('ViewRevenueStatistics', compact('user', 'product', 'categories', 'shopingCart', 'totalOrders', 'selectedCategoryId', 'customerRevenue','purchasedProducts'));
+        return view('ViewRevenueStatistics', compact('user', 'product', 'categories', 'shopingCart', 'totalOrders', 'selectedCategoryId', 'customerRevenue','finalProducts'));
     }
 
 
