@@ -49,7 +49,7 @@
                                 @if ($profile)
                                     {{ $profile->address }}
                                 @else
-                                <i class="bi bi-exclamation-triangle-fill text-warning"></i> Vui lòng cập nhật địa chỉ>
+                                <i class="bi bi-exclamation-triangle-fill text-warning"></i> Vui lòng cập nhật địa chỉ
                                 @endif
                             </p>
                             <div class="d-flex justify-content-center mb-2">
@@ -137,6 +137,7 @@
                     </div>
                 </div>
             </div>
+            @if (Auth::user()->email == 'admin@gmail.com')
             <div class="tb_user">
                 <table class="table">
                     <thead>
@@ -173,6 +174,7 @@
                     </tbody>
                 </table>
             </div>
+            @endif
         </div>
     </section>
 
