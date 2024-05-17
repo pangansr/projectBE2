@@ -5,10 +5,22 @@
     <title>Shop bán hàng</title>
    
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="cart.css" />
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
+  <link rel="icon" href="assets/img/logo-icon.png">
+  <!-- CSS only -->
+   <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+   <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
+   <link rel="stylesheet" href="assets/css/owl.theme.default.min.css">
+   <!-- fancybox -->
+   <link rel="stylesheet" href="assets/css/jquery.fancybox.min.css">
 
-
+   <link rel="stylesheet" href="assets/css/style.css">
+   <!-- responsive -->
+   <link rel="stylesheet" href="assets/css/responsive.css">
+   <!-- color -->
+   <link rel="stylesheet" href="assets/css/color.css">
+   <link rel="stylesheet" href="cart.css" />
 </head>
 <style>
     .header {
@@ -53,7 +65,7 @@
 }
 
 .nav-item:hover {
-    background-color: #69D5F3;
+    background-color: #F3274C;
     color: white;
     text-decoration: none;
     transform: translateY(-5px); /* Di chuyển lên trên 5px */
@@ -70,7 +82,7 @@
 
     .search-input {
     border-radius: 20px; 
-    border: 1px solid black; 
+    border: 1px solid #F3274C; 
     color: black;
     padding: 12px; 
     transition: border-color 0.3s ease, box-shadow 0.3s ease; 
@@ -85,14 +97,14 @@
     border-radius: 0px 20px 20px 0px; 
     margin-left: -25px;
     border: 1px solid black;
-    background-color: #69D5F3;
+    background-color: #F3274C;
     color: white;
     padding: 12px 20px; 
     transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 .search-button:hover {
-    background-color: #69D5F3; /* Đổi màu nền khi di chuột qua */
+    background-color: #F3274C; /* Đổi màu nền khi di chuột qua */
     color: white; /* Đổi màu chữ khi di chuột qua */
 }
 
@@ -133,7 +145,7 @@
 }
 
 .logout:hover {
-    background-color: red;
+    background-color: #F3274C;
     color: white;
 }
 
@@ -159,13 +171,13 @@
                 <button type="submit" class="search-button">Tìm kiếm</button>
             </form>
 
-            <a href="{{ route('signout') }}">
-                <button class="logout">
-                    Đăng xuất
-                </button>
-            </a>
+         
             <a href="{{ route('user.readUser', ['id' => $user->id]) }}">
                 <img src="{{ asset('avatar/' . $user->avatar) }}" alt="" class="avatar" />
+            </a>
+            <a href="{{ route('signout') }}">
+                
+                <i class="bi bi-box-arrow-right" style="font-weight: 300;"></i> Logout
             </a>
         </div>
     </header>
@@ -186,14 +198,14 @@
         <img class="cart-item-image" src="{{ asset('images/' . $item->product->image1) }}" width="80px" height="80px">
         <div class="product-row">
             <div class="cart-item-title">{{ $item->product->name }}</div>
-            <select name="products[{{ $loop->index }}][size]" class="cart-item-size">
+            <select name="products[{{ $loop->index }}][size]" class="cart-item-size" style="width: 50px; height: 30px; margin-inline:10px ; margin-bottom: 5px;">
                 <option value="S" {{ $item->size == 'S' ? 'selected' : '' }}>S</option>
                 <option value="M" {{ $item->size == 'M' ? 'selected' : '' }}>M</option>
                 <option value="L" {{ $item->size == 'L' ? 'selected' : '' }}>L</option>
                 <option value="XL" {{ $item->size == 'XL' ? 'selected' : '' }}>XL</option>
             </select>
             <div class="cart-quantity cart-column">
-                <input class="cart-quantity-input" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
+                <input class="cart-quantity-input" style="width: 50px; height: 30px;" name="products[{{ $loop->index }}][quantity]" type="number" min="1" value="{{ $item->quantity }}" data-price="{{ $item->price }}">
             </div>
         </div>
     </div>

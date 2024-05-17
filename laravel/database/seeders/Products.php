@@ -44,6 +44,7 @@ class Products extends Seeder
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 1,
+
                 'image1' => '4.jpg',
                 'image2' => '5.jpg',
                 'image3' => '6.jpg',
@@ -54,6 +55,7 @@ class Products extends Seeder
                 'name' => 'Áo sơ mi nam Urban Luxe 3',
    
    
+                'name' => 'Áo sơ mi nam Urban Luxe 3',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -75,6 +77,7 @@ class Products extends Seeder
    
             
    
+                'name' => 'Áo sơ mi nam Urban Luxe 4',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -97,6 +100,13 @@ class Products extends Seeder
    
             
    
+
+                'image1' => '10.jpg',
+                'image2' => '11.jpg',
+                'image3' => '2.jpg',
+            ],
+            [
+                'name' => 'Áo sơ mi nam Urban Luxe 5',
                 'description' => 'Đặc điểm:
                 Kiểu dáng hiện đại: Áo sơ mi có kiểu dáng slim-fit với cổ button-down và tay dài, tạo nên vẻ lịch lãm và sang trọng.
                 Chất liệu cao cấp: Sử dụng chất liệu vải cotton tự nhiên, mềm mại và thoáng mát, giúp cải thiện sự thoải mái khi mặc trong suốt cả ngày dài.
@@ -108,12 +118,10 @@ class Products extends Seeder
                 'price' => 100,
                 'stock_quantity' => 50,
                 'category_id' => 1,
-                'image1' => '18.jpg',
-                'image2' => '19.jpg',
-                'image3' => '20.jpg',
 
-   
-                
+                'image1' => '12.jpg',
+                'image2' => '13.jpg',
+                'image3' => '14.jpg',
             ],
             [
                 'name' => 'Áo sơ mi nam Urban Luxe 6',
