@@ -63,7 +63,7 @@
             border: 2px solid rgb(9, 9, 9);
             border-radius: 20px;
             height: 180px;
-            width: 220px;
+            width: 190px;
             opacity: 0.5;
             transition: opacity 0.3s ease-in-out;
         }
@@ -265,8 +265,8 @@
             font-size: 15px;">Tuyệt Vời</p>
                     </div>
                 </div>
-                <textarea style="width:50%;" style="height: 50px;" id="" placeholder="Nhập mô tả" name="comment"></textarea>
-                <input type="submit" style="height: 55px; margin-bottom: 47px;" value="Xác Nhận" class="btn btn-primary">
+                <textarea style="width:50%;" style="height: 50px;" id="" placeholder="Nhập mô tả" name="comment" required></textarea>
+                <input type="submit" style="height: 55px; margin-bottom: 47px; margin-left: -50px;" value="Xác Nhận" class="btn btn-primary">
             </form>
         </div>
     </div>

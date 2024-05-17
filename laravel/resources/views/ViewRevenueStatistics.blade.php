@@ -1,7 +1,7 @@
 @extends('dashboard')
 <style>
     .statistics-container {
-        background-color: #bff1ff;
+        background-color: 	#F5F5F5;
         padding: 23px 13px 67px;
     }
 
@@ -30,6 +30,7 @@
         line-height: normal;
         width: 22%;
         margin-left: 0;
+        
     }
 
     @media (max-width: 991px) {
@@ -73,7 +74,7 @@
     }
 
     .dssp {
-        background-color: #a6f5c7;
+        background-color: #fff;
         margin-top: 85px;
         height: 100%;
     }
@@ -124,11 +125,13 @@
     .overview-section {
         background-color: #a6f5c7;
         display: flex;
-        margin-top: 26px;
         flex-direction: column;
         font-size: 12px;
         letter-spacing: 1.2px;
         padding: 13px 13px 80px;
+        width: 400px;
+       
+      
     }
 
     @media (max-width: 991px) {
@@ -178,7 +181,10 @@
         width: 530px;
         align-self: center;
         max-width: 100%;
-        height: 200px;
+        height: 300px;
+        max-height: 250px;
+        /* Điều chỉnh chiều cao theo ý bạn */
+        overflow-y: auto;
 
     }
 
@@ -214,12 +220,12 @@
     }
 
     .main-content {
-        background-color: #a6f5c7;
+      
         display: flex;
         flex-direction: column;
         padding: 0 61px 39px 10px;
         height: 210px;
-        margin-top: 30px;
+  
         border-radius: 3%;
     }
 
@@ -390,15 +396,17 @@
     }
 
     .date-range {
-        background-color: #a6f5c7;
+      
         display: flex;
         margin-top: 13px;
         flex-direction: column;
-        font-size: 11px;
+        font-size: 18px;
         letter-spacing: 1.1px;
         padding: 20px;
-        height: 210px;
-        border-radius: 5%;
+        width: 400px;
+       background-color: #a6f5c7;
+       margin-left: -14px;
+      
     }
 
     .category-dropdown {
@@ -476,7 +484,7 @@
     }
 
     .product-table th {
-        background-color: #75d408;
+        background-color: #BFE6ED;
         font-weight: bold;
     }
 
@@ -485,17 +493,17 @@
     }
 
     .product-table tbody tr:hover {
-        background-color: #f2f2f2;
+        background-color: #BFE6ED;
     }
 </style>
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script>
     $(document).ready(function () {
-     //chang
+        //chang
         $('#category_id').change(function () {
             var categoryId = $(this).val();
-            if (categoryId == 0 || categoryId === "") { 
+            if (categoryId == 0 || categoryId === "") {
                 $.ajax({
                     url: '{{ route("getAllStats") }}', 
                     method: 'GET',
@@ -528,7 +536,7 @@
         //mới dô
         var initialCategoryId = $('#category_id').val();
         if (initialCategoryId == 0 || initialCategoryId === "") {
-          
+
             $.ajax({
                 url: '{{ route("getAllStats") }}',
                 method: 'GET',
@@ -552,10 +560,6 @@
                 <div class="filter-content">
                     <h2 class="filter-title">Thống kê doanh thu</h2>
                     <div class="date-range">
-                        <label class="text">Từ ngày:</label>
-                        <input type="date" id="fromDate" class="date-input" />
-                        <label class="text">Đến ngày</label>
-                        <input type="date" id="toDate" class="date-input" />
                         <label class="text">Doanh mục</label>
                         <select id="category_id" name="category_id" required class="form-control">
                             <option value="0">Tất cả</option>
@@ -567,9 +571,9 @@
 
 
                     </div>
-                    <input type="submit" value="Tìm kiếm" class="button">
+                    
                 </div>
-               
+
 
                 <div class="stats-content">
 
@@ -583,14 +587,14 @@
                         <img src="./image/kh.png" alt="" class="icon" />
                         <h2 class="main-title" style="font-size: 20px;">Khách hàng</h2>
                     </header>
-                    <div class="stats-item stats-item-blue">
+                    <div class="stats-item"  style="background-color:#09A95F ;">
                         <div class="stats-kh">
                             <div class="value">2461</div>
                             <div class="texttk">Số lượng khách hàng</div>
                         </div>
                         <img src="./image/slkhpng.png" alt="" class="stats-icon" />
                     </div>
-                    
+
                     <div class="overview-table">
                         <table>
                             <thead>
@@ -601,21 +605,13 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>1</td>
-                                    <td>Khách hàng A</td>
-                                    <td>$1000</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Khách hàng B</td>
-                                    <td>$1500</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Khách hàng C</td>
-                                    <td>$800</td>
-                                </tr>
+                                @foreach($customerRevenue as $index => $revenue)
+                                    <tr>
+                                        <td>{{ $index + 1 }}</td>
+                                        <td>{{ $revenue->customerName }}</td>
+                                        <td>{{ number_format($revenue->totalRevenue, 2) }} VND</td>
+                                    </tr>
+                                @endforeach
                             </tbody>
                         </table>
                     </div>
@@ -623,6 +619,10 @@
 
             </div>
         </section>
+
+
+
+
         <section class="main-section">
             <div class="main-container">
                 <div class="main-content">
@@ -633,7 +633,7 @@
                     <div class="stats-container">
                         <div class="stats-item stats-item-blue">
                             <div class="stats-content">
-                                <div class="value">0</div>
+                                <div class="value">33</div>
                                 <div class="texttk">Số lượng đơn hàng</div>
                             </div>
                             <img src="./image/donHang.png" alt="" class="stats-icon stats-icon-blue" />
@@ -646,8 +646,8 @@
                             <img src="./image/tien.png" style="width: 90px" alt="" class="stats-icon stats-icon-red" />
                         </div>
                         <div class="stats-item stats-item-purple">
-                            <div class="stats-content">
-                                <div class="value">2461</div>
+                            <div class="stats-f">
+                                <div class="value">{{$remainingQuantity}}</div>
                                 <div class="texttk">Sản phẩm còn lại</div>
                             </div>
                             <img src="./image/tải xuống.png" alt="" class="stats-icon stats-icon-purple" />
@@ -655,7 +655,7 @@
                     </div>
                 </div>
                 <div class="dssp">
-                    <h2 class="">Doanh số sản phẩm</h2>
+                    <h2 style="color: #8cb7a2">Doanh số sản phẩm</h2>
                     <div class="sanPham">
                         <div class="bangSP">
                             <table class="product-table">
@@ -668,28 +668,22 @@
                                         <th>Thành tiền</th>
                                     </tr>
                                 </thead>
+
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>SP001</td>
-                                        <td>Sản phẩm 1</td>
-                                        <td>10</td>
-                                        <td>$100</td>
-                                    </tr>
-                                    <tr>
-                                        <td>2</td>
-                                        <td>SP002</td>
-                                        <td>Sản phẩm 2</td>
-                                        <td>8</td>
-                                        <td>$80</td>
-                                    </tr>
-                                    <tr>
-                                        <td>3</td>
-                                        <td>SP003</td>
-                                        <td>Sản phẩm 3</td>
-                                        <td>15</td>
-                                        <td>$150</td>
-                                    </tr>
+                                    @php $index = 1 @endphp
+                                    @foreach($finalProducts as $product)
+                                        <tr>
+                                            <td>{{ $index }}</td>
+                                            <td>{{ 'SP' . $product['productId'] }}</td>
+                                            <td>{{ $product['productName'] }}</td>
+                                            <td>{{ $product['totalQuantity'] }}</td>
+                                            <td>{{ '$' . number_format($product['total'], 2) }}</td>
+                                        </tr>
+                                        @php $index++ @endphp
+                                    @endforeach
+
+
+
                                 </tbody>
                             </table>
                         </div>
