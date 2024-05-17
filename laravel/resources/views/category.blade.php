@@ -87,17 +87,8 @@
             justify-content: flex-end;
     align-items: flex-end;
             display: flex;
-<<<<<<< HEAD
-
             height: 600px;
             position: relative;
-
-            position: relative;
-
-=======
-            height: 600px;
-            position: relative;
->>>>>>> 2ae52f9... t1
             float: left;
         
             
@@ -150,11 +141,7 @@
             padding: 15px;
             width: 400px;
             text-align: center;
-<<<<<<< HEAD
-            background: white;
-=======
             background: wheat;
->>>>>>> 2ae52f9... t1
             margin: 20px;
         }
 
@@ -258,28 +245,20 @@ h1, h2, p {
             {{-- quyền admin --}}
             @if (Auth::user()->email == 'admin@gmail.com')
             <div class="admin-icons">
-                <a href="#" onclick="showEditModal('{{ $category->id }}', '{{ $category->name }}')">
-                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px;"></i>
+                <a href="#">
+                    <i class="fa fa-edit" style="font-size:25px; color:#007bff; margin-right:15px; "></i>
                 </a>
                 <a href="#" onclick="confirmDelete('{{ route('categories.delete', ['id' => $category->id]) }}')">
                     <i class="fa fa-trash" style="font-size:25px;color: #F5E3A9;"></i>
                 </a>
             </div>
+            
             <script>
                 function confirmDelete(url) {
                     if (confirm("Bạn có chắc chắn muốn xóa danh mục này?")) {
                         window.location.href = url;
                     }
                 }
-                function showEditModal(id, name) {
-                                    // Cập nhật giá trị của các trường input trong modal
-                                    document.getElementById('id').value = id;
-                                    document.getElementById('name').value = name;
-
-                                    // Hiển thị modal
-                                    var myModal = new bootstrap.Modal(document.getElementById('editModal'));
-                                    myModal.show();
-                                }
             </script>
             @endif
         </div>
@@ -295,36 +274,7 @@ h1, h2, p {
         @endif
     </ul>
 </div>
-{{-- lấy form sửa --}}
-<div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="editModalLabel">Cập Nhật</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <form action="{{ route('categories.update', ['id' => $category->id]) }}" method="POST"
-                    enctype="multipart/form-data">
-                    @csrf
-                    <div class="row">
-                        <div class="col-md-6 mb-3">
-                            <label for="id" class="form-label">ID</label>
-                            <input type="text" class="form-control" id="id" name="id" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="name" class="form-label">Tên</label>
-                            <input type="text" class="form-control" id="name" name="name" value="">
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-success">Submit</button>
-                </form>
 
-            </div>
-        </div>
-    </div>
-</div>
-{{-- lấy form sửa --}}
 
 
 <section class="slider-hero">
@@ -462,35 +412,6 @@ h1, h2, p {
       
         <div class="column" >
        
-<<<<<<< HEAD
-
-
-           
-
-         
-           
-
-            <div style="margin-left:40px; clear: both; font-size: 30px"><Strong>Danh sách sản phẩm </Strong>
-
-                {{-- quyền admin --}}        
-                @if (Auth::user()->email == 'admin@gmail.com')
-                <a class="products-add" href="{{ route('products.index') }}"><button class="btn-addPro" >Thêm sản phẩm mới</button></a>
-            @endif
-
-                <br>
-                <hr>
-            </div>
-
-            <div class="container-product"  style="clear: both;">
-                @foreach ($products as $product)
-                    <div class="product">
-                        <img src="{{ asset('images/' . $product->image1) }}" style="width: 370px; height: 370px;" alt="Ảnh sản phẩm"><br><br>
-                        <h2>{{ $product->name }}</h2>
-                        <p class="price">Giá: {{ $product->price }}</p>
-                        <p class="rating">Số lượng  : {{$product->stock_quantity }}</p>
-                        <a href="{{ route('product.read', ['id' => $product->id]) }}">Chi tiết</a> |
-
-=======
                 
   
         
@@ -531,35 +452,12 @@ h1, h2, p {
                         </script>
                         
                         
->>>>>>> 2ae52f9... t1
 
-                        {{-- quyền admin --}}
-                        @if (Auth::user()->email == 'admin@gmail.com')
-                        <a href="{{ route('product.updateProduct', ['id' => $product->id]) }}">Sửa</a> |
-                        <a href="#" onclick="confirmDelete('{{ route('product.deleteProduct', ['id' => $product->id]) }}')">Delete</a>
-                    @endif
-                      
 
-                        <script>
-                            function confirmDelete(url) {
-                                if (confirm("Are you sure you want to delete this product?")) {
-                                    window.location.href = url;
-                                }
-                            }
-                        </script>
-                        
-                        
 
                     </div>
                 @endforeach
 
-<<<<<<< HEAD
-
-                    </div>
-                @endforeach
-
-=======
->>>>>>> 2ae52f9... t1
             </div>
             <div class="pagination-container">
                 <!-- Hiển thị nút Quay lại -->
@@ -612,11 +510,12 @@ h1, h2, p {
     }
     
 </script>
-<script>
-    var errorMessage = "{{ session('error') }}";
-    if(errorMessage) {
-        alert(errorMessage);
-    }
-</script>
-
+@if (session('error'))
+    <script>
+        var errorMessage = "{{ session('error') }}";
+        if(errorMessage) {
+            alert(errorMessage);
+        }
+    </script>
+@endif
 @endsection

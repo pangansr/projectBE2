@@ -633,7 +633,7 @@
                     <div class="stats-container">
                         <div class="stats-item stats-item-blue">
                             <div class="stats-content">
-                                <div class="value">0</div>
+                                <div class="value">33</div>
                                 <div class="texttk">Số lượng đơn hàng</div>
                             </div>
                             <img src="./image/donHang.png" alt="" class="stats-icon stats-icon-blue" />
