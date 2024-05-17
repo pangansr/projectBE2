@@ -1,7 +1,7 @@
 @extends('dashboard')
 <style>
     .statistics-container {
-        background-color: #bff1ff;
+        background-color: 	#F5F5F5;
         padding: 23px 13px 67px;
     }
 
@@ -30,6 +30,7 @@
         line-height: normal;
         width: 22%;
         margin-left: 0;
+        
     }
 
     @media (max-width: 991px) {
@@ -73,7 +74,7 @@
     }
 
     .dssp {
-        background-color: #a6f5c7;
+        background-color: #fff;
         margin-top: 85px;
         height: 100%;
     }
@@ -124,11 +125,13 @@
     .overview-section {
         background-color: #a6f5c7;
         display: flex;
-        margin-top: 26px;
         flex-direction: column;
         font-size: 12px;
         letter-spacing: 1.2px;
         padding: 13px 13px 80px;
+        width: 400px;
+       
+      
     }
 
     @media (max-width: 991px) {
@@ -217,12 +220,12 @@
     }
 
     .main-content {
-        background-color: #a6f5c7;
+      
         display: flex;
         flex-direction: column;
         padding: 0 61px 39px 10px;
         height: 210px;
-        margin-top: 30px;
+  
         border-radius: 3%;
     }
 
@@ -393,15 +396,17 @@
     }
 
     .date-range {
-        background-color: #a6f5c7;
+      
         display: flex;
         margin-top: 13px;
         flex-direction: column;
-        font-size: 11px;
+        font-size: 18px;
         letter-spacing: 1.1px;
         padding: 20px;
-        height: 210px;
-        border-radius: 5%;
+        width: 400px;
+       background-color: #a6f5c7;
+       margin-left: -14px;
+      
     }
 
     .category-dropdown {
@@ -479,7 +484,7 @@
     }
 
     .product-table th {
-        background-color: #75d408;
+        background-color: #BFE6ED;
         font-weight: bold;
     }
 
@@ -488,7 +493,7 @@
     }
 
     .product-table tbody tr:hover {
-        background-color: #f2f2f2;
+        background-color: #BFE6ED;
     }
 </style>
 @section('content')
@@ -570,7 +575,7 @@
 
 
                     </div>
-                    <input type="submit" value="Tìm kiếm" class="button">
+                    
                 </div>
 
 
@@ -586,7 +591,7 @@
                         <img src="./image/kh.png" alt="" class="icon" />
                         <h2 class="main-title" style="font-size: 20px;">Khách hàng</h2>
                     </header>
-                    <div class="stats-item stats-item-blue">
+                    <div class="stats-item"  style="background-color:#09A95F ;">
                         <div class="stats-kh">
                             <div class="value">2461</div>
                             <div class="texttk">Số lượng khách hàng</div>
@@ -656,7 +661,7 @@
                     </div>
                 </div>
                 <div class="dssp">
-                    <h2 class="">Doanh số sản phẩm</h2>
+                    <h2 style="color: #8cb7a2">Doanh số sản phẩm</h2>
                     <div class="sanPham">
                         <div class="bangSP">
                             <table class="product-table">
