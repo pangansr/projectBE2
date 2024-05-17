@@ -16,12 +16,27 @@ class DatabaseSeeder extends Seeder
         DB::table('categories')->insert([
             [
                 'id' => 1,
-                'name' => 'Quần áo',
+                'name' => 'Áo khoác',
                
             ],
             [
                 'id' => 2,
-                'name' => 'Giày',
+                'name' => 'Sơ mi',
+               
+            ],
+            [
+                'id' => 3,
+                'name' => 'Áo thun',
+               
+            ],
+            [
+                'id' => 4,
+                'name' => 'Quần dài',
+               
+            ],
+            [
+                'id' => 5,
+                'name' => 'Quần short',
                
             ],
         ]);

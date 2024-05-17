@@ -4,9 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thêm Sản Phẩm Mới</title>
-    <!-- Thêm Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <!-- Thêm CSS tùy chỉnh -->
     <style>
         body {
             background-color: #f8f9fa;

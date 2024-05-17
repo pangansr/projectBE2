@@ -50,30 +50,5 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /**
-     * Relationship one to one
-     * @return HasOne
-     */
-    public function profile(): HasOne
-    {
-        return $this->hasOne(Profile::class);
-    }
 
-    /**
-     * Relationship one to many
-     * @return HasMany
-     */
-    public function posts(): HasMany
-    {
-        return $this->hasMany(Posts::class);
-    }
-
-    /**
-     * Relationship many to many
-     * @return HasMany
-     */
-    public function favorities(): BelongsToMany
-    {
-        return $this->belongsToMany(Favorities::class, 'user_favorite', 'user_id', 'favorite_id');
-    }
 }

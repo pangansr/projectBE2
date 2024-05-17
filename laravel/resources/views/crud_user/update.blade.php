@@ -14,7 +14,7 @@
                         <div class="card-body">
                             <form action="{{ route('user.postUpdateUser') }}" method="POST" enctype="multipart/form-data">
                                 @csrf
-                                <input name="id" type="hidden" value="{{$user->id}}">
+                                {{-- <input name="id" type="hidden" value="{{$user->id}}"> --}}
                           
                                 <div class="row">
                                 <div class="col-md-4" style="text-align: center">

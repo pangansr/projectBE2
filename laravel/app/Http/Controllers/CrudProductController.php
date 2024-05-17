@@ -6,15 +6,65 @@ use Illuminate\Http\Request;
 namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\PostsProduct;
+use App\Models\User;
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
-
+use App\Models\ShoppingCart;
 class CrudProductController extends Controller
 {
+    public function search(Request $request, $id = null)
+    {
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
+        $key = $request->input('key');
+        if (Auth::check($key)) {
+            
+           
+                $products = Product::where('name', 'LIKE', "%{$key}%")->paginate(1);
+                $category = Category::all();
+                return view('search.search', compact('user', 'products', 'category', 'shopingCart'));
+           
+    
+          
+           
+            
+        } else {
+            // Handle the case where the user is not authenticated
+            // Redirect or return a view if necessary
+           // return redirect()->route('index'); // Assuming you have a login route
+        }
+
+        // $key = $request->input('key');
+        // $products = Product::where('name', 'LIKE', "%{$key}%")->get();
+
+        // return view('search.search', compact('products'));
+    }
+    public function showProductsByCategory($id)
+    {
+       
+        
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
+        if (Auth::check()) {
+           // $products = Product::where('category_id', $id)->get();
+           // $products = Product::paginate(5); 
+           $products = Product::where('category_id', $id)->paginate(1); 
+            $category = Category::all();
+            $user = Auth::user();
+            return view('category', compact('user','products','category','shopingCart'));
+        } else {
+          
+        }
+    }
+    
+
+
     public function index()
     {
       //  $products = Product::all();
@@ -23,9 +73,26 @@ class CrudProductController extends Controller
     }
     public function readProduct(Request $request)
     {
+        $user = Auth::user();
+        $shopingCart = ShoppingCart::where('user_id', $user->id)->get();
         $product_id = $request->get('id');
         $product = Product::find($product_id);
-        return view('crud_product.readProduct', ['product' => $product]);
+        $totalStars = PostsProduct::where('id_product', $product_id)->sum('star');
+    
+    // Đếm số lượng đánh giá
+    $totalReviews = PostsProduct::where('id_product', $product_id)->count();
+    
+    // Tính lượng sao trung bình
+    if ($totalReviews > 0) {
+        $averageRating = $totalStars / $totalReviews;
+    } else {
+        $averageRating = 0; // Tránh trường hợp chia cho 0
+    }
+       
+        $posts = PostsProduct::where('id_product', $product_id)->get();
+    
+        $users = User::all();
+        return view('crud_product.readProduct', ['product' => $product, 'post' => $posts], compact('user', 'users','averageRating','shopingCart'));
     }
   
     public function postProduct(Request $request)

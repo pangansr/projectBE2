@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CrudUserController;
 use App\Http\Controllers\CrudCartController;
 use App\Http\Controllers\CrudCategoriesController;
+use App\Http\Controllers\RevenueStatisticsController;
+use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\OrdersController;
+use App\Http\Controllers\PayController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,7 +41,7 @@ Route::get('index', [CrudUserController::class, 'index'])->name('user.list');
 Route::get('signout', [CrudUserController::class, 'signOut'])->name('signout');
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('crud_user.login');
 });
 
 
@@ -49,6 +53,9 @@ Route::get('deleteCategories', [CrudCategoriesController::class, 'deleteCategori
 
 
 //product
+// lay danh muc hien thi
+Route::get('categories/{id}', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
+
 Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
 
 Route::post('/addProduct', [CrudProductController::class, 'postProduct'])->name('products.add');
@@ -63,4 +70,36 @@ Route::get('deleteProduct', [CrudProductController::class, 'deleteProduct'])->na
 //cart
 Route::post('/add-to-cart', [CrudCartController::class, 'addToCart'])->name('cart.add');
 Route::get('ViewCart', [CrudCartController::class, 'ViewCart'])->name('cart.ViewCart');
+Route::get('/cartRemove', [CrudCartController::class, 'removeFromCart'])->name('cart.remove');
+Route::post('/cart/remove-all', [CrudCartController::class, 'removeAllFromCart'])->name('cart.remove_all');
+
+
+
+
+Route::post('GetOrderDetails', [OrdersController::class, 'GetOrderDetails'])->name('GetOrderDetails');
+Route::get('ViewOrder', [OrdersController::class, 'ViewOrder'])->name('ViewOrder');
+Route::post('AddOrder', [OrdersController::class, 'AddOrder'])->name('AddOrder');
+
+Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
+
+
+
+Route::post('RevenueStatistics', [ReviewController::class, 'postReview'])->name('ViewPostReview');
+
+//update user
+Route::post('/read', [CrudUserController::class, 'updateProfile'])->name('profile.update');
+//oute::get('/read', [CrudUserController::class, 'updateProfile']);
+
+//Route::get('/revenue-statistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
+
+Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStatsByCategory'])->name('getStatsByCategory');
+
+Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
+
+
+Route::get('/search', [CrudProductController::class, 'search'])->name('search');
+
+
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
+
 
