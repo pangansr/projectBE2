@@ -154,8 +154,8 @@ class CrudUserController extends Controller
         $shopingCart = ShoppingCart::where('user_id', $user_hienTai->id)->get();
         $profile = Profile::where('user_id', $user_hienTai->id)->first();
         $user = User::find($user_id);
-
-        return view('crud_user.read', ['user' => $user], compact('shopingCart', 'profile'));
+        $users = User::all();
+        return view('crud_user.read', ['user' => $user], compact('users', 'shopingCart', 'profile'));
     }
 
     /**
@@ -167,6 +167,11 @@ class CrudUserController extends Controller
         $user = User::destroy($user_id);
 
         return redirect("list")->withSuccess('You have signed-in');
+    }
+    public function delete(User $user)
+    {
+        $user->delete(); // Xóa người dùng
+        return redirect()->back()->with('success', 'Người dùng đã được xóa thành công.');
     }
 
 

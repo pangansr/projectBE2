@@ -104,5 +104,8 @@ Route::post('/reset-password/{token}', [CrudUserController::class, 'check_reset_
 Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStatsByCategory'])->name('getStatsByCategory');
 
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
+// Xóa User
+Route::delete('/users/{user}', [CrudUserController::class,'delete'])->name('users.delete');
+
 
 

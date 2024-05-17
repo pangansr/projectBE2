@@ -3,6 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.7.2/font/bootstrap-icons.css" rel="stylesheet">
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
@@ -14,7 +16,7 @@
             margin: 0;
             padding: 0;
             font-family: sans-serif;
-            background: linear-gradient(#141e30, #243b55);
+            background: linear-gradient(#dfe6f1, #243b55);
         }
 
         .form-check-label {
@@ -111,12 +113,12 @@
         }
 
         .login-box button:hover {
-            background: #03e9f4;
+            background: #153a69;
             color: #fff;
             border-radius: 5px;
             box-shadow: 0 0 5px #03e9f4,
                 0 0 25px #03e9f4,
-                0 0 50px #03e9f4,
+                0 0 50px #294c4e,
                 0 0 100px #03e9f4;
         }
 
@@ -197,7 +199,7 @@
             animation-delay: .75s
         }
 
-      
+
 
         @keyframes btn-anim4 {
             0% {
@@ -209,6 +211,16 @@
                 bottom: 100%;
             }
         }
+
+        .text-danger {
+            color: rgb(235, 10, 10);
+        }
+
+        .success-message {
+            color: rgb(194, 226, 151);
+            margin-top: 10px;
+        }
+       
     </style>
 </head>
 
@@ -238,11 +250,9 @@
                     
                     
                     <br>
-                    <div class="mb-3">
+                    <div class="mb-3" style="display: flex; justify-content: center;">
                         <button type="submit" class="btn-success">
-                            <span></span>
-
-                            <span></span>Gửi Mail
+                            <span></span>Reset password
 
                         </button>
                     </div>
