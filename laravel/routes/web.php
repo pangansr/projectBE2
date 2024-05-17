@@ -96,4 +96,5 @@ Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStats
 
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
 
+Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
 
