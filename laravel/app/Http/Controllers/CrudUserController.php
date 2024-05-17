@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Str;
 
 /**
@@ -22,31 +23,7 @@ use Illuminate\Support\Str;
  */
 class CrudUserController extends Controller
 {
-    public function check_fogot_password(Request $request)
-    {
-        $request->validate([
-            'email' => 'required|exists:users,email'
-        ], [
-            'email.exists' => 'Email không tồn tại trong hệ thống.'
-        ]);
-        $mail_user = User::where('email', $request->email)->first();
-        $token = Str::random(50);
-        $tokenData = [
-            'email' => $request->email,
-            'token' => $token,
-        ];
-        //dd($tokenData);
-        if (PasswordResetTokens::create($tokenData)) {
-            Mail::to($request->email)->send(new ForgetPassword($mail_user, $token));
-            return redirect()->back()->with('sucsess', 'Vui lòng kiểm tra email');
-        };
-        
-        return redirect()->back()->with('error', 'Vui lòng kiểm tra lại email');
-    }
-    public function fogetpassword()
-    {
-        return view('reset_password.email');
-    }
+
     /**
      * Login page
      */
@@ -270,4 +247,76 @@ class CrudUserController extends Controller
 
         return Redirect('login');
     }
+    ///Lấy Lại Pass
+
+    public function check_fogot_password(Request $request)
+    {
+        $request->validate([
+            'email' => 'required|exists:users,email'
+        ], [
+            'email.exists' => 'Email không tồn tại trong hệ thống.'
+        ]);
+
+        $mail_user = User::where('email', $request->email)->first();
+        $token = Str::random(50);
+
+        $tokenData = [
+            'email' => $request->email,
+            'token' => $token,
+        ];
+
+        if (PasswordResetTokens::create($tokenData)) {
+            Log::info('Sending email to: ' . $request->email);
+            Mail::to($request->email)->send(new ForgetPassword($mail_user, $token));
+            Log::info('Email sent to: ' . $request->email);
+            return redirect()->back()->with('success', 'Vui lòng kiểm tra email');
+        }
+
+        return redirect()->back()->with('error', 'Vui lòng kiểm tra lại email');
+    }
+    public function fogetpassword()
+    {
+        return view('reset_password.email');
+    }
+    public function reset_password($token)
+    {
+        
+        $tokenData = PasswordResetTokens::checkToken($token);
+        // $tokenUser = User::where('email',$tokenData->email)->firstorFail();
+        $user = $tokenData->user;
+        
+        return view('reset_password.resetpass');
+    }
+
+    public function check_reset_password($token)
+{
+    request()->validate([
+        'password' => 'required|min:4',
+        'confirm_password' => 'required|same:password',
+    ]);
+
+    // Tìm token
+    $tokenData = PasswordResetTokens::where('token', $token)->first();
+
+    if (!$tokenData) {
+        return redirect()->back()->with('error', 'Token không hợp lệ.');
+    }
+
+    // Tìm người dùng theo email
+    $user = User::where('email', $tokenData->email)->first();
+
+    if (!$user) {
+        return redirect()->back()->with('error', 'Người dùng không tồn tại.');
+    }
+
+    // Cập nhật mật khẩu
+    $user->password = bcrypt(request('password'));
+    $user->save();
+
+    // Xóa token sau khi sử dụng
+    //$tokenData->delete();
+
+    return redirect()->route('login')->with('success', 'Mật khẩu đã được thay đổi thành công.');
+}
+
 }

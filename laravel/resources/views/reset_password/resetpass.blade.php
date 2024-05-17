@@ -216,17 +216,24 @@
     <main class="login-box">
         <div class="card">
             <div class="card-header">
-                <h2>Quên Mật Khẩu</h2>
+                <h2>Reset Password</h2>
             </div>
             <div class="card-body">
-                <form method="POST" action="{{ route('user.checkpassword') }}">
+                <form method="POST" action="">
                     @csrf
                     <div class="user-box">
-                        <input type="text" id="email" name="email" required autofocus>
-                        <label for="email">Email</label>
-                       @error('email')
-                           {{$message}}
-                       @enderror
+                        <input type="password" id="password" name="password" required>
+                        <label for="password">Nhập mật khẩu mới</label>
+                        @if ($errors->has('password'))
+                            <span class="text-danger">{{ $errors->first('password') }}</span>
+                        @endif
+                    </div>
+                    <div class="user-box">
+                        <input type="password" id="confirm_password" name="confirm_password" required>
+                        <label for="confirm_password">Nhập lại mật khẩu</label>
+                        @if ($errors->has('confirm_password'))
+                            <span class="text-danger">{{ $errors->first('confirm_password') }}</span>
+                        @endif
                     </div>
                     
                     

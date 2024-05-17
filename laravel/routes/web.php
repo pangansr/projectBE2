@@ -94,6 +94,6 @@ Route::post('/fogotpass', [CrudUserController::class, 'check_fogot_password'])->
 
 
 Route::get('/reset-password/{token}', [CrudUserController::class, 'reset_password'])->name('account.reset_password');
-Route::post('/reset-password/{token}', [CrudUserController::class, 'check_reset_password']);
+Route::post('/reset-password/{token}', [CrudUserController::class, 'check_reset_password'])->name('account.check_reset_password');
 
 
