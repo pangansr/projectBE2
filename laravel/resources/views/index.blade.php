@@ -227,6 +227,68 @@ h1, h2, p {
     transform: translateY(-5px);
     border-radius: 5px;
 }
+.card {
+ 
+  border-radius: 20px;
+  overflow: hidden;
+  border: 8px solid #fff;
+  position: relative;
+}
+
+
+.card-body {
+  width: 100%;
+  height: 100%;
+  top: 0;
+  right: -100%;
+  color: #fff;
+  position: absolute;
+  background: #1f3d4738;
+  backdrop-filter: blur(5px);
+  border-radius: 15px;
+  padding: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  transition: 1.5s;
+}
+
+.card:hover .card-body {
+  right: 0;
+}
+
+.card-title {
+  text-transform: uppercase;
+  font-size: 50px;
+  font-weight: 500;
+}
+
+.card-sub-title {
+  text-transform: capitalize;
+  font-size: 14px;
+  font-weight: 300;
+}
+
+.card-info {
+  font-size: 16px;
+  line-height: 25px;
+  margin: 40px 0;
+  font-weight: 400;
+}
+
+.card-btn {
+  color: #1f3d47;
+  background: #8fabba;
+  width: 120px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  border: none;
+  outline: none;
+  font-weight: 500;
+  cursor: pointer;
+}
+
     </style>
 @section('content')
     <div class="container">
@@ -435,8 +497,19 @@ h1, h2, p {
 
             <div class="container-product"  style="clear: both;">
                 @foreach ($products as $product)
+               
                     <div class="product">
+                    <div class="card">
                         <img src="{{ asset('images/' . $product->image1) }}" style="width: 370px; height: 370px;" alt="Ảnh sản phẩm"><br><br>
+                        <div class="card-body">
+
+                        <form action="{{ route('favorite') }}" method="POST">
+    @csrf
+    <input type="hidden" name="product_id" value="{{ $product->id }}">
+    <button class="card-btn" type="submit"><i class="bi bi-heart"></i></button>
+</form>
+ </div>
+                    </div>
                         <h2>{{ $product->name }}</h2>
                         <p class="price">Giá: {{ $product->price }}</p>
                         <p class="rating">Số lượng  : {{$product->stock_quantity }}</p>
@@ -457,11 +530,7 @@ h1, h2, p {
                                 }
                             }
                         </script>
-                        
-                        
-
-
-
+              
                     </div>
                 @endforeach
 

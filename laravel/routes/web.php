@@ -9,6 +9,7 @@ use App\Http\Controllers\RevenueStatisticsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\PayController;
+use App\Http\Controllers\CrudFavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -83,6 +84,14 @@ Route::get('ViewOrder', [OrdersController::class, 'ViewOrder'])->name('ViewOrder
 Route::post('AddOrder', [OrdersController::class, 'AddOrder'])->name('AddOrder');
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
+//Favorite
+Route::post('Favorite', [CrudFavoriteController::class, 'addFavorite'])->name('favorite');
+// Route cho phương thức GET
+Route::get('favorite', [CrudFavoriteController::class, 'showProduct'])->name('showProduct');
+//
+Route::post('favorite.delete', [CrudFavoriteController::class, 'deleteFavorite'])->name('favorite.delete');
+
+
 
 
 
@@ -99,5 +108,6 @@ Route::get('/getStatsByCategory', [RevenueStatisticsController::class, 'getStats
 Route::get('/stats/all', [RevenueStatisticsController::class, 'getAllStats'])->name('getAllStats');
 
 Route::get('/search', [CrudProductController::class, 'search'])->name('search');
+
 
 

@@ -4,8 +4,6 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsToMany;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Favorities extends Model
 {
@@ -17,12 +15,21 @@ class Favorities extends Model
 
     public $incrementing = true;
 
-    /**
-     * Relationship many to many
-     * @return HasMany
-     */
-    public function favorities(): BelongsToMany
+    protected $fillable = [
+        'id_product',
+        'user_id',
+        'favorite_name',
+        'favorite_description'
+    ];
+
+    public function users()
     {
-        return $this->belongsToMany(User::class);
+        return $this->belongsToMany(User::class, 'favorities', 'favorite_id', 'user_id');
     }
+
+    public function products()
+    {
+        return $this->belongsToMany(Product::class, 'favorities', 'favorite_id', 'id_product');
+    }
+   
 }

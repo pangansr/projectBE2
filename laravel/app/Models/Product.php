@@ -10,8 +10,24 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock_quantity',
+        'category_id',
+        'image1',
+        'image2',
+        'image3'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
+    }
+
+    public function favoritedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorities', 'id_product', 'user_id');
     }
 }

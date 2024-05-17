@@ -164,11 +164,15 @@
             <a href="{{ route('ViewRevenueStatistics') }}" class="nav-item">
                 <h3>THỐNG KÊ</h3>
             </a>
+            <a href="{{ route('showProduct') }}" class="nav-item">
+                <h3>YÊU THÍCH</h3>
+            </a>
         </nav>
         <div class="nav-right">
         <form class="search-form" action="{{route('search')}}" method="GET">
     <input type="text" name="key" class="search-input" placeholder="Tìm kiếm" aria-label="Tìm kiếm" />
-   <button type="submit" class="search-button">Tìm kiếm</button>
+   <button type="submit" class="search-button"> <i class="bi bi-search"></i></button>
+  
 </form>
 
 
