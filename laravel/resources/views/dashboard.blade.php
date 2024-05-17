@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css">
-  <link rel="icon" href="assets/img/logo-icon.png">
+ 
   <!-- CSS only -->
    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
    <link rel="stylesheet" href="assets/css/owl.carousel.min.css">
@@ -21,6 +21,7 @@
    <!-- color -->
    <link rel="stylesheet" href="assets/css/color.css">
    <link rel="stylesheet" href="cart.css" />
+   <link rel="icon" href="/images/logopage.png" type="image/x-icon">
 </head>
 <style>
     
@@ -154,7 +155,7 @@
 <body>
     <header class="header">
         <nav class="header-nav">
-        <a href="{{ route('user.list') }}">    <img src="images/logo.png" alt="Logo" class="logo"  /></a>
+        <a href="{{ route('user.list') }}">    <img src="images/logoo.png" alt="Logo" class="logo"  /></a>
             <a href="{{ route('user.list') }}" class="nav-item">
                 <h3>TRANG CHỦ</h3>
             </a>
@@ -164,9 +165,12 @@
             <a href="{{ route('ViewDetailOrder') }}" class="nav-item">
                 <h3>ĐƠN HÀNG</h3>
             </a>
+            {{-- quyền admin --}}
+            @if (Auth::user()->email == 'admin@gmail.com')
             <a href="{{ route('ViewRevenueStatistics') }}" class="nav-item">
                 <h3>THỐNG KÊ</h3>
             </a>
+            @endif
             <a href="{{ route('showProduct') }}" class="nav-item">
                 <h3>YÊU THÍCH</h3>
             </a>

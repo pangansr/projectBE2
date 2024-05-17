@@ -137,6 +137,8 @@
                     </div>
                 </div>
             </div>
+            {{-- quyền admin --}}
+            @if (Auth::user()->email == 'admin@gmail.com')
             <div class="tb_user">
                 <table class="table">
                     <thead>
@@ -173,6 +175,7 @@
                     </tbody>
                 </table>
             </div>
+            @endif
         </div>
     </section>
 

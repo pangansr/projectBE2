@@ -132,7 +132,7 @@
             font-weight: 300;
             font-size: 30px
         }
-
+       
 
         .category-item:last-child {
             margin-bottom: 9px;
@@ -187,6 +187,7 @@
 
 h1, h2, p {
     margin: 10px 0; /* Adjust as needed */
+    color: "red";
 }
 
 .nut {
@@ -287,6 +288,12 @@ h1, h2, p {
   outline: none;
   font-weight: 500;
   cursor: pointer;
+}
+.anhdep{
+    height:400px;
+}
+.hihi{
+    color: #FF5733;
 }
 
     </style>
@@ -461,10 +468,10 @@ h1, h2, p {
 <section class="gap">
    <div class="container">
       <div class="row">
-         <div class="col-lg-6">
-            <div class="bbq" style="background-image: url(images/anhnen.jpg)">
-               <h2>Áo khoác</h2>
-               <p>canonical classics to obscure<br> vải len</p>
+         <div class="col-lg-6 hihi">
+            <div class="bbq anhdep" style="background-image: url(images/style-bg-four.png)">
+               <h2 class="text-warning">Áo khoác</h2>
+               <p class="text-danger">canonical classics to obscure<br> vải len</p>
                <div class="bbr-price">
                   <div>
                      <h3>$120</h3>
@@ -473,10 +480,10 @@ h1, h2, p {
                </div>
             </div>
          </div>
-         <div class="col-lg-6">
-            <div class="bbq mb-0" style="background-image: url(images/6.jpg)">
-               <h2>Đồ bộ</h2>
-               <p>canonical classics to obscure <br> Lorem, ipsum.</p>
+         <div class="col-lg-6 hihi">
+            <div class="bbq mb-0 anhdep" style="background-image: url(images/style-bg-two.png)">
+               <h2 class="text-warning">Đồ bộ</h2>
+               <p class="text-danger"> canonical classics to obscure <br> Lorem, ipsum.</p>
                <div class="bbr-price">
                   <div>
                      <h3>$120</h3>
