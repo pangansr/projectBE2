@@ -524,7 +524,7 @@
                     success: function (response) {
                         $('.stats-content .value').text(response.orderCount);
                         $('.stats-gt .value').text(response.totalValue);
-                        $('.stats-kh .value').text(response.customerCount);
+                       
                     },
                     error: function (xhr, status, error) {
                         console.error(error);
