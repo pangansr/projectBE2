@@ -603,6 +603,7 @@ h1, h2, p {
             </div>
         </div>
     </div>
+    
 <!-- The Modal -->
 <script>
     var slideIndex = 0;

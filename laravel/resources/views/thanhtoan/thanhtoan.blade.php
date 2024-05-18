@@ -39,6 +39,7 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -46,7 +47,6 @@
         }
 
         .invoice {
-            max-width: 1000px;
             margin: 30px auto;
             background-color: #fff;
             padding: 20px;
@@ -59,6 +59,7 @@
             from {
                 opacity: 0;
             }
+
             to {
                 opacity: 1;
             }
@@ -88,6 +89,7 @@
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -119,11 +121,10 @@
         .customer-info,
         .checkout {
             background: #fff;
-            padding: 20px;
-            margin: 20px 0;
+            padding: 40px;
+            margin: 20px;
             border-radius: 5px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            animation: fadeIn 0.5s;
         }
 
         .product-list .product {
@@ -216,27 +217,110 @@
         .checkout button:active {
             background: linear-gradient(135deg, #1e7e34, #1c7430);
         }
+
+        /* CSS for the submit button */
+        input[type="submit"] {
+            padding: 15px 30px;
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            /* Hiệu ứng chuyển động */
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            /* Đổ bóng */
+        }
+
+        /* CSS for the submit button on hover */
+        input[type="submit"]:hover {
+            background-color: #218838;
+            transform: translateY(-2px);
+            /* Dịch chuyển lên trên khi hover */
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2);
+            /* Đổ bóng lớn hơn khi hover */
+        }
+        .styled-table {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 18px;
+    min-width: 400px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    width: 100%;
+}
+
+.styled-table thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: left;
+}
+
+.styled-table th, .styled-table td {
+    padding: 12px 15px;
+}
+
+.styled-table tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.styled-table tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.styled-table tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.styled-table tbody tr:hover {
+    background-color: #f1f1f1;
+    transition: background-color 0.2s;
+}
+
     </style>
 </head>
 
 <body>
     <header>
-        <h1>Trang Thanh Toán</h1>
+        <h1>Thanh Toán</h1>
     </header>
     <div class="container">
         <div class="invoice">
-            <h1>Chi tiết Đơn hàng</h1>
+            <h1>Chi tiết đơn hàng</h1>
             <ul>
-             
+            <table class="styled-table">
+    <thead>
+        <tr>
+            <th>Tên</th>
+            <th>Size</th>
+            <th>Số lượng</th>
+            <th>Giá</th>
+            <th>Thành tiền</th>
+        </tr>
+    </thead>
+    <tbody>
+        @if(session('detailOrders'))
+            @foreach(session('detailOrders') as $info)
+                <tr>
+                    <td>{{ $info->name }}</td>
+                    <td>{{ $info->size }}</td>
+                    <td>{{ $info->quantity }}</td>
+                    <td>{{ $info->price }}</td>
+                    <td>{{ $info->total }}</td>
+                </tr>
+            @endforeach
+        @endif
+    </tbody>
+</table>
+
             </ul>
             <div class="total">
-                Tổng cộng :0 VND
             </div>
         </div>
         <form action="{{ route('AddOrder') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="customer-info">
-                <h2>Thông tin khách hàng</h2>
+                <h2>Thông tin người nhận</h2>
                 <label for="phone">Số điện thoại:</label>
                 <input type="tel" id="phone" name="phone" required>
                 <label for="address">Địa chỉ:</label>
