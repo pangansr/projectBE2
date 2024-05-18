@@ -49,7 +49,7 @@
                                 @if ($profile)
                                     {{ $profile->address }}
                                 @else
-                                <i class="bi bi-exclamation-triangle-fill text-warning"></i> Vui lòng cập nhật địa chỉ>
+                                <i class="bi bi-exclamation-triangle-fill text-warning"></i> Vui lòng cập nhật địa chỉ
                                 @endif
                             </p>
                             <div class="d-flex justify-content-center mb-2">

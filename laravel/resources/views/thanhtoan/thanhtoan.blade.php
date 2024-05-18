@@ -129,7 +129,7 @@
 
         .product-list .product {
             display: flex;
-            align-items: center;
+align-items: center;
             padding: 10px 0;
             border-bottom: 1px solid #ddd;
         }
@@ -246,7 +246,7 @@
     margin: 25px 0;
     font-size: 18px;
     min-width: 400px;
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
     width: 100%;
 }
 

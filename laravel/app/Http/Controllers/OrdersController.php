@@ -66,6 +66,9 @@ class OrdersController extends Controller
     public function AddOrder(Request $request)
     {
         $user = Auth::user();
+        $userId = Auth::id(); 
+
+        ShoppingCart::where('user_id', $userId)->delete();
         $detailOrders = session('detailOrders');
         $totalAmount = collect($detailOrders)->sum('total');
 
