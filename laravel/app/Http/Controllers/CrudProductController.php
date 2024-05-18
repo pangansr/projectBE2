@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\File;
 use App\Models\ShoppingCart;
 class CrudProductController extends Controller
 {
+
+
     public function search(Request $request, $id = null)
     {
         $user = Auth::user();
@@ -37,7 +39,7 @@ class CrudProductController extends Controller
         } else {
             // Handle the case where the user is not authenticated
             // Redirect or return a view if necessary
-           // return redirect()->route('index'); // Assuming you have a login route
+            return redirect()->route('index'); // Assuming you have a login route
         }
 
         // $key = $request->input('key');
@@ -54,7 +56,7 @@ class CrudProductController extends Controller
            $products = Product::where('category_id', $request->get('id'))->paginate(10); 
             $category = Category::all();
             $user = Auth::user();
-            return view('category',['id' => $request->get('id')], compact('user','products','category','shopingCart'));
+            return view('category.category',['id' => $request->get('id')], compact('user','products','category','shopingCart'));
         } else {
           
         }

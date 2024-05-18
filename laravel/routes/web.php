@@ -9,6 +9,7 @@ use App\Http\Controllers\RevenueStatisticsController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\PayController;
+use App\Http\Controllers\CrudFavoriteController;
 
 /*
 |--------------------------------------------------------------------------
@@ -55,7 +56,9 @@ Route::post('updateCategories', [CrudCategoriesController::class, 'updateCategor
 
 //product
 // lay danh muc hien thi
-Route::get('categories', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
+Route::get('/categories', [CrudProductController::class, 'showProductsByCategory'])->name('categories.products');
+
+
 
 Route::get('/products', [CrudProductController::class, 'index'])->name('products.index');
 
@@ -84,6 +87,14 @@ Route::get('ViewDetailOrder', [OrdersController::class, 'ViewDetailOrder'])->nam
 Route::post('AddOrder', [OrdersController::class, 'AddOrder'])->name('AddOrder');
 
 Route::get('RevenueStatistics', [RevenueStatisticsController::class, 'ViewRevenueStatistics'])->name('ViewRevenueStatistics');
+//Favorite
+Route::post('Favorite', [CrudFavoriteController::class, 'addFavorite'])->name('favorite');
+// Route cho phương thức GET
+Route::get('favorite', [CrudFavoriteController::class, 'showProduct'])->name('showProduct');
+//
+Route::post('favorite.delete', [CrudFavoriteController::class, 'deleteFavorite'])->name('favorite.delete');
+
+
 
 
 
@@ -114,6 +125,7 @@ Route::delete('/users/{user}', [CrudUserController::class,'delete'])->name('user
 Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');
 
 Route::get('/search', [CrudProductController::class, 'search'])->name('search');
+
 
 
 Route::get('/customer-revenue', [RevenueStatisticsController::class, 'getCustomerRevenue'])->name('customer.revenue');

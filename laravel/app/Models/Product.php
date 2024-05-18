@@ -10,6 +10,17 @@ class Product extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'description',
+        'price',
+        'stock_quantity',
+        'category_id',
+        'image1',
+        'image2',
+        'image3'
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
@@ -17,5 +28,10 @@ class Product extends Model
     public function orderDetails()
     {
         return $this->hasMany(OrderDetail::class, 'product_id');
+    }
+
+    public function favoritedByUsers()
+    {
+        return $this->belongsToMany(User::class, 'favorities', 'id_product', 'user_id');
     }
 }

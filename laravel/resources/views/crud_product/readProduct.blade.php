@@ -141,6 +141,11 @@
         .img-fluid{
             background-color: 'red';
         }
+        .image
+        {
+          padding: 10px;
+            height: 200px;
+        }
     </style>
 </head>
 @section('content')
@@ -162,7 +167,7 @@
         <div class="col-lg-4">
             <div class="image-container">
                 <img src="{{ asset('images/' . $product->image1) }}" alt="" class="img-fluid" id="hienthi">
-                <div style="margin-top:20px; display: flex; justify-content: center;">
+                <div class="image" style="margin-top:20px; display: flex; justify-content: center;">
                     <img src="{{ asset('images/' . $product->image1) }}" alt="" class="img-thumbnail anh active" id="anh1">
                     <img src="{{ asset('images/' . $product->image2) }}" alt="" class="img-thumbnail anh mx-4">
                     <img src="{{ asset('images/' . $product->image3) }}" alt="" class="img-thumbnail anh">
